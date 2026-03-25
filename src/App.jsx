@@ -7,6 +7,7 @@ import HotelBookingPage from './pages/Accodnmation'
 import HotelNavbar from './common/Navbar'
 import ServicesPage from './pages/Services'
 import Footer from './common/Footer'
+import SafariBooking from './pages/SafariBooking'
 export default function App() {
   return (
 <Router>
@@ -27,6 +28,9 @@ export default function App() {
     }/>
     <Route path="/services" element={
       <ServicesPage/>
+    }/>
+    <Route path="/safari-booking" element={
+      <SafariBooking/>
     }/>
   </Routes>
   <Footer/>
