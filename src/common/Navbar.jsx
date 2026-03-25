@@ -82,9 +82,9 @@ export default function HotelNavbar() {
   return (
     <>
       {/* ─────────────── Navbar ─────────────── */}
-      <div className="fixed top-0 left-0 w-full z-[9999] pt-3 sm:pt-4 pb-2 flex justify-center pointer-events-none">
+      <div className="fixed top-0 left-0 w-full z-[9999] pt-2 sm:pt-3 md:pt-4 pb-2 flex justify-center pointer-events-none">
         <nav
-          className="w-[95%] max-w-7xl px-3 sm:px-4 py-2.5 sm:py-3 flex items-center justify-between rounded-full pointer-events-auto transition-all duration-300"
+          className="w-[min(95%,100%-12px)] sm:w-[min(95%,100%-20px)] max-w-7xl px-2.5 sm:px-3 md:px-4 py-2 sm:py-2.5 md:py-3 flex items-center justify-between gap-2 sm:gap-3 rounded-full pointer-events-auto transition-all duration-300 min-w-0"
           style={{
             background: scrolled ? "rgba(201,212,203,0.32)" : "rgba(201,212,203,0.18)",
             backdropFilter: "blur(20px)",
@@ -100,16 +100,16 @@ export default function HotelNavbar() {
             <Logo />
           </Link>
 
-          {/* Desktop Links — shown on lg+ */}
-          <div className="hidden lg:flex items-center gap-0.5 xl:gap-1">
+          {/* Desktop Links — lg+ matches 1024px desktop (same as wide screens) */}
+          <div className="hidden min-w-0 lg:flex flex-1 items-center justify-center gap-0 lg:gap-0.5 xl:gap-1">
             {navItems.map((item) => (
               <Link
                 key={item.label}
                 to={item.to}
-                className="flex items-center gap-1 px-3 xl:px-4 py-2 rounded-full transition-all duration-200 hover:bg-black/5 select-none"
+                className="flex items-center gap-1 px-2 lg:px-3 xl:px-4 py-2 rounded-full transition-all duration-200 hover:bg-black/5 select-none shrink-0"
                 style={{
                   fontFamily: "'Cormorant Garamond', 'Georgia', serif",
-                  fontSize: "15px",
+                  fontSize: "clamp(13px, 1.1vw, 15px)",
                   letterSpacing: "0.03em",
                   color: textColor,
                   fontWeight: "700",
@@ -122,17 +122,17 @@ export default function HotelNavbar() {
           </div>
 
           {/* Right Side */}
-          <div className="flex items-center gap-2 sm:gap-3">
-            {/* Book Now — hidden on mobile */}
+          <div className="flex items-center shrink-0 gap-1.5 sm:gap-2 md:gap-3">
+            {/* Book Now — hidden on mobile; compact on tablet md+ */}
             <Link
               to="/booking"
-              className="hidden sm:flex items-center px-4 xl:px-6 py-2 xl:py-2.5 rounded-full transition-all duration-300 hover:scale-105 active:scale-95"
+              className="hidden sm:flex items-center px-3 md:px-4 xl:px-6 py-1.5 md:py-2 xl:py-2.5 rounded-full transition-all duration-300 hover:scale-105 active:scale-95"
               style={{
                 background: "rgba(255,255,255,0.92)",
                 color: "#041106",
                 fontFamily: "'Cormorant Garamond', Georgia, serif",
                 letterSpacing: "0.12em",
-                fontSize: "12px",
+                fontSize: "clamp(10px, 1.5vw, 12px)",
                 fontWeight: "700",
                 textTransform: "uppercase",
                 boxShadow: "0 4px 16px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.8)",
@@ -143,10 +143,11 @@ export default function HotelNavbar() {
               Book Now
             </Link>
 
-            {/* Hamburger — always visible */}
+            {/* Hamburger — tablet & mobile only (desktop uses inline links) */}
             <button
+              type="button"
               onClick={() => setDrawerOpen(true)}
-              className="flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-full transition-all duration-200 hover:bg-white/10"
+              className="flex lg:hidden items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-full transition-all duration-200 hover:bg-white/10"
               style={{ color: "rgba(255,255,255,0.85)", border: "1px solid rgba(255,255,255,0.2)" }}
               aria-label="Open menu"
             >

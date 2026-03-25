@@ -249,7 +249,10 @@ export default function SafarHomePage() {
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&family=Marcellus&display=swap');
        
+        *,*::before,*::after{box-sizing:border-box}
         body{overflow-x:hidden}
+        img{max-width:100%}
+        button,input,select,textarea{font:inherit}
         .marc{font-family:'Marcellus',serif}
 
         @keyframes spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
@@ -265,6 +268,101 @@ export default function SafarHomePage() {
           margin:0 auto;
           padding:0 clamp(16px,4vw,48px);
           width:100%;
+        }
+        .sec-wrap > *{min-width:0}
+
+        /* ═══════════ SECTION HEADER ROW ═══════════ */
+        /* Desktop default: horizontal, space-between */
+        .sec-head-row{
+          display:flex;
+          justify-content:space-between;
+          align-items:flex-end;
+          flex-wrap:nowrap;
+          gap:clamp(14px,3vw,22px);
+        }
+        /* Left text block – shrinks but does not disappear */
+        .sec-head-text{
+          flex:1 1 0;
+          min-width:0;
+        }
+        /* Right actions (arrows / link) */
+        .sec-head-actions{
+          display:flex;
+          gap:10px;
+          flex-shrink:0;
+          align-items:center;
+        }
+
+        .nav-round-btn{
+          width:44px;height:44px;
+          border:1.5px solid rgba(4,17,6,.2);
+          background:none;
+          cursor:pointer;
+          font-size:18px;
+          border-radius:12px;
+          display:flex;
+          align-items:center;
+          justify-content:center;
+          transition:background .2s,border-color .2s,transform .15s;
+          flex-shrink:0;
+        }
+        .nav-round-btn:hover{background:rgba(4,17,6,.04)}
+        .nav-round-btn:active{transform:scale(.96)}
+        .nav-round-btn--dark{
+          border-color:${DARK};
+          background:${DARK};
+          color:${BG};
+        }
+        .nav-round-btn--dark:hover{background:#1a2e1c;border-color:#1a2e1c}
+        .nav-round-btn--lg{width:46px!important;height:46px!important;font-size:17px!important}
+
+        .sec-head-link{
+          display:inline-flex;
+          align-items:center;
+          justify-content:center;
+          gap:8px;
+          text-align:center;
+          flex-shrink:0;
+          box-sizing:border-box;
+          white-space:nowrap;
+        }
+
+        .bed-tabs-shell{
+          display:flex;
+          justify-content:center;
+          margin:0 0 clamp(24px,3vw,36px);
+        }
+        .bed-tabs-inner{
+          display:flex;
+          background:#ede8e2;
+          padding:4px;
+          border-radius:14px;
+          max-width:100%;
+          flex-wrap:wrap;
+          justify-content:center;
+          gap:4px;
+        }
+        .about-feature-col{position:relative;overflow:visible}
+        .about-feature-img{
+          width:100%;
+          height:clamp(260px,52vw,420px);
+          object-fit:cover;
+          object-position:top;
+          display:block;
+          border-radius:12px;
+        }
+        .about-spin-badge{
+          position:absolute;
+          bottom:-26px;
+          right:-8px;
+          width:100px;
+          height:100px;
+          border-radius:50%;
+          background:${DARK};
+          display:flex;
+          align-items:center;
+          justify-content:center;
+          flex-shrink:0;
         }
 
         /* ═══════════ HERO ═══════════ */
@@ -315,7 +413,7 @@ export default function SafarHomePage() {
           width:clamp(300px,35vw,430px);
         }
 
-        /* ═══════════ BOOKING FORM ═══════════ */
+        /* ═══════════ BOOKING FORM (hero card) ═══════════ */
         .hf-wrap{
           background:rgba(255,255,255,.97);
           backdrop-filter:blur(22px);
@@ -323,6 +421,8 @@ export default function SafarHomePage() {
           padding:clamp(18px,2.5vw,32px) clamp(14px,2vw,28px) clamp(16px,2vw,28px);
           box-shadow:0 32px 80px rgba(4,17,6,.28),0 8px 24px rgba(4,17,6,.14);
           width:100%;
+          border-radius:16px;
+          border:1px solid rgba(255,255,255,.85);
         }
         .hf-title{
           font-size:clamp(18px,2vw,22px);
@@ -400,17 +500,66 @@ export default function SafarHomePage() {
           font-size:16px;font-weight:300;
         }
 
-        /* ═══════════ VID CARD ═══════════ */
+        /* ═══════════ VIDEO CTA CARD (hero) ═══════════ */
         .vid-card{
-          background:rgba(4,17,6,.62);
-          backdrop-filter:blur(16px);
-          -webkit-backdrop-filter:blur(16px);
-          border:1px solid rgba(255,255,255,.1);
-          padding:16px;
+          background:rgba(4,17,6,.72);
+          backdrop-filter:blur(18px);
+          -webkit-backdrop-filter:blur(18px);
+          border:1px solid rgba(255,255,255,.16);
+          padding:clamp(12px,2vw,18px) clamp(14px,2vw,18px);
           display:flex;
           align-items:center;
-          gap:14px;
-          max-width:min(360px, calc(100vw - 32px));
+          gap:clamp(12px,2vw,16px);
+          max-width:min(380px, calc(100% - 4px));
+          border-radius:16px;
+          box-shadow:0 20px 56px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.12);
+        }
+        .vid-card p{overflow-wrap:anywhere}
+        .vid-card__thumb{
+          position:relative;
+          flex-shrink:0;
+          width:clamp(76px,20vw,100px);
+          aspect-ratio:4/3;
+          max-height:88px;
+          border-radius:12px;
+          overflow:hidden;
+          box-shadow:0 8px 24px rgba(0,0,0,.35);
+          border:1px solid rgba(255,255,255,.2);
+        }
+        .vid-card__thumb img{width:100%;height:100%;object-fit:cover;display:block}
+        .vid-card__overlay{
+          position:absolute;inset:0;
+          display:flex;align-items:center;justify-content:center;
+          background:rgba(0,0,0,.28);
+        }
+        .vid-card__play{
+          width:34px;height:34px;border-radius:50%;
+          background:rgba(255,255,255,.94);
+          display:flex;align-items:center;justify-content:center;
+          color:${DARK};
+          font-size:12px;padding-left:3px;
+          box-shadow:0 4px 14px rgba(0,0,0,.2);
+        }
+        .vid-card__body{min-width:0;flex:1}
+        .vid-card__title{
+          color:#fff;
+          font-size:clamp(14px,1.6vw,18px);
+          margin:0 0 6px;
+          font-weight:500;
+          letter-spacing:.01em;
+        }
+        .vid-card__desc{
+          color:rgba(255,255,255,.52);
+          font-size:clamp(11.5px,1.35vw,13.5px);
+          line-height:1.62;
+          margin:0;
+        }
+        .hero-easy-pill{
+          border-radius:999px;
+          overflow:hidden;
+          border:2px solid rgba(255,255,255,.35);
+          flex-shrink:0;
+          box-shadow:0 10px 28px rgba(0,0,0,.22);
         }
 
         /* ═══════════ ROOM CARDS ═══════════ */
@@ -421,6 +570,7 @@ export default function SafarHomePage() {
         }
         .r-card{
           background:#fff;overflow:hidden;
+          border-radius:12px;
           box-shadow:0 4px 20px rgba(4,17,6,.08);
           transition:transform .35s,box-shadow .35s;
           display:flex;flex-direction:column;
@@ -464,6 +614,146 @@ export default function SafarHomePage() {
         }
         .r-bk-cta:hover{background:#1a2e1c}
 
+        /* ── Section 03: Rooms — alternate UI ── */
+        .section-rooms{
+          background:linear-gradient(165deg,#0f1f13 0%,#1b3322 52%,#102015 100%);
+        }
+        .section-rooms .r-card--pro{
+          background:#f6fbf7!important;
+          border-radius:18px;
+          border:2px solid rgba(5,27,14,.35)!important;
+          box-shadow:0 2px 0 rgba(4,17,6,.14),0 20px 48px rgba(0,0,0,.28)!important;
+          overflow:hidden;
+        }
+        .section-rooms .r-card--pro:hover{
+          transform:translateY(-4px);
+          box-shadow:0 6px 0 rgba(4,17,6,.2),0 30px 64px rgba(0,0,0,.34)!important;
+          border-color:rgba(5,27,14,.55)!important;
+        }
+        .section-rooms .r-card--pro .r-img-wrap{
+          height:clamp(190px,44vw,230px);
+          border-radius:0;
+        }
+        .section-rooms .r-card--pro .r-img-wrap::after{
+          content:"";
+          position:absolute;inset:0;
+          background:linear-gradient(to top,rgba(4,17,6,.75) 0%,rgba(4,17,6,.15) 45%,transparent 72%);
+          pointer-events:none;
+        }
+        .section-rooms .r-card--pro .r-tag{
+          top:12px;left:12px;
+          background:${DARK};
+          color:#e8f0e9;
+          border:1px solid rgba(232,240,233,.28);
+          letter-spacing:.12em;
+          font-weight:800;
+          box-shadow:0 6px 16px rgba(0,0,0,.24);
+        }
+        .section-rooms .r-card--pro .r-price-float{
+          position:absolute;bottom:0;left:0;right:0;
+          padding:12px 14px 14px;
+          display:flex;align-items:baseline;flex-wrap:wrap;gap:6px 10px;
+          z-index:2;
+        }
+        .section-rooms .r-card--pro .r-price-float .r-price-label{
+          font-size:11px;font-weight:600;letter-spacing:.06em;
+          text-transform:uppercase;color:rgba(232,240,233,.9);
+        }
+        .section-rooms .r-card--pro .r-price-float .r-price-num{
+          font-family:'Marcellus',serif;
+          font-size:clamp(1.35rem,4.5vw,1.65rem);
+          font-weight:400;color:#fff;
+          text-shadow:0 1px 12px rgba(0,0,0,.25);
+        }
+        .section-rooms .r-card--pro .r-price-float .r-price-unit{
+          font-size:12px;color:rgba(232,240,233,.88);
+        }
+        .section-rooms .r-card--pro .r-wish{
+          z-index:3;
+          border:1px solid rgba(4,17,6,.2);
+          background:#fff;
+        }
+        .section-rooms .r-card--pro .r-body{
+          background:linear-gradient(180deg,#eef7f0 0%,#ffffff 70%);
+          padding:clamp(16px,3vw,20px) clamp(15px,2.5vw,18px) clamp(14px,2vw,18px);
+          border-top:4px solid ${DARK};
+        }
+        .section-rooms .r-card--pro .r-pro-title-row{
+          display:flex;justify-content:space-between;align-items:flex-start;
+          gap:10px;margin-bottom:12px;
+        }
+        .section-rooms .r-card--pro .r-pro-title{
+          font-size:clamp(15px,2.6vw,18px);
+          font-weight:500;color:${DARK};
+          line-height:1.28;margin:0;flex:1;min-width:0;
+        }
+        .section-rooms .r-card--pro .r-rating-stack{
+          display:flex;flex-direction:column;align-items:flex-end;gap:4px;flex-shrink:0;
+        }
+        .section-rooms .r-card--pro .r-rating-pill{
+          display:inline-flex;align-items:center;gap:5px;
+          background:${DARK};
+          color:#e8f0e9;
+          padding:5px 10px;
+          border-radius:8px;
+          font-size:12px;font-weight:700;
+          border:1px solid rgba(255,255,255,.12);
+        }
+        .section-rooms .r-card--pro .r-reviews-note{
+          font-size:11px;font-weight:600;color:rgba(4,17,6,.55);
+        }
+        .section-rooms .r-card--pro .r-meta-row{
+          display:flex;align-items:center;flex-wrap:wrap;gap:8px 12px;
+          margin-bottom:14px;
+          font-size:13px;font-weight:500;
+          color:${DARK};
+        }
+        .section-rooms .r-card--pro .r-meta-row svg{
+          opacity:.85;color:${DARK};
+        }
+        .section-rooms .r-card--pro .r-meta-dot{
+          width:4px;height:4px;border-radius:50%;
+          background:rgba(4,17,6,.35);
+          flex-shrink:0;
+        }
+        .section-rooms .r-card--pro .r-amenity-strip{
+          display:flex;flex-wrap:wrap;gap:8px;
+          margin-bottom:4px;
+        }
+        .section-rooms .r-card--pro .r-amenity{
+          width:38px;height:38px;
+          border-radius:10px;
+          background:rgba(4,17,6,.06);
+          border:1px solid rgba(4,17,6,.12);
+          color:${DARK};
+        }
+        .section-rooms .r-card--pro .r-book-btn{
+          border-top:1px solid rgba(4,17,6,.12);
+          padding-top:16px;margin-top:14px;
+          gap:12px;
+        }
+        .section-rooms .r-card--pro .r-bk-cta{
+          border-radius:10px;
+          padding:11px 20px;
+          font-size:11px;
+          letter-spacing:.11em;
+          box-shadow:0 4px 16px rgba(4,17,6,.2);
+        }
+        .section-rooms .r-card--pro .r-link-explore{
+          display:inline-flex;align-items:center;gap:6px;
+          font-size:11px;font-weight:700;
+          letter-spacing:.1em;text-transform:uppercase;
+          color:${DARK};
+          text-decoration:none;
+          padding:10px 12px;
+          border-radius:10px;
+          border:1.5px solid rgba(4,17,6,.25);
+          background:#ffffff;
+        }
+        .section-rooms .r-card--pro .r-link-explore:hover{
+          background:${DARK};color:#e8f0e9;border-color:${DARK};
+        }
+
         /* ═══════════ HOTSPOT ═══════════ */
         .hotspot{
           width:32px;height:32px;border-radius:50%;
@@ -492,13 +782,7 @@ export default function SafarHomePage() {
           transform:translateX(-50%);
           animation:fadeUp .22s ease;
         }
-        /* Prevent popup clipping on edges */
-        .hs-popup-right{
-          left:auto;right:0;
-          transform:none;
-          animation:none;
-          animation:fadeUpCentered 0.22s ease forwards;
-        }
+        .hs-popup p{overflow-wrap:anywhere}
 
         /* ═══════════ ABOUT ═══════════ */
         .about-grid{
@@ -534,6 +818,7 @@ export default function SafarHomePage() {
         .svc-card{
           padding:clamp(22px,2.5vw,32px) clamp(18px,2vw,28px);
           position:relative;overflow:hidden;
+          border-radius:14px;
           transition:transform .3s,box-shadow .3s;
           cursor:default;
         }
@@ -554,6 +839,7 @@ export default function SafarHomePage() {
         .ww{
           background:#fff;padding:clamp(22px,2.5vw,30px) clamp(18px,2vw,24px);
           position:relative;
+          border-radius:14px;
           box-shadow:0 2px 18px rgba(4,17,6,.07);
           transition:box-shadow .3s;
         }
@@ -562,6 +848,7 @@ export default function SafarHomePage() {
           background:${DARK};
           padding:clamp(22px,2.5vw,30px) clamp(18px,2vw,24px);
           position:relative;
+          border-radius:14px;
           box-shadow:0 6px 26px rgba(4,17,6,.28);
         }
         .w-ico{
@@ -597,6 +884,7 @@ export default function SafarHomePage() {
           grid-template-columns:repeat(3,1fr);
           gap:clamp(12px,2vw,20px);
         }
+        .testi-card{border-radius:14px}
 
         /* ═══════════ BLOGS ═══════════ */
         .blogs-grid{
@@ -604,7 +892,7 @@ export default function SafarHomePage() {
           grid-template-columns:repeat(3,1fr);
           gap:clamp(14px,2vw,24px);
         }
-        .b-card{background:#fff;overflow:hidden;box-shadow:0 2px 12px rgba(4,17,6,.06)}
+        .b-card{background:#fff;overflow:hidden;box-shadow:0 2px 12px rgba(4,17,6,.06);border-radius:12px}
         .b-img{transition:transform .6s;width:100%;height:100%;object-fit:cover;display:block}
         .b-card:hover .b-img{transform:scale(1.05)}
 
@@ -615,6 +903,7 @@ export default function SafarHomePage() {
           cursor:pointer;border:none;background:none;
           font-family:'Jost',sans-serif;transition:all .3s;
           white-space:nowrap;
+          border-radius:10px;
         }
 
         /* ═══════════ CTA SECTION ═══════════ */
@@ -707,25 +996,54 @@ export default function SafarHomePage() {
           .ft-cols{grid-template-columns:1.2fr repeat(3,1fr)!important}
         }
 
-        /* 1024px — tablet landscape */
-        @media(max-width:1024px){
+        /* Below 1024px */
+        @media(max-width:1023px){
+          /* Section header — keep on one row, just tighten alignment */
+          .sec-head-row{
+            align-items:center!important;
+            flex-wrap:nowrap!important;
+            gap:16px!important;
+          }
           .hero-layout{
             flex-direction:column!important;
-            align-items:flex-start!important;
+            align-items:stretch!important;
             justify-content:flex-end!important;
             min-height:auto!important;
+            padding-top:clamp(88px,11vh,118px)!important;
+            padding-bottom:clamp(28px,5vh,56px)!important;
+            gap:clamp(16px,2.8vw,28px)!important;
           }
-          .hero-left{justify-content:flex-start!important;padding-bottom:0!important}
+          .hero-left{justify-content:flex-start!important;padding-bottom:0!important;width:100%}
+          .hero-left h1{font-size:clamp(32px,7vw,72px)!important;line-height:.95!important}
           .hero-right{
             width:100%!important;
-            flex-direction:row!important;
-            align-items:flex-end!important;
+            flex-direction:column!important;
+            align-items:stretch!important;
             justify-content:flex-start!important;
             flex-shrink:unset!important;
           }
-          .hf-wrap{max-width:460px!important}
+          .vid-card{
+            width:100%!important;
+            max-width:100%!important;
+            align-self:stretch!important;
+          }
+          .hf-wrap{
+            max-width:100%!important;
+            width:100%!important;
+            padding:16px 14px 15px!important;
+          }
+          .hf-title{font-size:clamp(16px,2.2vw,20px)!important;margin-bottom:12px!important}
+          .hf-grid-2{gap:8px!important;margin-bottom:8px!important}
+          .hf-label{font-size:9px!important;letter-spacing:.13em!important;margin-bottom:5px!important}
+          .hf-date-box,.hf-counter-box{height:40px!important}
+          .hf-date-input{font-size:12px!important}
+          .hf-counter-btn{width:24px!important;height:24px!important;font-size:14px!important}
+          .hf-divider{margin:10px 0!important}
+          .hf-cta{height:44px!important;font-size:10px!important;letter-spacing:.1em!important}
+          .hf-cta-icon{width:24px!important;height:24px!important;font-size:14px!important}
           .about-grid{grid-template-columns:1fr!important}
           .about-img-left{display:none!important}
+          /* Rooms: 2 columns on tablet */
           .rooms-grid{grid-template-columns:1fr 1fr!important}
           .blogs-grid{grid-template-columns:1fr 1fr!important}
           .svc-grid{grid-template-columns:1fr 1fr!important}
@@ -735,80 +1053,229 @@ export default function SafarHomePage() {
           .ft-cols{grid-template-columns:1fr 1fr!important;gap:32px!important}
           .why-header{grid-column:1/3!important}
           .cta-circle-wrap:last-child{display:none!important}
-          /* category: fit more items per row on tablet */
           .cat-item{flex:1 1 clamp(100px,18%,140px)!important}
+          /* Hide circle images in why section on tablet */
+          .why-circle-img{display:none!important}
         }
 
-        /* 768px — tablet portrait */
+        /* 768px — tablet portrait — KEY FIXES */
         @media(max-width:768px){
-          /* HERO: stack form below content */
-          .hero-layout{padding-top:clamp(70px,12vh,100px)!important;padding-bottom:clamp(28px,5vh,48px)!important}
+          .sec-wrap{padding-left:clamp(18px,4.5vw,26px)!important;padding-right:clamp(18px,4.5vw,26px)!important}
+
+          /* Section header: title left, arrows right — same row, compact */
+          .sec-head-row{
+            flex-direction:row!important;
+            align-items:center!important;
+            flex-wrap:nowrap!important;
+            justify-content:space-between!important;
+            gap:12px!important;
+          }
+          .sec-head-text{
+            flex:1 1 0!important;
+            min-width:0!important;
+          }
+          /* Clamp the heading font size on 768 */
+          .sec-head-text h2{
+            font-size:clamp(18px,4.5vw,32px)!important;
+            line-height:1.2!important;
+          }
+          .sec-head-text p{
+            font-size:10px!important;
+            margin-bottom:6px!important;
+          }
+          .sec-head-actions{
+            display:flex!important;
+            flex-direction:row!important;
+            flex-shrink:0!important;
+            gap:8px!important;
+            align-items:center!important;
+          }
+          /* Arrow buttons: compact on 768 */
+          .nav-round-btn{
+            width:38px!important;
+            height:38px!important;
+            font-size:15px!important;
+            border-radius:10px!important;
+          }
+          .nav-round-btn--lg{
+            width:40px!important;
+            height:40px!important;
+            font-size:15px!important;
+          }
+
+          .about-spin-badge{
+            width:80px!important;height:80px!important;
+            bottom:12px!important;right:8px!important;
+          }
+          .about-spin-badge > svg:first-of-type{width:80px!important;height:80px!important}
+
+          /* HERO */
+          .hero-layout{padding-top:clamp(72px,11vh,96px)!important;padding-bottom:clamp(32px,6vh,52px)!important;gap:20px!important}
           .hero-right{flex-direction:column!important;align-items:stretch!important;width:100%!important}
-          .hf-wrap{max-width:100%!important;width:100%!important}
-          /* CATEGORIES: 3 per row on tablet portrait */
+          .hf-wrap{
+            max-width:100%!important;
+            width:100%!important;
+            padding:18px 16px 16px!important;
+            border:1px solid rgba(4,17,6,.1)!important;
+            box-shadow:0 24px 56px rgba(4,17,6,.2),0 4px 16px rgba(4,17,6,.1)!important;
+          }
+          .hf-title{font-size:18px!important;margin-bottom:12px!important}
+          .hf-label{color:rgba(4,17,6,.58)!important}
+          .hf-date-box,.hf-counter-box{
+            height:44px!important;
+            background:#fff!important;
+            border-color:rgba(4,17,6,.18)!important;
+          }
+          .hf-date-input{font-size:13px!important;color:${DARK}!important}
+          .hf-counter-btn{width:26px!important;height:26px!important}
+          .vid-card{
+            padding:16px 18px!important;
+            background:rgba(4,17,6,.82)!important;
+            border:1px solid rgba(255,255,255,.22)!important;
+          }
+          .vid-card__title{color:#fff!important}
+          .vid-card__desc{color:rgba(255,255,255,.68)!important}
+
+          /* Section 03 Rooms: 2 cards per row on 768 */
+          .section-rooms .rooms-grid{
+            grid-template-columns:1fr 1fr!important;
+            gap:16px!important;
+          }
+          .section-rooms{padding-top:48px!important;padding-bottom:56px!important}
+          .section-rooms .r-card--pro .r-img-wrap{height:clamp(150px,30vw,200px)!important}
+          .section-rooms .r-card--pro .r-book-btn{flex-direction:column!important;align-items:stretch!important}
+          .section-rooms .r-card--pro .r-link-explore{justify-content:center!important}
+          .section-rooms .r-card--pro .r-bk-cta{width:100%!important;text-align:center!important;justify-content:center!important;display:flex!important}
+
+          /* Load more button */
+          .rooms-load-more{
+            min-height:50px!important;
+          }
+
+          /* Categories */
           .cat-wrap{gap:clamp(8px,2vw,16px)!important}
           .cat-item{flex:0 1 calc(33.33% - 12px)!important;max-width:160px!important}
-          /* WHY: single column, hide circle image */
-          .why-grid{grid-template-columns:1fr!important}
-          .why-header{grid-column:1!important}
+
+          /* WHY: 2-col, hide ALL circle images */
+          .why-grid{grid-template-columns:1fr 1fr!important}
+          .why-header{grid-column:1/3!important}
           .why-circle-img{display:none!important}
-          /* TESTIMONIALS: show only 1 card */
+
+          /* Testimonials: 1 column on 768 (like mobile) */
           .testi-grid{grid-template-columns:1fr!important}
           .testi-card:not(.testi-first){display:none!important}
-          .testi-first{background:#041106!important}
-          .testi-first p,.testi-first h4{color:#c9d4cb!important;opacity:.84!important}
-          .testi-first span{color:rgba(201,212,203,.42)!important}
-          .svc-grid{grid-template-columns:1fr!important}
-          .rest-grid{grid-template-columns:1fr 1fr!important}
+
+          /* Blog: 1 column on 768 */
+          .blogs-grid{grid-template-columns:1fr!important}
+
+          .svc-grid{grid-template-columns:1fr 1fr!important}
+          .rest-grid{grid-template-columns:1fr!important}
           .cta-circle-wrap{display:none!important}
           .cta-inner{justify-content:center!important;text-align:center!important}
           .cta-btn{justify-content:center!important}
+          .cta-btn{width:100%!important;max-width:360px!important}
           .ft-cols{grid-template-columns:1fr 1fr!important}
           footer .ft-cols > div:first-child{grid-column:1/3!important}
           .hs-popup{width:clamp(180px,50vw,240px)!important}
+          .ft-sub-btn{font-size:10px!important;letter-spacing:.08em!important;padding:0 10px!important}
+
+          /* sec-head-link on 768: keep inline, don't stretch full width */
+          .sec-head-link{
+            padding:10px 16px!important;
+            font-size:10px!important;
+          }
         }
 
         /* 640px — mobile */
         @media(max-width:640px){
-          /* HERO: compact spacing */
+          /* Section header: keep on one row */
+          .sec-head-row{
+            flex-direction:row!important;
+            align-items:center!important;
+            flex-wrap:nowrap!important;
+            gap:10px!important;
+          }
+          .sec-head-text h2{
+            font-size:clamp(17px,5vw,26px)!important;
+          }
+          .sec-head-actions{
+            flex-shrink:0!important;
+            gap:7px!important;
+          }
+          .nav-round-btn{
+            width:36px!important;
+            height:36px!important;
+            font-size:14px!important;
+          }
+
+          .about-spin-badge{
+            width:72px!important;height:72px!important;
+            bottom:8px!important;right:8px!important;
+          }
+          .about-spin-badge > svg:first-of-type{width:72px!important;height:72px!important}
           .hero-layout{gap:clamp(16px,3vw,24px)!important}
-          .vid-card{flex-direction:row!important;align-items:flex-start!important;gap:12px!important;padding:12px!important}
-          /* CATEGORIES: 3 per row on mobile */
+          .vid-card{
+            flex-direction:row!important;
+            align-items:center!important;
+            gap:12px!important;
+            padding:12px 14px!important;
+          }
           .cat-item{flex:0 1 calc(33.33% - 8px)!important;max-width:none!important}
-          /* WHY: ensure single col */
           .why-grid{grid-template-columns:1fr!important}
           .why-header{grid-column:1!important}
           .why-circle-img{display:none!important}
-          /* TESTIMONIALS: show only 1 card */
           .testi-grid{grid-template-columns:1fr!important}
           .testi-card:not(.testi-first){display:none!important}
           .rooms-grid{grid-template-columns:1fr!important}
+          /* Section 03 rooms: 1 col on 640 */
+          .section-rooms .rooms-grid{
+            grid-template-columns:1fr!important;
+            max-width:480px!important;
+            margin-left:auto!important;
+            margin-right:auto!important;
+          }
           .blogs-grid{grid-template-columns:1fr!important}
           .rest-grid{grid-template-columns:1fr!important}
           .stats-4{grid-template-columns:1fr 1fr!important}
           .ft-cols{grid-template-columns:1fr!important}
           footer .ft-cols > div:first-child{grid-column:1!important}
           .hf-grid-2{grid-template-columns:1fr 1fr!important}
+          .r-book-btn{align-items:stretch!important}
+          .r-bk-cta{width:100%!important;justify-content:center!important}
+          .ft-sub-btn{white-space:normal!important;line-height:1.1!important;height:auto!important;min-height:46px!important}
+          .hf-wrap{padding:13px 10px 11px!important}
+          .hf-date-box,.hf-counter-box{height:38px!important}
+          .hf-cta{height:42px!important}
         }
 
         /* 480px — small phones */
         @media(max-width:480px){
-          /* HERO */
           .hero-layout{padding-top:clamp(64px,14vh,90px)!important}
           .hf-grid-2{grid-template-columns:1fr 1fr!important}
-          /* CATEGORIES: 2 per row on very small screens */
           .cat-item{flex:0 1 calc(50% - 8px)!important;max-width:none!important}
           .stats-4{grid-template-columns:1fr 1fr!important}
           .svc-grid{grid-template-columns:1fr!important}
           .ft-cols{grid-template-columns:1fr!important}
           .r-img-wrap{height:clamp(160px,40vw,200px)!important}
+          .hero-left h1{line-height:1!important}
+          .hf-cta{white-space:normal!important;padding:8px 10px!important;height:auto!important;min-height:46px!important}
+          .hf-counter-box{padding:0 8px!important}
+          .ft-input{font-size:12px!important;padding:0 12px!important}
+          .hs-popup{
+            left:50%!important;
+            right:auto!important;
+            transform:translateX(-50%)!important;
+            width:min(88vw,280px)!important;
+          }
+          .sec-head-text h2{font-size:clamp(16px,5.5vw,22px)!important}
         }
 
         /* 400px — very small */
         @media(max-width:400px){
           .cat-item{flex:0 1 calc(50% - 6px)!important;max-width:none!important}
           .hf-grid-2{grid-template-columns:1fr!important}
-          .vid-card{flex-direction:column!important;gap:10px!important}
+          .vid-card{flex-direction:column!important;align-items:stretch!important;gap:12px!important}
+          .vid-card__thumb{width:100%!important;max-width:none!important;max-height:160px!important;aspect-ratio:16/9!important}
         }
       `}</style>
 
@@ -836,13 +1303,16 @@ export default function SafarHomePage() {
               <Reveal delay={100}>
                 <div style={{ display:"flex", alignItems:"center", gap:"clamp(10px,1.5vw,16px)", margin:"6px 0", flexWrap:"wrap" }}>
                   <h1 className="marc" style={{ fontSize:"clamp(38px,5vw,112px)", color:"#fff", fontWeight:400, lineHeight:.92 }}>EASY</h1>
-                  <div style={{
-                    width:"clamp(60px,8vw,96px)", height:"clamp(34px,5vw,50px)",
-                    borderRadius:50, overflow:"hidden",
-                    border:"1.5px solid rgba(255,255,255,.28)", flexShrink:0, marginTop:4,
-                  }}>
+                  <div
+                    className="hero-easy-pill"
+                    style={{
+                      width:"clamp(60px,8vw,96px)",
+                      height:"clamp(34px,5vw,50px)",
+                      marginTop:4,
+                    }}
+                  >
                     <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=200&q=80" alt=""
-                      style={{ width:"100%", height:"100%", objectFit:"cover", opacity:.82 }} />
+                      style={{ width:"100%", height:"100%", objectFit:"cover", opacity:.9 }} />
                   </div>
                 </div>
               </Reveal>
@@ -852,18 +1322,15 @@ export default function SafarHomePage() {
 
               <Reveal delay={300} style={{ marginTop:"clamp(24px,4vw,36px)" }}>
                 <div className="vid-card">
-                  <div style={{ width:88, height:64, overflow:"hidden", flexShrink:0, position:"relative", minWidth:88 }}>
-                    <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=200&q=80" alt=""
-                      style={{ width:"100%", height:"100%", objectFit:"cover" }} />
-                    <div style={{ position:"absolute", inset:0, display:"flex", alignItems:"center",
-                      justifyContent:"center", background:"rgba(0,0,0,.3)" }}>
-                      <div style={{ width:28, height:28, borderRadius:"50%", background:"rgba(255,255,255,.9)",
-                        display:"flex", alignItems:"center", justifyContent:"center", color:DARK, fontSize:11, paddingLeft:2 }}>▶</div>
+                  <div className="vid-card__thumb">
+                    <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=200&q=80" alt="" />
+                    <div className="vid-card__overlay">
+                      <div className="vid-card__play" aria-hidden>▶</div>
                     </div>
                   </div>
-                  <div style={{ minWidth:0 }}>
-                    <p className="marc" style={{ color:"#fff", fontSize:"clamp(14px,1.5vw,17px)", marginBottom:5 }}>Book Your Stay Now</p>
-                    <p style={{ color:"rgba(255,255,255,.48)", fontSize:"clamp(12px,1.2vw,13px)", lineHeight:1.62 }}>Effortlessly manage your stay with seamless hotel reservations</p>
+                  <div className="vid-card__body">
+                    <p className="marc vid-card__title">Book Your Stay Now</p>
+                    <p className="vid-card__desc">Effortlessly manage your stay with seamless hotel reservations</p>
                   </div>
                 </div>
               </Reveal>
@@ -981,12 +1448,9 @@ export default function SafarHomePage() {
               </Reveal>
             </div>
             <Reveal delay={140}>
-              <div style={{ position:"relative" }}>
-                <img src="/1.jpeg" alt=""
-                  style={{ width:"100%", height:420, objectFit:"cover", objectPosition:"top", display:"block" }} />
-                <div className="spin" style={{ position:"absolute", bottom:-26, right:-8, width:100, height:100,
-                  borderRadius:"50%", background:DARK, display:"flex", alignItems:"center", justifyContent:"center",
-                  flexShrink:0 }}>
+              <div className="about-feature-col">
+                <img src="/1.jpeg" alt="" className="about-feature-img" />
+                <div className="spin about-spin-badge">
                   <svg viewBox="0 0 114 114" style={{ position:"absolute", width:100, height:100 }}>
                     <path id="spbadge" d="M57,57 m-43,0 a43,43 0 1,1 86,0 a43,43 0 1,1 -86,0" fill="none"/>
                     <text style={{ fontSize:9.2, fill:"#c9d4cb", letterSpacing:2.7 }}><textPath href="#spbadge">THE FOREST VIEW STORY • ABOUT US • 2012 •</textPath></text>
@@ -1004,16 +1468,16 @@ export default function SafarHomePage() {
       {/* ══ CATEGORIES ══ */}
       <section style={{ padding:"clamp(56px,8vw,88px) 0", background:SHADE }}>
         <div className="sec-wrap">
-          <div style={{ display:"flex", justifyContent:"space-between", alignItems:"flex-end", marginBottom:"clamp(32px,5vw,52px)", flexWrap:"wrap", gap:18 }}>
-            <Reveal>
-              <p style={{ fontSize:11, letterSpacing:".22em", textTransform:"uppercase", opacity:.42, marginBottom:10 }}>02 _ ACCOMMODATION CATEGORY</p>
-              <h2 className="marc" style={{ fontSize:"clamp(18px,4vw,50px)", fontWeight:400 }}>Browse Popular Categories</h2>
-            </Reveal>
-            <div style={{ display:"flex", gap:10 }}>
-              <button onClick={() => setCatIdx(p => (p-1+CATS.length)%CATS.length)}
-                style={{ width:44, height:44, border:"1.5px solid rgba(4,17,6,.2)", background:"none", cursor:"pointer", fontSize:18 }}>←</button>
-              <button onClick={() => setCatIdx(p => (p+1)%CATS.length)}
-                style={{ width:44, height:44, border:`1.5px solid ${DARK}`, background:DARK, color:BG, cursor:"pointer", fontSize:18 }}>→</button>
+          <div className="sec-head-row" style={{ marginBottom:"clamp(32px,5vw,52px)" }}>
+            <div className="sec-head-text">
+              <Reveal>
+                <p style={{ fontSize:11, letterSpacing:".22em", textTransform:"uppercase", opacity:.42, marginBottom:10 }}>02 _ ACCOMMODATION CATEGORY</p>
+                <h2 className="marc" style={{ fontSize:"clamp(18px,4vw,50px)", fontWeight:400 }}>Browse Popular Categories</h2>
+              </Reveal>
+            </div>
+            <div className="sec-head-actions">
+              <button type="button" className="nav-round-btn" onClick={() => setCatIdx(p => (p-1+CATS.length)%CATS.length)} aria-label="Previous category">←</button>
+              <button type="button" className="nav-round-btn nav-round-btn--dark" onClick={() => setCatIdx(p => (p+1)%CATS.length)} aria-label="Next category">→</button>
             </div>
           </div>
           <div className="cat-wrap">
@@ -1041,72 +1505,70 @@ export default function SafarHomePage() {
         </div>
       </section>
 
-      {/* ══ ROOMS ══ */}
-      <section style={{ padding:"clamp(56px,8vw,88px) 0", background:BG }}>
+      {/* ══ ROOMS (Section 03) ══ */}
+      <section className="section-rooms" style={{ padding:"clamp(56px,8vw,92px) 0" }}>
         <div className="sec-wrap">
           <Reveal>
-            <p style={{ fontSize:11, letterSpacing:".22em", textTransform:"uppercase", opacity:.4, marginBottom:10 }}>03 _ BROWSE YOUR HOTEL &amp; RESORT</p>
-            <h2 className="marc" style={{ fontSize:"clamp(18px,4vw,50px)", fontWeight:400, marginBottom:46 }}>Comfortable Spaces For You</h2>
+            <p style={{ fontSize:11, letterSpacing:".22em", textTransform:"uppercase", color:"rgba(232,240,233,.72)", marginBottom:10 }}>03 _ BROWSE YOUR HOTEL &amp; RESORT</p>
+            <h2 className="marc" style={{ fontSize:"clamp(20px,4.2vw,50px)", fontWeight:400, marginBottom:12, color:"#eef7f0", lineHeight:1.15 }}>Comfortable Spaces For You</h2>
+            <p style={{ fontSize:"clamp(13px,1.6vw,15px)", color:"rgba(232,240,233,.8)", maxWidth:540, marginBottom:40, lineHeight:1.65 }}>Hand-picked stays with clear pricing, real guest ratings, and everything you need to book with confidence.</p>
           </Reveal>
           <div className="rooms-grid">
             {ROOMS.map((r,i) => (
               <Reveal key={r.title} delay={i*55}>
-                <div className="r-card">
+                <article className="r-card r-card--pro">
                   <div className="r-img-wrap">
                     <img src={r.img} alt={r.title} className="r-img" />
-                    <div style={{ position:"absolute", inset:0, background:"linear-gradient(to top, rgba(4,17,6,.6) 0%, transparent 50%)" }} />
                     <span className="r-tag">{r.tag}</span>
-                    <button className="r-wish" onClick={() => toggleWish(i)}>
-                      <svg viewBox="0 0 24 24" fill={wishlist.has(i)?"#e05c3a":"none"} stroke={wishlist.has(i)?"#e05c3a":"rgba(4,17,6,.4)"} strokeWidth="1.5" width="16" height="16"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                    <button type="button" className="r-wish" onClick={() => toggleWish(i)} aria-label="Wishlist">
+                      <svg viewBox="0 0 24 24" fill={wishlist.has(i)?"#c73d2a":"none"} stroke={wishlist.has(i)?"#c73d2a":"rgba(4,17,6,.5)"} strokeWidth="1.5" width="16" height="16"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
                     </button>
-                    <div style={{ position:"absolute", bottom:14, left:16 }}>
-                      <span style={{ fontSize:11, color:"rgba(201,212,203,.7)" }}>From </span>
-                      <span className="arc" style={{ fontSize:"clamp(18px,2.5vw,26px)", color:"#fff", fontWeight:400, fontFamily:"Marcellus,serif" }}>${r.price}</span>
-                      <span style={{ fontSize:11, color:"rgba(201,212,203,.6)", marginLeft:4 }}>/night</span>
+                    <div className="r-price-float">
+                      <span className="r-price-label">From</span>
+                      <span className="r-price-num">${r.price}</span>
+                      <span className="r-price-unit">/ night</span>
                     </div>
                   </div>
                   <div className="r-body">
-                    <div style={{ display:"flex", justifyContent:"space-between", alignItems:"flex-start", marginBottom:10, gap:8 }}>
-                      <h3 className="marc" style={{ fontSize:"clamp(15px,1.4vw,18px)", fontWeight:400, lineHeight:1.25, flex:1 }}>{r.title}</h3>
-                      <div style={{ display:"flex", flexDirection:"column", alignItems:"flex-end", flexShrink:0 }}>
-                        <div style={{ display:"flex", alignItems:"center", gap:4, background:DARK, color:BG, padding:"3px 9px", marginBottom:3 }}>
-                          <svg viewBox="0 0 24 24" fill="#c9d4cb" width="10" height="10"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                          <span style={{ fontSize:12, fontWeight:700 }}>{r.rating}</span>
+                    <div className="r-pro-title-row">
+                      <h3 className="marc r-pro-title">{r.title}</h3>
+                      <div className="r-rating-stack">
+                        <div className="r-rating-pill">
+                          <svg viewBox="0 0 24 24" fill="#c9d4cb" width="11" height="11"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                          <span>{r.rating}</span>
                         </div>
-                        <span style={{ fontSize:10, opacity:.4 }}>({r.reviews})</span>
+                        <span className="r-reviews-note">{r.reviews} reviews</span>
                       </div>
                     </div>
-                    <div style={{ display:"flex", gap:10, marginBottom:14, flexWrap:"wrap" }}>
-                      <span style={{ fontSize:12, opacity:.5, display:"flex", alignItems:"center", gap:4 }}>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" width="13" height="13"><path d="M2 9 L2 20"/><path d="M22 9 L22 20"/><path d="M2 14 L22 14"/><rect x="2" y="9" width="9" height="5" rx="1"/><rect x="13" y="9" width="9" height="5" rx="1"/></svg>
+                    <div className="r-meta-row">
+                      <span style={{ display:"flex", alignItems:"center", gap:6 }}>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" width="14" height="14"><path d="M2 9 L2 20"/><path d="M22 9 L22 20"/><path d="M2 14 L22 14"/><rect x="2" y="9" width="9" height="5" rx="1"/><rect x="13" y="9" width="9" height="5" rx="1"/></svg>
                         {r.type}
                       </span>
-                      <span style={{ opacity:.2 }}>|</span>
-                      <span style={{ fontSize:12, opacity:.5, display:"flex", alignItems:"center", gap:4 }}>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" width="13" height="13"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                      <span className="r-meta-dot" aria-hidden />
+                      <span style={{ display:"flex", alignItems:"center", gap:6 }}>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" width="14" height="14"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
                         {r.persons}
                       </span>
                     </div>
-                    <div style={{ display:"flex", gap:6, flexWrap:"wrap" }}>
+                    <div className="r-amenity-strip">
                       {r.amenities.map((a,j) => (
                         <div key={j} className="r-amenity" title={a}>{Ico[a]}</div>
                       ))}
                     </div>
                     <div className="r-book-btn">
-                      <a href="#" style={{ display:"inline-flex", alignItems:"center", gap:6, fontSize:11, fontWeight:700, letterSpacing:".12em", textTransform:"uppercase", color:DARK, textDecoration:"none" }}>
-                        EXPLORE {Ico.arrow}
-                      </a>
-                      <button className="r-bk-cta">Book Now</button>
+                      <a href="#" className="r-link-explore">EXPLORE {Ico.arrow}</a>
+                      <button type="button" className="r-bk-cta">Book Now</button>
                     </div>
                   </div>
-                </div>
+                </article>
               </Reveal>
             ))}
           </div>
-          <div style={{ textAlign:"center", marginTop:42 }}>
-            <button style={{ display:"inline-flex", alignItems:"center", gap:8, background:DARK, color:BG, border:"none",
+          <div className="rooms-load-wrap" style={{ textAlign:"center", marginTop:42 }}>
+            <button type="button" className="rooms-load-more" style={{ display:"inline-flex", alignItems:"center", justifyContent:"center", gap:8, background:DARK, color:BG, border:"none",
               padding:"14px 38px", fontSize:12, fontWeight:600, letterSpacing:".12em", textTransform:"uppercase",
-              cursor:"pointer", fontFamily:"'Jost',sans-serif" }}>
+              cursor:"pointer", fontFamily:"'Jost',sans-serif", borderRadius:12, boxShadow:"0 8px 28px rgba(4,17,6,.25)" }}>
               LOAD MORE
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" width="14" height="14"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-4.98"/></svg>
             </button>
@@ -1127,10 +1589,10 @@ export default function SafarHomePage() {
             </div>
           </Reveal>
           <Reveal delay={60}>
-            <div style={{ display:"flex", justifyContent:"center", margin:"0 0 clamp(24px,3vw,36px)" }}>
-              <div style={{ display:"flex", background:"#ede8e2", padding:4 }}>
+            <div className="bed-tabs-shell">
+              <div className="bed-tabs-inner">
                 {["Twin Bed","King Size Bed"].map((t,i) => (
-                  <button key={t} className="bed-tab" onClick={() => { setBedTab(i); setActiveHS(null); }}
+                  <button key={t} type="button" className="bed-tab" onClick={() => { setBedTab(i); setActiveHS(null); }}
                     style={{ background:bedTab===i?"#fff":"transparent", color:bedTab===i?DARK:"rgba(4,17,6,.45)",
                       boxShadow:bedTab===i?"0 2px 8px rgba(4,17,6,.12)":undefined }}>{t}</button>
                 ))}
@@ -1192,17 +1654,17 @@ export default function SafarHomePage() {
       <section style={{ padding:"clamp(56px,8vw,92px) 0 clamp(64px,9vw,100px)", background:BG }}>
         <div className="sec-wrap">
           <Reveal>
-            <div style={{ display:"flex", justifyContent:"space-between", alignItems:"flex-end", marginBottom:"clamp(32px,5vw,56px)", flexWrap:"wrap", gap:20 }}>
-              <div>
+            <div className="sec-head-row" style={{ marginBottom:"clamp(32px,5vw,56px)" }}>
+              <div className="sec-head-text">
                 <p style={{ fontSize:11, letterSpacing:".22em", textTransform:"uppercase", opacity:.4, marginBottom:12 }}>04 _ HOTEL SERVICES</p>
                 <h2 className="marc" style={{ fontSize:"clamp(18px,4vw,50px)", fontWeight:400, lineHeight:1.2 }}>
                   Everything You Need,<br/><span style={{ color:"rgba(4,17,6,.28)" }}>Right Where You Stay</span>
                 </h2>
               </div>
-              <a href="#" style={{ display:"inline-flex", alignItems:"center", gap:8, color:DARK,
-                border:`1.5px solid ${DARK}`, padding:"12px 26px", fontSize:11, fontWeight:700,
-                letterSpacing:".12em", textTransform:"uppercase", textDecoration:"none", flexShrink:0 }}>
-                VIEW ALL SERVICES {Ico.arrow}
+              <a href="#" className="sec-head-link"
+                style={{ color:DARK, border:`1.5px solid ${DARK}`, padding:"12px 26px", fontSize:11, fontWeight:700,
+                  letterSpacing:".12em", textTransform:"uppercase", textDecoration:"none" }}>
+                VIEW ALL {Ico.arrow}
               </a>
             </div>
           </Reveal>
@@ -1268,6 +1730,7 @@ export default function SafarHomePage() {
                 <a href="#" style={{ display:"inline-flex", alignItems:"center", gap:4, fontSize:11, fontWeight:700, letterSpacing:".12em", textTransform:"uppercase", color:"#c9d4cb", textDecoration:"none" }}>READ MORE {Ico.arrow}</a>
               </div>
             </Reveal>
+            {/* Circle image — hidden on tablet/mobile via .why-circle-img */}
             <Reveal delay={150} className="why-circle-img" style={{ display:"flex", alignItems:"center", justifyContent:"center", gridColumn:"span 1" }}>
               <div style={{ width:"100%", maxWidth:240, aspectRatio:"1/1", borderRadius:"50%", overflow:"hidden", margin:"0 auto", boxShadow:"0 4px 26px rgba(4,17,6,.13)" }}>
                 <img src="/2.jpeg" alt="" style={{ width:"100%", height:"100%", objectFit:"cover" }} />
@@ -1282,7 +1745,8 @@ export default function SafarHomePage() {
                 <a href="#" style={{ display:"inline-flex", alignItems:"center", gap:4, fontSize:11, fontWeight:700, letterSpacing:".12em", textTransform:"uppercase", color:DARK, textDecoration:"none" }}>READ MORE {Ico.arrow}</a>
               </div>
             </Reveal>
-            <Reveal delay={130} style={{ display:"flex", alignItems:"center", justifyContent:"center", gridColumn:"span 1" }}>
+            {/* Second circle image — also hidden on tablet/mobile */}
+            <Reveal delay={130} className="why-circle-img" style={{ display:"flex", alignItems:"center", justifyContent:"center", gridColumn:"span 1" }}>
               <div style={{ width:"100%", maxWidth:240, aspectRatio:"1/1", borderRadius:"50%", overflow:"hidden", margin:"0 auto", boxShadow:"0 4px 26px rgba(4,17,6,.13)" }}>
                 <img src="/7.jpeg" alt="" style={{ width:"100%", height:"100%", objectFit:"cover" }} />
               </div>
@@ -1348,16 +1812,16 @@ export default function SafarHomePage() {
       {/* ══ TESTIMONIALS ══ */}
       <section style={{ padding:"clamp(56px,8vw,88px) 0", background:BG }}>
         <div className="sec-wrap">
-          <div style={{ display:"flex", justifyContent:"space-between", alignItems:"flex-end", marginBottom:"clamp(32px,5vw,50px)", flexWrap:"wrap", gap:18 }}>
-            <Reveal>
-              <p style={{ fontSize:11, letterSpacing:".22em", textTransform:"uppercase", opacity:.38, marginBottom:9 }}>07 _ CLIENTS FEEDBACK</p>
-              <h2 className="marc" style={{ fontSize:"clamp(18px,4vw,50px)", fontWeight:400 }}>What Our Customers Says</h2>
-            </Reveal>
-            <div style={{ display:"flex", gap:10 }}>
-              <button onClick={() => setSlide(p => (p-1+TESTI.length)%TESTI.length)}
-                style={{ width:46, height:46, border:"1.5px solid rgba(4,17,6,.17)", background:"none", cursor:"pointer", fontSize:17 }}>←</button>
-              <button onClick={() => setSlide(p => (p+1)%TESTI.length)}
-                style={{ width:46, height:46, border:`1.5px solid ${DARK}`, background:DARK, color:BG, cursor:"pointer", fontSize:17 }}>→</button>
+          <div className="sec-head-row" style={{ marginBottom:"clamp(32px,5vw,50px)" }}>
+            <div className="sec-head-text">
+              <Reveal>
+                <p style={{ fontSize:11, letterSpacing:".22em", textTransform:"uppercase", opacity:.38, marginBottom:9 }}>07 _ CLIENTS FEEDBACK</p>
+                <h2 className="marc" style={{ fontSize:"clamp(18px,4vw,50px)", fontWeight:400 }}>What Our Customers Says</h2>
+              </Reveal>
+            </div>
+            <div className="sec-head-actions">
+              <button type="button" className="nav-round-btn nav-round-btn--lg" onClick={() => setSlide(p => (p-1+TESTI.length)%TESTI.length)} aria-label="Previous testimonial">←</button>
+              <button type="button" className="nav-round-btn nav-round-btn--lg nav-round-btn--dark" onClick={() => setSlide(p => (p+1)%TESTI.length)} aria-label="Next testimonial">→</button>
             </div>
           </div>
           <div className="testi-grid">
@@ -1400,14 +1864,16 @@ export default function SafarHomePage() {
       {/* ══ BLOG ══ */}
       <section style={{ padding:"clamp(56px,8vw,88px) 0", background:SHADE }}>
         <div className="sec-wrap">
-          <div style={{ display:"flex", justifyContent:"space-between", alignItems:"flex-end", marginBottom:"clamp(28px,4vw,48px)", flexWrap:"wrap", gap:18 }}>
-            <Reveal>
-              <p style={{ fontSize:11, letterSpacing:".22em", textTransform:"uppercase", opacity:.38, marginBottom:9 }}>08 _ BLOG AND INSIGHTS</p>
-              <h2 className="marc" style={{ fontSize:"clamp(18px,4vw,50px)", fontWeight:400 }}>Read From Latest Blogs</h2>
-            </Reveal>
-            <a href="#" style={{ display:"inline-flex", alignItems:"center", gap:8, color:DARK, border:`1.5px solid ${DARK}`,
-              padding:"11px 26px", fontSize:11, fontWeight:700, letterSpacing:".12em", textTransform:"uppercase", textDecoration:"none", flexShrink:0 }}>
-              READ MORE BLOG {Ico.arrow}
+          <div className="sec-head-row" style={{ marginBottom:"clamp(28px,4vw,48px)" }}>
+            <div className="sec-head-text">
+              <Reveal>
+                <p style={{ fontSize:11, letterSpacing:".22em", textTransform:"uppercase", opacity:.38, marginBottom:9 }}>08 _ BLOG AND INSIGHTS</p>
+                <h2 className="marc" style={{ fontSize:"clamp(18px,4vw,50px)", fontWeight:400 }}>Read From Latest Blogs</h2>
+              </Reveal>
+            </div>
+            <a href="#" className="sec-head-link" style={{ color:DARK, border:`1.5px solid ${DARK}`,
+              padding:"11px 22px", fontSize:10, fontWeight:700, letterSpacing:".1em", textTransform:"uppercase", textDecoration:"none" }}>
+              READ MORE {Ico.arrow}
             </a>
           </div>
           <div className="blogs-grid">
@@ -1467,7 +1933,7 @@ export default function SafarHomePage() {
         </div>
       </section>
 
- 
+      <Footer />
     </div>
   );
 }

@@ -62,13 +62,11 @@ const IconMail      = () => (<svg viewBox="0 0 24 24" fill="none" stroke="curren
 const IconPin       = () => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" style={{width:16,height:16}}><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>);
 const IconCheck     = () => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{width:16,height:16}}><polyline points="20 6 9 17 4 12"/></svg>);
 const IconArrow     = () => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{width:14,height:14}}><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>);
-const IconSend      = () => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{width:18,height:18}}><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>);
 const IconStar      = () => (<svg viewBox="0 0 24 24" fill="currentColor" style={{width:14,height:14}}><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>);
 const IconFire      = () => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" style={{width:28,height:28}}><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>);
 const IconTent      = () => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" style={{width:28,height:28}}><path d="M3.5 21 14 3"/><path d="M20.5 21 10 3"/><path d="M15.5 21 12 15l-3.5 6"/><path d="M2 21h20"/></svg>);
 const IconPlane     = () => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" style={{width:28,height:28}}><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>);
 
-/* Social icons */
 const IconFacebook  = () => (<svg viewBox="0 0 24 24" fill="currentColor" style={{width:15,height:15}}><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>);
 const IconX         = () => (<svg viewBox="0 0 24 24" fill="currentColor" style={{width:15,height:15}}><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.737l7.73-8.835L1.254 2.25H8.08l4.258 5.63L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>);
 const IconLinkedin  = () => (<svg viewBox="0 0 24 24" fill="currentColor" style={{width:15,height:15}}><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>);
@@ -95,13 +93,6 @@ const MARQUEE = [
   { Icon: IconPlane,text:"Travel Smarter, Live Better" },
 ];
 
-const CONTACT_ITEMS = [
-  { Icon: IconGlobe, text:"www.example.com" },
-  { Icon: IconPhone, text:"+41 22 345 77 89" },
-  { Icon: IconMail,  text:"info@theforestview.com" },
-  { Icon: IconPin,   text:"Cedarbrook Rd. Tucson, Arizona" },
-];
-
 export default function SafarAboutPage() {
   const [slide, setSlide] = useState(0);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -110,6 +101,16 @@ export default function SafarAboutPage() {
     const t = setInterval(() => setSlide(p => (p + 1) % TESTIMONIALS.length), 4200);
     return () => clearInterval(t);
   }, []);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [menuOpen]);
 
   const cardWhite = {
     background: "#fff",
@@ -129,7 +130,6 @@ export default function SafarAboutPage() {
     height: "100%",
     boxSizing: "border-box",
   };
-
   const iconCircle = (dark = false) => ({
     width: 52, height: 52, borderRadius: "50%",
     border: `1.5px solid ${dark ? "rgba(201,212,203,.25)" : "rgba(4,17,6,.18)"}`,
@@ -137,15 +137,13 @@ export default function SafarAboutPage() {
     marginBottom: 18, padding: 14, boxSizing: "border-box",
     color: dark ? BG : DARK,
   });
-  useEffect(() => {
 
-    window.scrollTo(0, 0);
-  }, []);
   return (
     <div style={{ background: BG, color: DARK, fontFamily: "'Jost', sans-serif" }}>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&family=Marcellus&display=swap');
-        *, *::before, *::after { box-sizing: border-box; }
+
+        body { overflow-x: hidden; }
         .marc { font-family: 'Marcellus', serif; }
 
         @keyframes spin { from{transform:rotate(0)} to{transform:rotate(360deg)} }
@@ -153,6 +151,7 @@ export default function SafarAboutPage() {
         @keyframes mq { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
         .mq-track { display:flex; animation:mq 28s linear infinite; width:max-content; }
 
+        /* ── Buttons ── */
         .btn-p {
           display:inline-flex; align-items:center; gap:10px;
           background:${DARK}; color:${BG};
@@ -164,6 +163,7 @@ export default function SafarAboutPage() {
         }
         .btn-p:hover { background:transparent; color:${DARK}; }
 
+        /* ── Nav links ── */
         .nav-a {
           color:${DARK}; font-size:16px; font-weight:500;
           text-decoration:none; padding-bottom:2px;
@@ -171,6 +171,7 @@ export default function SafarAboutPage() {
         }
         .nav-a:hover { border-color:${DARK}; }
 
+        /* ── Check rows ── */
         .ck-row {
           display:flex; align-items:center; gap:16px;
           background:rgba(4,17,6,.05); padding:16px 22px;
@@ -195,164 +196,230 @@ export default function SafarAboutPage() {
         input:focus { outline:none; }
         a { cursor:pointer; }
 
-        /* ── Nav ── */
-        .desktop-nav { display:flex; }
-        .mobile-menu-btn { display:none; }
-        .mobile-nav { display:none; }
+        /* ══════════════════════════════
+           SECTION WRAPPER UTILITIES
+        ══════════════════════════════ */
+        .sec { padding: 110px 0; }
+        .inner { max-width:1400px; margin:0 auto; padding:0 48px; }
 
-        /* ── About 3col ── */
-        .about-3col { grid-template-columns: 380px 1fr 340px !important; }
+        /* ══════════════════════════════
+           HERO
+        ══════════════════════════════ */
+        .hero {
+          position:relative; min-height:70vh;
+          background-image:url('/5.jpeg');
+          background-size:cover; background-position:center;
+          display:flex; align-items:flex-end; padding-top:90px;
+        }
+        .hero-overlay { position:absolute;inset:0;background:rgba(4,17,6,.70); }
+        .hero-content { position:relative;z-index:2;max-width:1400px;margin:0 auto;padding:0 48px 90px;width:100%; }
+        .hero-h1 { font-size:clamp(36px,7vw,90px); color:${BG}; font-weight:400; line-height:1.08; margin-bottom:22px; }
+
+        /* ══════════════════════════════
+           ABOUT SECTION
+        ══════════════════════════════ */
+        .about-grid {
+          display:grid;
+          grid-template-columns: 380px 1fr 340px;
+          gap:56px;
+          align-items:start;
+        }
         .about-img1 { display:block; }
 
-        /* ── Why grid ── */
+        /* ══════════════════════════════
+           WHY GRID
+        ══════════════════════════════ */
         .why-grid {
           display:grid;
           grid-template-columns: 1fr 1fr 1fr;
-          gap: 24px;
+          gap:24px;
         }
-        .why-heading { grid-column: 1 / 3; grid-row: 1 / 2; }
-        .card01      { grid-column: 3 / 4; grid-row: 1 / 2; }
-        .why-avatars { grid-column: 1 / 2; grid-row: 2 / 3; align-self:center; }
-        .card02      { grid-column: 2 / 3; grid-row: 2 / 3; }
-        .circ1       { grid-column: 3 / 4; grid-row: 2 / 3; display:flex; align-items:center; justify-content:center; }
-        .card03      { grid-column: 1 / 2; grid-row: 3 / 4; }
-        .circ2       { grid-column: 2 / 3; grid-row: 3 / 4; display:flex; align-items:center; justify-content:center; }
-        .card04      { grid-column: 3 / 4; grid-row: 3 / 4; }
+        .why-heading { grid-column:1/3; grid-row:1/2; }
+        .card01      { grid-column:3/4; grid-row:1/2; }
+        .why-avatars { grid-column:1/2; grid-row:2/3; align-self:center; }
+        .card02      { grid-column:2/3; grid-row:2/3; }
+        .circ1       { grid-column:3/4; grid-row:2/3; display:flex; align-items:center; justify-content:center; }
+        .card03      { grid-column:1/2; grid-row:3/4; }
+        .circ2       { grid-column:2/3; grid-row:3/4; display:flex; align-items:center; justify-content:center; }
+        .card04      { grid-column:3/4; grid-row:3/4; }
 
-        /* ── Steps ── */
-        .steps-4col { grid-template-columns: repeat(4,1fr) !important; }
-        .step-item  { border-right: 1px solid rgba(4,17,6,.11); }
+        /* ══════════════════════════════
+           STEPS
+        ══════════════════════════════ */
+        .steps-grid { display:grid; grid-template-columns:repeat(4,1fr); }
+        .step-item { border-right:1px solid rgba(4,17,6,.11); }
         .step-item:last-child { border-right:none; }
 
-        /* ── Restaurant ── */
-        .rest-3col { grid-template-columns: 1fr 1.2fr 1fr !important; }
+        /* ══════════════════════════════
+           RESTAURANT
+        ══════════════════════════════ */
+        .rest-grid { display:grid; grid-template-columns:1fr 1.2fr 1fr; gap:36px; align-items:start; }
 
-        /* ── Testimonials ── */
-        .testi-3col { grid-template-columns: repeat(3,1fr) !important; }
+        /* ══════════════════════════════
+           TESTIMONIALS
+        ══════════════════════════════ */
+        .testi-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+        .testi-col2 {}
+        .testi-col3 {}
 
-        /* ── Footer ── */
-        .fc-grid { grid-template-columns: 1.9fr 1fr 1fr 1.1fr !important; }
-        .footer-col { padding: 56px 0 50px 52px !important; }
-        .footer-col-first { padding: 56px 80px 50px 0 !important; }
+        /* ══════════════════════════════
+           COUNTER ROW
+        ══════════════════════════════ */
+        .counter-row { display:flex; gap:64px; flex-wrap:wrap; }
+        .stat-num { font-size:clamp(44px,5vw,60px); color:${DARK}; line-height:1; }
 
-        /* ═══════ 1200px ═══════ */
-        @media (max-width: 1200px) {
-          .about-3col { grid-template-columns: 1fr 1fr !important; }
+        /* ══════════════════════════════
+           MOBILE MENU BUTTON (hidden by default)
+        ══════════════════════════════ */
+        .mobile-menu-btn {
+          display:none;
+          background:none; border:1.5px solid rgba(4,17,6,.25);
+          width:44px; height:44px; cursor:pointer;
+          border-radius:4px; align-items:center; justify-content:center;
+          flex-direction:column; gap:5px; padding:10px;
+          position:relative; z-index:1001;
+        }
+        .mobile-menu-btn span {
+          display:block; width:22px; height:2px;
+          background:${DARK}; transition:all .3s;
+        }
+        .mobile-menu-btn.open span:nth-child(1) { transform:rotate(45deg) translate(5px,5px); }
+        .mobile-menu-btn.open span:nth-child(2) { opacity:0; }
+        .mobile-menu-btn.open span:nth-child(3) { transform:rotate(-45deg) translate(5px,-5px); }
+
+        /* ══════════════════════════════
+           MOBILE NAV OVERLAY
+        ══════════════════════════════ */
+        .mobile-nav {
+          display:none;
+          position:fixed; inset:0; z-index:1000;
+          background:${BG};
+          flex-direction:column;
+          padding:100px 32px 40px;
+          overflow-y:auto;
+        }
+        .mobile-nav.open { display:flex; animation:fadeIn .25s ease; }
+        @keyframes fadeIn { from{opacity:0;transform:translateY(-10px)} to{opacity:1;transform:translateY(0)} }
+        .mobile-nav-link {
+          font-size:28px; font-weight:500; color:${DARK};
+          text-decoration:none; padding:20px 0;
+          border-bottom:1px solid rgba(4,17,6,.1);
+          font-family:'Marcellus',serif;
+          display:block;
+        }
+        .mobile-nav-link:last-child { border-bottom:none; }
+
+        /* ══════════════════════════════
+           RESPONSIVE — 1200px
+        ══════════════════════════════ */
+        @media (max-width:1200px) {
+          .about-grid { grid-template-columns:1fr 1fr; gap:36px; }
           .about-img1 { display:none !important; }
-          .fc-grid    { grid-template-columns: 1fr 1fr !important; }
-          .footer-col-first { padding: 56px 40px 50px 0 !important; border-right: none !important; }
-          .footer-col { padding: 40px 0 40px 32px !important; }
+          .inner { padding:0 36px; }
         }
 
-        /* ═══════ 1024px ═══════ */
-        @media (max-width: 1024px) {
+        /* ══════════════════════════════
+           RESPONSIVE — 1024px
+        ══════════════════════════════ */
+        @media (max-width:1024px) {
+          /* Why grid — 2 cols */
+          .why-grid { grid-template-columns:1fr 1fr; }
+          .why-heading { grid-column:1/3; grid-row:1/2; }
+          .card01      { grid-column:2/3; grid-row:2/3; }
+          .why-avatars { grid-column:1/2; grid-row:2/3; }
+          .card02      { grid-column:1/2; grid-row:3/4; }
+          .circ1       { grid-column:2/3; grid-row:3/4; }
+          .card03      { grid-column:1/2; grid-row:4/5; }
+          .circ2       { grid-column:2/3; grid-row:4/5; }
+          .card04      { grid-column:1/2; grid-row:5/6; }
+
+          /* Steps — 2 cols */
+          .steps-grid { grid-template-columns:repeat(2,1fr); }
+          .step-item { border-right:none; border-bottom:1px solid rgba(4,17,6,.11); }
+          .step-item:nth-child(odd) { border-right:1px solid rgba(4,17,6,.11) !important; }
+          .step-item:last-child { border-bottom:none !important; }
+          .step-item:nth-last-child(2) { border-bottom:none; }
+
+          /* Restaurant — 2 cols */
+          .rest-grid { grid-template-columns:1fr 1fr; }
+          .rest-col3 { grid-column:1/3; }
+
+          /* Testimonials — 2 cols */
+          .testi-grid { grid-template-columns:1fr 1fr; }
+          .testi-col3 { display:none !important; }
+        }
+
+        /* ══════════════════════════════
+           RESPONSIVE — 768px
+        ══════════════════════════════ */
+        @media (max-width:768px) {
+          .sec { padding:72px 0; }
+          .inner { padding:0 20px; }
+          .hero-content { padding:0 20px 60px; }
+          .hero { min-height:60vh; padding-top:70px; }
+
+          /* Nav */
           .desktop-nav { display:none !important; }
           .mobile-menu-btn { display:flex !important; }
 
-          .why-grid { grid-template-columns: 1fr 1fr !important; }
-          .why-heading { grid-column: 1 / 3 !important; grid-row: 1 / 2 !important; }
-          .why-avatars { grid-column: 1 / 2 !important; grid-row: 2 / 3 !important; }
-          .card01      { grid-column: 2 / 3 !important; grid-row: 2 / 3 !important; }
-          .card02      { grid-column: 1 / 2 !important; grid-row: 3 / 4 !important; }
-          .circ1       { grid-column: 2 / 3 !important; grid-row: 3 / 4 !important; }
-          .card03      { grid-column: 1 / 2 !important; grid-row: 4 / 5 !important; }
-          .circ2       { grid-column: 2 / 3 !important; grid-row: 4 / 5 !important; }
-          .card04      { grid-column: 1 / 2 !important; grid-row: 5 / 6 !important; }
+          /* About */
+          .about-grid { grid-template-columns:1fr; gap:28px; }
+          .about-img1 { display:none !important; }
 
-          .steps-4col { grid-template-columns: repeat(2,1fr) !important; }
-          .step-item  { border-right: none !important; border-bottom: 1px solid rgba(4,17,6,.11); }
-          .step-item:nth-child(odd) { border-right: 1px solid rgba(4,17,6,.11) !important; }
-          .step-item:last-child { border-bottom: none; }
-          .step-item:nth-last-child(2) { border-bottom: none; }
+          /* Why — 1 col */
+          .why-grid { grid-template-columns:1fr; gap:20px; }
+          .why-heading,
+          .card01, .card02, .card03, .card04,
+          .why-avatars, .circ1, .circ2 {
+            grid-column:1 !important;
+            grid-row:auto !important;
+          }
 
-          .rest-3col  { grid-template-columns: 1fr 1fr !important; }
-          .rest-col3  { grid-column: 1 / 3 !important; }
+          /* Steps — 1 col */
+          .steps-grid { grid-template-columns:1fr; }
+          .step-item {
+            border-right:none !important;
+            border-bottom:1px solid rgba(4,17,6,.11);
+          }
+          .step-item:last-child { border-bottom:none !important; }
 
-          .testi-3col { grid-template-columns: 1fr 1fr !important; }
-          .testi-hide { display:none !important; }
+          /* Restaurant — 1 col */
+          .rest-grid { grid-template-columns:1fr; gap:24px; }
+          .rest-col3 { grid-column:1 !important; }
+
+          /* Testimonials — 1 col */
+          .testi-grid { grid-template-columns:1fr; }
+          .testi-col2, .testi-col3 { display:none !important; }
+
+          /* Counter */
+          .counter-row { gap:32px; }
         }
 
-        /* ═══════ 768px ═══════ */
-        @media (max-width: 768px) {
-          .section-pad { padding: 70px 0 !important; }
-          .section-inner { padding: 0 24px !important; }
-          .hero-text { padding: 0 24px 60px !important; }
-          .hero-h1 { font-size: clamp(36px,8vw,70px) !important; }
-
-          .about-3col { grid-template-columns: 1fr !important; }
-
-          .why-grid { grid-template-columns: 1fr !important; }
-          .why-heading { grid-column: 1 !important; }
-          .why-avatars { grid-column: 1 !important; grid-row: auto !important; }
-          .card01 { grid-column: 1 !important; grid-row: auto !important; }
-          .card02 { grid-column: 1 !important; grid-row: auto !important; }
-          .circ1  { grid-column: 1 !important; grid-row: auto !important; }
-          .card03 { grid-column: 1 !important; grid-row: auto !important; }
-          .circ2  { grid-column: 1 !important; grid-row: auto !important; }
-          .card04 { grid-column: 1 !important; grid-row: auto !important; }
-
-          .steps-4col { grid-template-columns: 1fr !important; }
-          .step-item  { border-right: none !important; border-bottom: 1px solid rgba(4,17,6,.11); }
-          .step-item:nth-child(odd) { border-right: none !important; }
-
-          .rest-3col { grid-template-columns: 1fr !important; }
-          .rest-col3 { grid-column: 1 !important; }
-
-          .testi-3col { grid-template-columns: 1fr !important; }
-          .testi-hide { display:none !important; }
-          .testi-hide2 { display:none !important; }
-
-          .fc-grid { grid-template-columns: 1fr !important; }
-          .footer-col { padding: 32px 0 !important; border-right: none !important; border-bottom: 1px solid rgba(201,212,203,.08) !important; }
-          .footer-col-first { padding: 40px 0 !important; border-right: none !important; border-bottom: 1px solid rgba(201,212,203,.08) !important; }
-
-          .newsletter-row { flex-direction: column !important; align-items: flex-start !important; }
-          .newsletter-input { width: 100% !important; }
-          .counter-row { gap: 32px !important; }
-          .stat-num { font-size: 48px !important; }
+        /* ══════════════════════════════
+           RESPONSIVE — 480px
+        ══════════════════════════════ */
+        @media (max-width:480px) {
+          .inner { padding:0 16px; }
+          .hero-content { padding:0 16px 48px; }
+          .hero { min-height:55vh; }
+          .sec { padding:60px 0; }
+          .counter-row { gap:24px; flex-direction:column; }
+          .ck-row { padding:14px 16px; }
         }
 
-        /* ═══════ 480px ═══════ */
-        @media (max-width: 480px) {
-          .section-inner { padding: 0 16px !important; }
-          .hero-text { padding: 0 16px 48px !important; }
-          .marquee-text { font-size: clamp(36px,10vw,60px) !important; }
-        }
-
-        /* Mobile nav */
-        .mobile-nav.open {
-          display:flex !important;
-          flex-direction:column;
-          gap:0;
-          position:fixed; top:0; left:0; right:0; bottom:0;
-          background:${BG};
-          z-index:999;
-          padding:80px 32px 32px;
-          animation: fadeIn .25s ease;
-        }
-        @keyframes fadeIn { from{opacity:0} to{opacity:1} }
-        .mobile-nav-link {
-          font-size:32px; font-weight:500; color:${DARK};
-          text-decoration:none; padding:18px 0;
-          border-bottom:1px solid rgba(4,17,6,.1);
-          font-family:'Marcellus',serif;
-        }
-        .mobile-close {
-          position:absolute; top:24px; right:24px;
-          background:none; border:none; cursor:pointer;
-          font-size:28px; color:${DARK};
+        /* ══════════════════════════════
+           PRINT / VERY SMALL (320px)
+        ══════════════════════════════ */
+        @media (max-width:360px) {
+          .inner { padding:0 12px; }
+          .hero-content { padding:0 12px 40px; }
         }
       `}</style>
 
       {/* ══════════ HERO ══════════ */}
-      <section style={{
-        position:"relative", minHeight:"70vh",
-        backgroundImage:"url('/5.jpeg')",
-        backgroundSize:"cover", backgroundPosition:"center",
-        display:"flex", alignItems:"flex-end", paddingTop:90,
-      }}>
-        <div style={{position:"absolute",inset:0,background:"rgba(4,17,6,.70)"}}/>
-        <div className="hero-text section-inner" style={{position:"relative",zIndex:2,maxWidth:1400,margin:"0 auto",padding:"0 48px 90px",width:"100%"}}>
+      <section className="hero">
+        <div className="hero-overlay" />
+        <div className="hero-content">
           <Reveal>
             <div style={{display:"flex",alignItems:"center",gap:12,marginBottom:18,fontSize:13,letterSpacing:".18em",textTransform:"uppercase",color:"rgba(201,212,203,.5)"}}>
               <a href="/" style={{color:"rgba(201,212,203,.5)",textDecoration:"none"}}>HOME</a>
@@ -361,12 +428,12 @@ export default function SafarAboutPage() {
             </div>
           </Reveal>
           <Reveal delay={120}>
-            <h1 className="marc hero-h1" style={{fontSize:"clamp(44px,7vw,90px)",color:BG,fontWeight:400,lineHeight:1.08,marginBottom:22}}>
+            <h1 className="marc hero-h1">
               Crafting Unforgettable Stays
             </h1>
           </Reveal>
           <Reveal delay={240}>
-            <p style={{color:"rgba(255,255,255,.72)",fontSize:"clamp(15px,2vw,19px)",maxWidth:560,lineHeight:1.8}}>
+            <p style={{color:"rgba(255,255,255,.72)",fontSize:"clamp(14px,2vw,19px)",maxWidth:560,lineHeight:1.8}}>
               We connect travelers with exceptional hotels and experiences, ensuring comfort, quality, and memorable moments every step of the journey.
             </p>
           </Reveal>
@@ -375,26 +442,27 @@ export default function SafarAboutPage() {
 
       {/* Mobile nav overlay */}
       <div className={`mobile-nav ${menuOpen ? "open" : ""}`}>
-        <button className="mobile-close" onClick={() => setMenuOpen(false)}>✕</button>
         {["Home","About","Accommodation","Destinations","Contact"].map(l => (
           <a key={l} href="#" className="mobile-nav-link" onClick={() => setMenuOpen(false)}>{l}</a>
         ))}
       </div>
 
       {/* ══════════ ABOUT ══════════ */}
-      <section className="section-pad" style={{padding:"110px 0",background:BG}}>
-        <div className="section-inner" style={{maxWidth:1400,margin:"0 auto",padding:"0 48px"}}>
-          <div className="about-3col" style={{display:"grid",gridTemplateColumns:"380px 1fr 340px",gap:56,alignItems:"start"}}>
+      <section className="sec" style={{background:BG}}>
+        <div className="inner">
+          <div className="about-grid">
 
+            {/* Col 1 — hidden below 1200px */}
             <Reveal className="about-img1">
               <img src="/sher.jpg"
                 alt="" style={{width:"100%",height:560,objectFit:"cover",display:"block",borderRadius:4}}/>
             </Reveal>
 
+            {/* Col 2 — main content */}
             <div style={{paddingTop:10}}>
               <Reveal>
                 <p style={{fontSize:"clamp(15px,1.5vw,18px)",lineHeight:1.85,opacity:.65,marginBottom:32}}>
-                  Planning your next getaway has never been easier with our seamless hotel booking experience. Whether you seek a luxurious resort, a cozy boutique stay
+                  Planning your next getaway has never been easier with our seamless hotel booking experience. Whether you seek a luxurious resort, a cozy boutique stay.
                 </p>
               </Reveal>
               <Reveal delay={90}>
@@ -413,29 +481,30 @@ export default function SafarAboutPage() {
               </Reveal>
               <div style={{height:1,background:"rgba(4,17,6,.13)",margin:"28px 0"}}/>
               <Reveal delay={180}>
-                <div className="counter-row" style={{display:"flex",gap:64,flexWrap:"wrap"}}>
+                <div className="counter-row">
                   <div>
-                    <div className="marc stat-num" style={{fontSize:"clamp(44px,5vw,60px)",color:DARK,lineHeight:1}}><Counter target={146} suffix="+"/></div>
+                    <div className="marc stat-num"><Counter target={146} suffix="+"/></div>
                     <p style={{fontSize:12,letterSpacing:".2em",textTransform:"uppercase",marginTop:9,opacity:.48}}>HOTEL AND RESORT</p>
                   </div>
                   <div>
-                    <div className="marc stat-num" style={{fontSize:"clamp(44px,5vw,60px)",color:DARK,lineHeight:1}}><Counter target={28} suffix="k+"/></div>
+                    <div className="marc stat-num"><Counter target={28} suffix="k+"/></div>
                     <p style={{fontSize:12,letterSpacing:".2em",textTransform:"uppercase",marginTop:9,opacity:.48}}>SATISFIED VISITORS</p>
                   </div>
                 </div>
               </Reveal>
             </div>
 
+            {/* Col 3 — image with badge */}
             <Reveal delay={150}>
               <div style={{position:"relative"}}>
                 <img src="https://i.pinimg.com/736x/cf/e5/8b/cfe58b98e9d414807f69baeadc70d858.jpg"
-                  alt="" style={{width:"100%",height:500,objectFit:"cover",objectPosition:"top",display:"block",borderRadius:4}}/>
+                  alt="" style={{width:"100%",height:"clamp(340px,45vw,500px)",objectFit:"cover",objectPosition:"top",display:"block",borderRadius:4}}/>
                 <div className="spin" style={{
                   position:"absolute",bottom:-30,right:-18,
-                  width:130,height:130,borderRadius:"50%",
+                  width:110,height:110,borderRadius:"50%",
                   background:DARK,display:"flex",alignItems:"center",justifyContent:"center",
                 }}>
-                  <svg viewBox="0 0 130 130" style={{position:"absolute",width:130,height:130}}>
+                  <svg viewBox="0 0 130 130" style={{position:"absolute",width:110,height:110}}>
                     <path id="sp2" d="M65,65 m-48,0 a48,48 0 1,1 96,0 a48,48 0 1,1 -96,0" fill="none"/>
                     <text style={{fontSize:10,fill:BG,letterSpacing:3}}>
                       <textPath href="#sp2">THE FOREST VIEW STORY • ABOUT US • 2012 •</textPath>
@@ -449,16 +518,16 @@ export default function SafarAboutPage() {
         </div>
       </section>
 
-      {/* ══════════ WHY SAFAR SPECIAL ══════════ */}
-      <section className="section-pad" style={{padding:"110px 0",background:SHADE}}>
-        <div className="section-inner" style={{maxWidth:1400,margin:"0 auto",padding:"0 48px"}}>
+      {/* ══════════ WHY SPECIAL ══════════ */}
+      <section className="sec" style={{background:SHADE}}>
+        <div className="inner">
           <div className="why-grid">
 
-            <Reveal style={{}} className="why-heading">
+            <Reveal className="why-heading">
               <span style={{fontSize:12,letterSpacing:".28em",textTransform:"uppercase",color:DARK,opacity:.42,display:"block",marginBottom:18}}>
                 WHY THE FOREST VIEW SPECIAL?
               </span>
-              <h2 className="marc" style={{fontSize:"clamp(28px,3.5vw,58px)",fontWeight:400,lineHeight:1.2,color:DARK}}>
+              <h2 className="marc" style={{fontSize:"clamp(26px,3.5vw,58px)",fontWeight:400,lineHeight:1.2,color:DARK}}>
                 Experience Comfort<br/>
                 Convenience Your Perfect<br/>
                 Accommodation Awaits
@@ -514,8 +583,7 @@ export default function SafarAboutPage() {
 
             <Reveal delay={160} className="circ1">
               <div style={{width:"100%",maxWidth:260,aspectRatio:"1/1",borderRadius:"50%",overflow:"hidden",margin:"0 auto",boxShadow:"0 4px 32px rgba(4,17,6,.15)"}}>
-                <img src="/3.jpeg"
-                  alt="" style={{width:"100%",height:"100%",objectFit:"cover"}}/>
+                <img src="/3.jpeg" alt="" style={{width:"100%",height:"100%",objectFit:"cover"}}/>
               </div>
             </Reveal>
 
@@ -533,8 +601,7 @@ export default function SafarAboutPage() {
 
             <Reveal delay={140} className="circ2">
               <div style={{width:"100%",maxWidth:260,aspectRatio:"1/1",borderRadius:"50%",overflow:"hidden",margin:"0 auto",boxShadow:"0 4px 32px rgba(4,17,6,.15)"}}>
-                <img src="/4.jpeg"
-                  alt="" style={{width:"100%",height:"100%",objectFit:"cover"}}/>
+                <img src="/4.jpeg" alt="" style={{width:"100%",height:"100%",objectFit:"cover"}}/>
               </div>
             </Reveal>
 
@@ -555,23 +622,23 @@ export default function SafarAboutPage() {
       </section>
 
       {/* ══════════ BOOKING PROCESS ══════════ */}
-      <section className="section-pad" style={{padding:"110px 0",background:BG}}>
-        <div className="section-inner" style={{maxWidth:1400,margin:"0 auto",padding:"0 48px"}}>
+      <section className="sec" style={{background:BG}}>
+        <div className="inner">
           <Reveal>
             <div style={{marginBottom:64}}>
               <span style={{fontSize:12,letterSpacing:".28em",textTransform:"uppercase",opacity:.4,display:"block",marginBottom:12}}>HOW DOES IT WORK</span>
-              <h2 className="marc" style={{fontSize:"clamp(28px,4.5vw,62px)",fontWeight:400}}>Our Booking Process</h2>
+              <h2 className="marc" style={{fontSize:"clamp(26px,4.5vw,62px)",fontWeight:400}}>Our Booking Process</h2>
             </div>
           </Reveal>
-          <div className="steps-4col" style={{display:"grid",gridTemplateColumns:"repeat(4,1fr)"}}>
+          <div className="steps-grid">
             {STEPS.map((s,i)=>(
               <Reveal key={s.step} delay={i*80}>
-                <div className="step-item" style={{padding:"clamp(24px,3vw,44px) clamp(20px,2.5vw,36px)"}}>
+                <div className="step-item" style={{padding:"clamp(20px,3vw,44px) clamp(16px,2.5vw,36px)"}}>
                   <span style={{display:"inline-block",fontSize:11,fontWeight:700,letterSpacing:".2em",
                     color:DARK,background:"rgba(4,17,6,.07)",padding:"5px 14px",
                     marginBottom:24,textTransform:"uppercase"}}>{s.step}</span>
                   <div style={{width:44,height:44,color:DARK,marginBottom:16}}><s.Icon/></div>
-                  <h3 className="marc" style={{fontSize:"clamp(18px,1.8vw,24px)",fontWeight:400,marginBottom:12}}>{s.title}</h3>
+                  <h3 className="marc" style={{fontSize:"clamp(17px,1.8vw,24px)",fontWeight:400,marginBottom:12}}>{s.title}</h3>
                   <p style={{fontSize:"clamp(13px,1.2vw,16px)",lineHeight:1.78,opacity:.56}}>{s.desc}</p>
                 </div>
               </Reveal>
@@ -581,26 +648,32 @@ export default function SafarAboutPage() {
       </section>
 
       {/* ══════════ RESTAURANT & BARS ══════════ */}
-      <section className="section-pad" style={{padding:"110px 0",background:DARK}}>
-        <div className="section-inner" style={{maxWidth:1400,margin:"0 auto",padding:"0 48px"}}>
+      <section className="sec" style={{background:DARK}}>
+        <div className="inner">
           <Reveal>
             <div style={{marginBottom:64}}>
               <span style={{fontSize:12,letterSpacing:".28em",textTransform:"uppercase",color:"rgba(201,212,203,.38)",display:"block",marginBottom:12}}>RESTAURANT AND BARS</span>
-              <h2 className="marc" style={{fontSize:"clamp(24px,3.5vw,58px)",color:BG,fontWeight:400,lineHeight:1.2}}>Create Memories Across The Globe</h2>
-              <h2 className="marc" style={{fontSize:"clamp(24px,3.5vw,58px)",color:"rgba(201,212,203,.2)",fontWeight:400,lineHeight:1.2}}>with Journeys Designed Around You</h2>
+              <h2 className="marc" style={{fontSize:"clamp(22px,3.5vw,58px)",color:BG,fontWeight:400,lineHeight:1.2}}>
+                Create Memories Across The Globe
+              </h2>
+              <h2 className="marc" style={{fontSize:"clamp(22px,3.5vw,58px)",color:"rgba(201,212,203,.2)",fontWeight:400,lineHeight:1.2}}>
+                with Journeys Designed Around You
+              </h2>
             </div>
           </Reveal>
-          <div className="rest-3col" style={{display:"grid",gridTemplateColumns:"1fr 1.2fr 1fr",gap:36,alignItems:"start"}}>
+          <div className="rest-grid">
             <Reveal delay={80}>
               <div style={{background:"rgba(201,212,203,.05)",border:"1px solid rgba(201,212,203,.08)",padding:"40px 32px",borderRadius:8}}>
                 <div style={{width:44,height:44,color:BG,marginBottom:16,opacity:.7}}><IconUtensils/></div>
-                <h3 className="marc" style={{fontSize:"clamp(20px,2vw,26px)",color:BG,fontWeight:400,marginBottom:14}}>Passion On Plate</h3>
+                <h3 className="marc" style={{fontSize:"clamp(18px,2vw,26px)",color:BG,fontWeight:400,marginBottom:14}}>Passion On Plate</h3>
                 <p style={{fontSize:"clamp(14px,1.4vw,16px)",color:"rgba(201,212,203,.52)",lineHeight:1.8,marginBottom:28}}>
                   Safe payments and instant confirmations — trust and reliability built into every reservation.
                 </p>
                 <a href="#" style={{display:"inline-flex",alignItems:"center",gap:8,color:BG,
                   border:"1px solid rgba(201,212,203,.28)",padding:"12px 26px",
-                  fontSize:12,fontWeight:700,letterSpacing:".12em",textTransform:"uppercase",textDecoration:"none"}}>DISCOVER MORE ›</a>
+                  fontSize:12,fontWeight:700,letterSpacing:".12em",textTransform:"uppercase",textDecoration:"none"}}>
+                  DISCOVER MORE ›
+                </a>
               </div>
             </Reveal>
             <Reveal delay={160}>
@@ -615,21 +688,21 @@ export default function SafarAboutPage() {
                     </div>
                   ))}
                 </div>
-                <img src="/6.jpeg"
-                  alt="" style={{width:"100%",height:240,objectFit:"cover",display:"block",borderRadius:4}}/>
+                <img src="/6.jpeg" alt="" style={{width:"100%",height:240,objectFit:"cover",display:"block",borderRadius:4}}/>
               </div>
             </Reveal>
             <Reveal delay={240} className="rest-col3">
               <div>
-                <img src="/7.jpeg"
-                  alt="" style={{width:"100%",height:220,objectFit:"cover",display:"block",marginBottom:24,borderRadius:4}}/>
-                <h4 className="marc" style={{fontSize:"clamp(20px,2vw,24px)",color:BG,fontWeight:400,marginBottom:14}}>Passion On Plate</h4>
+                <img src="/7.jpeg" alt="" style={{width:"100%",height:220,objectFit:"cover",display:"block",marginBottom:24,borderRadius:4}}/>
+                <h4 className="marc" style={{fontSize:"clamp(18px,2vw,24px)",color:BG,fontWeight:400,marginBottom:14}}>Passion On Plate</h4>
                 <p style={{fontSize:"clamp(14px,1.4vw,16px)",color:"rgba(201,212,203,.52)",lineHeight:1.8,marginBottom:22}}>
-                  Experience travel as it's meant to be—immersive, inspiring, unforgettable. From dream to destination, we bring the world to your doorstep.
+                  Experience travel as it's meant to be — immersive, inspiring, unforgettable. From dream to destination, we bring the world to your doorstep.
                 </p>
                 <a href="#" style={{display:"inline-flex",alignItems:"center",gap:6,color:BG,
                   border:"1px solid rgba(201,212,203,.28)",padding:"12px 26px",
-                  fontSize:12,fontWeight:700,letterSpacing:".12em",textTransform:"uppercase",textDecoration:"none"}}>› DINING EXPERIENCE</a>
+                  fontSize:12,fontWeight:700,letterSpacing:".12em",textTransform:"uppercase",textDecoration:"none"}}>
+                  › DINING EXPERIENCE
+                </a>
               </div>
             </Reveal>
           </div>
@@ -637,8 +710,8 @@ export default function SafarAboutPage() {
       </section>
 
       {/* ══════════ TESTIMONIALS ══════════ */}
-      <section className="section-pad" style={{padding:"110px 0",background:BG}}>
-        <div className="section-inner" style={{maxWidth:1400,margin:"0 auto",padding:"0 48px"}}>
+      <section className="sec" style={{background:BG}}>
+        <div className="inner">
           <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-end",marginBottom:60,flexWrap:"wrap",gap:20}}>
             <Reveal>
               <div>
@@ -653,15 +726,21 @@ export default function SafarAboutPage() {
                 style={{width:52,height:52,border:`1.5px solid ${DARK}`,background:DARK,color:BG,cursor:"pointer",fontSize:20,borderRadius:2,display:"flex",alignItems:"center",justifyContent:"center"}}>→</button>
             </div>
           </div>
-          <div className="testi-3col" style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:24}}>
-            {[0,1,2].map(offset=>{
+
+          <div className="testi-grid">
+            {/* Card 1 — always visible */}
+            {[0,1,2].map((offset) => {
               const t = TESTIMONIALS[(slide+offset)%TESTIMONIALS.length];
-              const mid = offset===1;
+              const mid = offset === 1;
+              const extraClass = offset === 0 ? "" : offset === 1 ? "testi-col2" : "testi-col3";
               return (
-                <div key={offset} className={offset===2?"testi-hide":offset===0?"testi-hide2":""} style={{
-                  background:mid?DARK:"rgba(4,17,6,.04)",
+                <div key={offset} className={extraClass} style={{
+                  background: mid ? DARK : "rgba(4,17,6,.04)",
                   border:"1px solid rgba(4,17,6,.08)",
-                  padding:"38px 34px",transition:"all .5s",borderRadius:8,
+                  padding:"38px 34px",
+                  transition:"all .5s",
+                  borderRadius:8,
+                  display: offset === 2 ? undefined : undefined,
                 }}>
                   <div style={{display:"flex",gap:4,marginBottom:18}}>
                     {[...Array(5)].map((_,i)=>(
@@ -682,6 +761,7 @@ export default function SafarAboutPage() {
               );
             })}
           </div>
+
           <div style={{display:"flex",gap:10,justifyContent:"center",marginTop:36}}>
             {TESTIMONIALS.map((_,i)=>(
               <button key={i} className="dot" onClick={()=>setSlide(i)} style={{
@@ -693,9 +773,6 @@ export default function SafarAboutPage() {
         </div>
       </section>
 
-     
-
-    
     </div>
   );
 }
