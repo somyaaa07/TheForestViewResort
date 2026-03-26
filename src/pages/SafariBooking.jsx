@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   MapPin, Clock, Star, Users, ChevronRight, ChevronLeft,
   Shield, Plane, Lock, Phone, Leaf, Globe, Check,
@@ -172,6 +172,21 @@ export default function App() {
   const final = discount ? Math.round(total * 0.9) : total;
   const submit = () => { if (form.name && form.email) setDone(true); };
 
+  useEffect(() => {
+    // Page fresh load par top se khule
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
+    // Button click ke baad form pe scroll kare
+    const bookingSection = document.getElementById("packages");
+    if (bookingSection && step > 1 && !done) {
+      setTimeout(() => {
+        bookingSection.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 100);
+    }
+  }, [step, done]);
+
   return (
     <div style={{ fontFamily:"'Playfair Display',serif", background:"#c9d4cb", minHeight:"100vh", color:"#1a3d2b" }}>
       <style>{`
@@ -195,7 +210,7 @@ export default function App() {
         }
         .hero-bg{
           position:absolute;inset:0;
-          background-image:url('https://images.unsplash.com/photo-1587174145-3c4e0a9ed17f?w=1600&q=90');
+          background-image:url('https://i.pinimg.com/736x/36/3f/b8/363fb80cae08f49bf7612664f2f2c246.jpg');
           background-size:cover;
           background-position:center 40%;
           animation:kenBurns 18s ease-in-out infinite alternate;
@@ -208,18 +223,29 @@ export default function App() {
           position:absolute;inset:0;
           background:linear-gradient(
             to top,
-            rgba(10,28,18,0.92) 0%,
-            rgba(10,28,18,0.55) 42%,
-            rgba(10,28,18,0.20) 70%,
-            rgba(10,28,18,0.10) 100%
+            rgba(0,0,0,0.95) 0%,
+            rgba(0,0,0,0.75) 30%,
+            rgba(0,0,0,0.45) 60%,
+            rgba(0,0,0,0.20) 85%,
+            rgba(0,0,0,0.05) 100%
           );
         }
         .hero-content{
           position:relative;z-index:2;
           width:100%;
-          padding:80px 24px 56px;
+          padding:120px 24px 56px;
           max-width:1200px;
           margin:0 auto;
+        }
+        @media(max-width:768px){
+          .hero-content{
+            padding:100px 20px 48px;
+          }
+        }
+        @media(max-width:480px){
+          .hero-content{
+            padding:80px 16px 40px;
+          }
         }
 
         /* ── safari badges strip ── */
@@ -248,6 +274,12 @@ export default function App() {
           letter-spacing:-1px;
           margin-bottom:20px;
         }
+        @media(max-width:480px){
+          .hero-headline{
+            font-size:clamp(28px,6vw,48px);
+            margin-bottom:16px;
+          }
+        }
         .hero-headline em{
           font-style:italic;
           font-weight:400;
@@ -261,9 +293,19 @@ export default function App() {
           margin-bottom:32px;
           font-weight:400;
         }
+        @media(max-width:480px){
+          .hero-sub{
+            font-size:clamp(13px,2vw,15px);
+            margin-bottom:24px;
+            line-height:1.6;
+          }
+        }
 
         /* ── hero CTAs ── */
         .hero-btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:52px;}
+        @media(max-width:480px){
+          .hero-btns{margin-bottom:40px;gap:10px;}
+        }
         .btn-white{
           background:#fff;color:#1a3d2b;border:none;
           padding:14px 28px;border-radius:50px;
@@ -290,6 +332,11 @@ export default function App() {
           border-top:1px solid rgba(255,255,255,0.14);
           padding-top:28px;
           flex-wrap:wrap;
+        }
+        @media(max-width:640px){
+          .hero-stats{
+            padding-top:20px;
+          }
         }
         .hero-stat{
           flex:1;min-width:120px;
@@ -361,6 +408,12 @@ export default function App() {
         .sidebar-sticky{position:sticky;top:24px}
         @media(max-width:900px){
           .sidebar-sticky{position:static}
+        }
+
+        /* ── left content sticky ── */
+        .left-content{position:sticky;top:24px;align-self:start}
+        @media(max-width:900px){
+          .left-content{position:static}
         }
 
         /* ── step nav ── */
@@ -552,7 +605,7 @@ export default function App() {
           </div>
 
           {/* Step nav */}
-          <div style={{ background:"#a8bcad", borderRadius:14, padding:"0 8px", marginBottom:32, display:"inline-flex", width:"100%" }}>
+          <div style={{ background:"#a8bcad", borderRadius:14, padding:"0 8px", marginBottom:32, display:"inline-flex", width:"100%", position:"sticky", top:0, zIndex:10 }}>
             {[{n:1,lbl:"Choose Package"},{n:2,lbl:"Date & Guests"},{n:3,lbl:"Your Details"}].map(({n,lbl},i)=>(
               <div key={n} className={`step-tab${step>=n?" go":""}`} onClick={()=>step>=n&&setStep(n)}
                 style={{ flex:1, display:"flex", alignItems:"center", justifyContent:"center", gap:6, padding:"13px 8px", opacity:step<n?.4:1, borderBottom:step===n?"2.5px solid #1a3d2b":"2.5px solid transparent", transition:"border .2s" }}>
@@ -589,7 +642,7 @@ export default function App() {
           ) : (
             <div className="booking-grid">
               {/* LEFT */}
-              <div>
+              <div className="left-content">
                 {/* ── STEP 1 ── */}
                 {step===1&&(
                   <div style={{ display:"flex", flexDirection:"column", gap:20 }}>

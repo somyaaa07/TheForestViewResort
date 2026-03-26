@@ -130,7 +130,7 @@ const GlobalStyles = () => (
     .map-iframe-wrap iframe { width:100%; height:420px; border:none; display:block; filter:sepia(20%) contrast(95%) brightness(102%); }
 
     /* Stats always stay in a horizontal row */
-    .hero-stats { display: flex; flex-direction: row !important; flex-wrap: wrap; }
+    .hero-stats { display: flex; flex-direction: row !important; flex-wrap: wrap; justify-content: center; }
     .hero-stat-item { display: flex; flex-direction: column; gap: 3px; }
     .hero-stat-item + .hero-stat-item { padding-left: 24px; border-left: 1px solid rgba(4,17,6,.15); }
     .container { max-width:1280px; margin:0 auto; padding:0 48px; width:100%; }
@@ -323,33 +323,35 @@ function Hero() {
     <section style={{ position:"relative", minHeight:"100vh", display:"flex", flexDirection:"column", justifyContent:"flex-end", overflow:"hidden" }}>
       <div style={{ position:"absolute", inset:0 }}>
         <img src={IMGS.hero} alt="" style={{ width:"100%", height:"100%", objectFit:"cover", display:"block", animation:"panLeft 18s ease-in-out infinite alternate" }} />
-        <div style={{ position:"absolute", inset:0, background:"linear-gradient(to right, rgba(201,212,203,.92) 0%, rgba(201,212,203,.6) 55%, rgba(201,212,203,.2) 100%)" }} />
-        <div style={{ position:"absolute", inset:0, background:"linear-gradient(to top, rgba(201,212,203,.78) 0%, transparent 55%)" }} />
+        <div style={{ position:"absolute", inset:0, background:"linear-gradient(to right, rgba(0,0,0,.52) 0%, rgba(0,0,0,.4) 55%, rgba(0,0,0,.2) 100%)" }} />
+        <div style={{ position:"absolute", inset:0, background:"linear-gradient(to top, rgba(0,0,0,.78) 0%, transparent 55%)" }} />
       </div>
 
-      <div className="hero-content" style={{ position:"relative", maxWidth:1280, margin:"0 auto", padding:"120px 48px 90px", width:"100%" }}>
-        <div ref={r1} style={{ display:"flex", alignItems:"center", gap:12, marginBottom:24, flexWrap:"wrap" }}>
-          <div style={{ width:32, height:1, background:G.ink, opacity:.4 }} />
-          <span style={{ fontSize:"10px", fontWeight:500, letterSpacing:".2em", textTransform:"uppercase", color:"rgba(4,17,6,.55)" }}>Contact Us</span>
+      <div className="hero-content" style={{ position:"relative", maxWidth:1280, margin:"0 auto", padding:"120px 48px 90px", width:"100%", textAlign:"center" }}>
+        <div ref={r1} style={{ display:"flex", alignItems:"center", gap:12, marginBottom:24, flexWrap:"wrap", justifyContent:"center" }}>
+          <div style={{ width:32, height:1, background:"white", opacity:.4 }} />
+          <span style={{ fontSize:"10px", fontWeight:500, letterSpacing:".2em", textTransform:"uppercase", color:"white" }}>Contact Us</span>
           <span style={{ width:7, height:7, borderRadius:"50%", background:"#4caf80", display:"inline-block", animation:"breathe 2.2s ease-in-out infinite" }} />
           <span style={{ fontSize:"11px", color:"#4caf80", fontWeight:500 }}>Available Now</span>
         </div>
 
         <div ref={r2}>
-          <h1 className="hero-title" style={{ fontFamily:"'Marcellus',serif", fontSize:"clamp(3.2rem,5vw,8rem)", fontWeight:400, lineHeight:.9, color:G.ink, letterSpacing:"-.01em", marginBottom:24 }}>
+          <h1 className="hero-title" style={{ fontFamily:"'Marcellus',serif", fontSize:"clamp(3.2rem,8vw,8rem)", fontWeight:400, lineHeight:.9, color:"white", letterSpacing:"-.01em", marginBottom:24 }}>
             Say Hello,<br />Let's Explore
           </h1>
-          <p className="hero-p" style={{ fontSize:"1rem", fontWeight:300, color:"rgba(4,17,6,.6)", maxWidth:400, lineHeight:1.8, marginBottom:30 }}>
+          <p className="hero-p" style={{ fontSize:"1rem", fontWeight:300, color:"white", maxWidth:"100%", margin:"0 auto 30px", lineHeight:1.8 }}>
             Whether you're dreaming of a mountain retreat or a coastal escape — our travel experts are ready to craft your perfect journey.
           </p>
-          <a href="#contact" className="btn-p">Get In Touch <ArrowR /></a>
+          <div style={{ display:"flex", justifyContent:"center" }}>
+            <a href="#contact" className="btn-p">Get In Touch <ArrowR /></a>
+          </div>
         </div>
 
         <div ref={r3} className="hero-stats" style={{ gap:40, marginTop:48 }}>
           {[["12k+","Happy Travellers"],["98%","Satisfaction Rate"],["24/7","Expert Support"]].map(([n,l]) => (
             <div key={l} className="hero-stat-item">
-              <span className="hero-stat-num" style={{ fontFamily:"'Marcellus',serif", fontSize:"2.2rem", fontWeight:400, color:G.ink, lineHeight:1 }}>{n}</span>
-              <span style={{ fontSize:"10px", fontWeight:400, letterSpacing:".1em", textTransform:"uppercase", color:"rgba(4,17,6,.45)" }}>{l}</span>
+              <span className="hero-stat-num" style={{ fontFamily:"'Marcellus',serif", fontSize:"2.2rem", fontWeight:400, color:"white", lineHeight:1 }}>{n}</span>
+              <span style={{ fontSize:"10px", fontWeight:400, letterSpacing:".1em", textTransform:"uppercase", color:"white" }}>{l}</span>
             </div>
           ))}
         </div>

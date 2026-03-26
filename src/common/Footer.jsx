@@ -364,24 +364,7 @@ export default function Footer() {
           ))}
         </div>
 
-        {/* ── Stats strip ── */}
-        <div className="ft-stats">
-          {[
-            { num: "146+", label: "Hotels & Resorts" },
-            { num: "28k+", label: "Happy Travelers"  },
-            { num: "56",   label: "Countries Covered" },
-            { num: "4.9★", label: "Average Rating"   },
-          ].map((s, i) => (
-            <div key={i} className="ft-stat-cell">
-              <div className="marc" style={{ fontSize: "clamp(24px, 3vw, 40px)", color: "rgba(201,212,203,.82)", lineHeight: 1, marginBottom: 8 }}>
-                {s.num}
-              </div>
-              <p style={{ fontSize: 11, letterSpacing: ".14em", textTransform: "uppercase", color: "rgba(201,212,203,.35)", margin: 0 }}>
-                {s.label}
-              </p>
-            </div>
-          ))}
-        </div>
+     
       </div>
 
       {/* ── Bottom bar ── */}

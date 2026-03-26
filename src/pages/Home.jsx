@@ -272,7 +272,6 @@ export default function SafarHomePage() {
         .sec-wrap > *{min-width:0}
 
         /* ═══════════ SECTION HEADER ROW ═══════════ */
-        /* Desktop default: horizontal, space-between */
         .sec-head-row{
           display:flex;
           justify-content:space-between;
@@ -280,12 +279,10 @@ export default function SafarHomePage() {
           flex-wrap:nowrap;
           gap:clamp(14px,3vw,22px);
         }
-        /* Left text block – shrinks but does not disappear */
         .sec-head-text{
           flex:1 1 0;
           min-width:0;
         }
-        /* Right actions (arrows / link) */
         .sec-head-actions{
           display:flex;
           gap:10px;
@@ -365,36 +362,47 @@ export default function SafarHomePage() {
           flex-shrink:0;
         }
 
-        /* ═══════════ HERO ═══════════ */
+        /* ════════════════════════════════════════
+           HERO — FULLY RESPONSIVE
+        ════════════════════════════════════════ */
+
+        /* Base: full-screen hero, image bg */
         .hero-outer{
-          min-height:100svh;
           position:relative;
           background-image:url('/banner.jpg');
           background-size:cover;
           background-position:center;
+          /* Let height be driven by content on small screens */
+          min-height:100svh;
         }
         .hero-overlay{
           position:absolute;inset:0;
-          background:linear-gradient(120deg,rgba(4,17,6,.78) 0%,rgba(4,17,6,.44) 55%,rgba(4,17,6,.58) 100%);
+          background:linear-gradient(120deg,rgba(4,17,6,.82) 0%,rgba(4,17,6,.48) 55%,rgba(4,17,6,.62) 100%);
         }
         .hero-inner{
           position:relative;z-index:2;
           max-width:1380px;margin:0 auto;
           padding:0 clamp(16px,4vw,48px);
           width:100%;
-          min-height:100svh;
-          display:flex;align-items:stretch;
         }
+
+        /* ── LAYOUT SHELL ──
+           Desktop (≥1024): two columns side by side, fills full viewport
+           Tablet / Mobile (<1024): single column, stacked, auto height
+        */
         .hero-layout{
           display:flex;
           align-items:stretch;
           justify-content:space-between;
           gap:clamp(20px,3vw,48px);
           width:100%;
-          padding-top:clamp(80px,10vh,120px);
-          padding-bottom:clamp(32px,6vh,72px);
+          /* Desktop: content fills full height, padded top+bottom */
           min-height:100svh;
+          padding-top:clamp(80px,10vh,120px);
+          padding-bottom:clamp(36px,6vh,72px);
         }
+
+        /* LEFT col — heading + vid-card */
         .hero-left{
           flex:1 1 0;
           min-width:0;
@@ -403,6 +411,16 @@ export default function SafarHomePage() {
           justify-content:flex-end;
           padding-bottom:8px;
         }
+        /* Heading size — desktop */
+        .hero-h1{
+          font-size:clamp(38px,5vw,112px);
+          color:#fff;
+          font-weight:400;
+          line-height:.92;
+          margin:0;
+        }
+
+        /* RIGHT col — booking form */
         .hero-right{
           flex-shrink:0;
           display:flex;
@@ -413,94 +431,7 @@ export default function SafarHomePage() {
           width:clamp(300px,35vw,430px);
         }
 
-        /* ═══════════ BOOKING FORM (hero card) ═══════════ */
-        .hf-wrap{
-          background:rgba(255,255,255,.97);
-          backdrop-filter:blur(22px);
-          -webkit-backdrop-filter:blur(22px);
-          padding:clamp(18px,2.5vw,32px) clamp(14px,2vw,28px) clamp(16px,2vw,28px);
-          box-shadow:0 32px 80px rgba(4,17,6,.28),0 8px 24px rgba(4,17,6,.14);
-          width:100%;
-          border-radius:16px;
-          border:1px solid rgba(255,255,255,.85);
-        }
-        .hf-title{
-          font-size:clamp(18px,2vw,22px);
-          font-weight:400;
-          color:${DARK};
-          margin-bottom:clamp(14px,1.5vw,20px);
-          text-align:center;
-        }
-        .hf-grid-2{
-          display:grid;
-          grid-template-columns:1fr 1fr;
-          gap:10px;
-          margin-bottom:10px;
-        }
-        .hf-label{
-          display:block;
-          font-size:10px;
-          font-weight:700;
-          letter-spacing:.16em;
-          text-transform:uppercase;
-          color:rgba(4,17,6,.45);
-          margin-bottom:6px;
-        }
-        .hf-date-box{
-          position:relative;display:flex;align-items:center;
-          border:1.5px solid rgba(4,17,6,.12);
-          height:clamp(42px,5vw,48px);
-          overflow:hidden;
-          transition:border-color .25s;
-          background:#fafaf9;
-        }
-        .hf-date-box:focus-within{border-color:${DARK};background:#fff}
-        .hf-date-input{
-          flex:1;height:100%;border:none;outline:none;
-          padding:0 8px;font-family:'Jost',sans-serif;
-          font-size:clamp(11px,1.2vw,13px);color:${DARK};background:transparent;
-          cursor:pointer;min-width:0;width:100%;
-        }
-        .hf-date-icon{
-          padding:0 8px;color:rgba(4,17,6,.3);
-          pointer-events:none;flex-shrink:0;display:flex;align-items:center;
-        }
-        .hf-counter-box{
-          display:flex;align-items:center;justify-content:space-between;
-          border:1.5px solid rgba(4,17,6,.12);
-          height:clamp(42px,5vw,48px);
-          padding:0 10px;background:#fafaf9;
-        }
-        .hf-counter-btn{
-          width:26px;height:26px;border-radius:50%;
-          border:1.5px solid rgba(4,17,6,.15);
-          background:none;cursor:pointer;font-size:16px;
-          display:flex;align-items:center;justify-content:center;
-          color:${DARK};transition:all .2s;
-          font-family:'Jost',sans-serif;line-height:1;flex-shrink:0;
-        }
-        .hf-counter-btn:hover{background:${DARK};color:#fff;border-color:${DARK}}
-        .hf-divider{height:1px;background:rgba(4,17,6,.07);margin:clamp(12px,1.5vw,18px) 0}
-        .hf-cta{
-          width:100%;height:clamp(46px,5vw,52px);
-          background:${DARK};border:none;color:#fff;
-          font-size:clamp(10px,1.1vw,11px);font-weight:700;
-          letter-spacing:.12em;text-transform:uppercase;
-          cursor:pointer;font-family:'Jost',sans-serif;
-          display:flex;align-items:center;justify-content:center;
-          gap:10px;transition:background .25s,transform .2s,box-shadow .25s;
-          white-space:nowrap;padding:0 12px;
-        }
-        .hf-cta:hover{background:#1a2e1c;transform:translateY(-2px);box-shadow:0 8px 24px rgba(4,17,6,.4)}
-        .hf-cta:active{transform:translateY(0)}
-        .hf-cta-icon{
-          width:28px;height:28px;flex-shrink:0;
-          background:rgba(255,255,255,.18);
-          display:flex;align-items:center;justify-content:center;
-          font-size:16px;font-weight:300;
-        }
-
-        /* ═══════════ VIDEO CTA CARD (hero) ═══════════ */
+        /* ── VID CARD ── */
         .vid-card{
           background:rgba(4,17,6,.72);
           backdrop-filter:blur(18px);
@@ -510,15 +441,16 @@ export default function SafarHomePage() {
           display:flex;
           align-items:center;
           gap:clamp(12px,2vw,16px);
-          max-width:min(380px, calc(100% - 4px));
+          max-width:min(380px, 100%);
           border-radius:16px;
           box-shadow:0 20px 56px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.12);
+          width:100%;
         }
         .vid-card p{overflow-wrap:anywhere}
         .vid-card__thumb{
           position:relative;
           flex-shrink:0;
-          width:clamp(76px,20vw,100px);
+          width:clamp(72px,18vw,100px);
           aspect-ratio:4/3;
           max-height:88px;
           border-radius:12px;
@@ -562,488 +494,256 @@ export default function SafarHomePage() {
           box-shadow:0 10px 28px rgba(0,0,0,.22);
         }
 
-        /* ═══════════ ROOM CARDS ═══════════ */
-        .rooms-grid{
+        /* ── BOOKING FORM CARD ── */
+        .hf-wrap{
+          background:rgba(255,255,255,.97);
+          backdrop-filter:blur(22px);
+          -webkit-backdrop-filter:blur(22px);
+          padding:clamp(18px,2.5vw,32px) clamp(14px,2vw,28px) clamp(16px,2vw,28px);
+          box-shadow:0 32px 80px rgba(4,17,6,.28),0 8px 24px rgba(4,17,6,.14);
+          width:100%;
+          border-radius:16px;
+          border:1px solid rgba(255,255,255,.85);
+        }
+        .hf-title{
+          font-size:clamp(17px,2vw,22px);
+          font-weight:400;
+          color:${DARK};
+          margin-bottom:clamp(12px,1.5vw,20px);
+          text-align:center;
+        }
+        .hf-grid-2{
           display:grid;
-          grid-template-columns:repeat(3,1fr);
-          gap:clamp(14px,2vw,24px);
+          grid-template-columns:1fr 1fr;
+          gap:10px;
+          margin-bottom:10px;
         }
-        .r-card{
-          background:#fff;overflow:hidden;
-          border-radius:12px;
-          box-shadow:0 4px 20px rgba(4,17,6,.08);
-          transition:transform .35s,box-shadow .35s;
-          display:flex;flex-direction:column;
+        .hf-label{
+          display:block;
+          font-size:10px;
+          font-weight:700;
+          letter-spacing:.16em;
+          text-transform:uppercase;
+          color:rgba(4,17,6,.45);
+          margin-bottom:6px;
         }
+        .hf-date-box{
+          position:relative;display:flex;align-items:center;
+          border:1.5px solid rgba(4,17,6,.12);
+          height:clamp(40px,5vw,48px);
+          overflow:hidden;
+          transition:border-color .25s;
+          background:#fafaf9;
+        }
+        .hf-date-box:focus-within{border-color:${DARK};background:#fff}
+        .hf-date-input{
+          flex:1;height:100%;border:none;outline:none;
+          padding:0 8px;font-family:'Jost',sans-serif;
+          font-size:clamp(11px,1.2vw,13px);color:${DARK};background:transparent;
+          cursor:pointer;min-width:0;width:100%;
+        }
+        .hf-date-icon{
+          padding:0 8px;color:rgba(4,17,6,.3);
+          pointer-events:none;flex-shrink:0;display:flex;align-items:center;
+        }
+        .hf-counter-box{
+          display:flex;align-items:center;justify-content:space-between;
+          border:1.5px solid rgba(4,17,6,.12);
+          height:clamp(40px,5vw,48px);
+          padding:0 10px;background:#fafaf9;
+        }
+        .hf-counter-btn{
+          width:26px;height:26px;border-radius:50%;
+          border:1.5px solid rgba(4,17,6,.15);
+          background:none;cursor:pointer;font-size:16px;
+          display:flex;align-items:center;justify-content:center;
+          color:${DARK};transition:all .2s;
+          font-family:'Jost',sans-serif;line-height:1;flex-shrink:0;
+        }
+        .hf-counter-btn:hover{background:${DARK};color:#fff;border-color:${DARK}}
+        .hf-divider{height:1px;background:rgba(4,17,6,.07);margin:clamp(10px,1.5vw,18px) 0}
+        .hf-cta{
+          width:100%;height:clamp(44px,5vw,52px);
+          background:${DARK};border:none;color:#fff;
+          font-size:clamp(10px,1.1vw,11px);font-weight:700;
+          letter-spacing:.12em;text-transform:uppercase;
+          cursor:pointer;font-family:'Jost',sans-serif;
+          display:flex;align-items:center;justify-content:center;
+          gap:10px;transition:background .25s,transform .2s,box-shadow .25s;
+          white-space:nowrap;padding:0 12px;
+          border-radius:0;
+        }
+        .hf-cta:hover{background:#1a2e1c;transform:translateY(-2px);box-shadow:0 8px 24px rgba(4,17,6,.4)}
+        .hf-cta:active{transform:translateY(0)}
+        .hf-cta-icon{
+          width:28px;height:28px;flex-shrink:0;
+          background:rgba(255,255,255,.18);
+          display:flex;align-items:center;justify-content:center;
+          font-size:16px;font-weight:300;
+        }
+
+        /* ══════════════════════════════════
+           OTHER SECTIONS (unchanged)
+        ══════════════════════════════════ */
+
+        /* ── ROOM CARDS ── */
+        .rooms-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,2vw,24px)}
+        .r-card{background:#fff;overflow:hidden;border-radius:12px;box-shadow:0 4px 20px rgba(4,17,6,.08);transition:transform .35s,box-shadow .35s;display:flex;flex-direction:column}
         .r-card:hover{transform:translateY(-6px);box-shadow:0 16px 48px rgba(4,17,6,.16)}
         .r-img-wrap{position:relative;overflow:hidden;height:clamp(180px,20vw,220px);flex-shrink:0}
         .r-img{width:100%;height:100%;object-fit:cover;transition:transform .7s}
         .r-card:hover .r-img{transform:scale(1.07)}
-        .r-tag{
-          position:absolute;top:14px;left:14px;
-          background:rgba(4,17,6,.76);backdrop-filter:blur(8px);
-          color:#c9d4cb;font-size:10px;font-weight:700;
-          letter-spacing:.14em;text-transform:uppercase;padding:5px 12px;
-        }
-        .r-wish{
-          position:absolute;top:14px;right:14px;width:36px;height:36px;
-          background:rgba(255,255,255,.9);border:none;cursor:pointer;
-          display:flex;align-items:center;justify-content:center;font-size:16px;
-          transition:all .25s;box-shadow:0 2px 10px rgba(0,0,0,.12);
-        }
+        .r-tag{position:absolute;top:14px;left:14px;background:rgba(4,17,6,.76);backdrop-filter:blur(8px);color:#c9d4cb;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:5px 12px}
+        .r-wish{position:absolute;top:14px;right:14px;width:36px;height:36px;background:rgba(255,255,255,.9);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;transition:all .25s;box-shadow:0 2px 10px rgba(0,0,0,.12)}
         .r-wish:hover{background:#fff;transform:scale(1.1)}
         .r-body{padding:clamp(14px,1.5vw,18px);flex:1;display:flex;flex-direction:column}
-        .r-amenity{
-          width:32px;height:32px;
-          background:rgba(4,17,6,.05);
-          display:flex;align-items:center;justify-content:center;color:${DARK};
-        }
-        .r-book-btn{
-          margin-top:auto;padding-top:14px;
-          display:flex;align-items:center;
-          justify-content:space-between;
-          border-top:1px solid rgba(4,17,6,.07);
-          flex-wrap:wrap;gap:8px;
-        }
-        .r-bk-cta{
-          background:${DARK};color:#fff;border:none;
-          padding:9px 16px;font-size:11px;font-weight:700;
-          letter-spacing:.1em;text-transform:uppercase;
-          cursor:pointer;font-family:'Jost',sans-serif;
-          transition:background .2s;white-space:nowrap;
-        }
+        .r-amenity{width:32px;height:32px;background:rgba(4,17,6,.05);display:flex;align-items:center;justify-content:center;color:${DARK}}
+        .r-book-btn{margin-top:auto;padding-top:14px;display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(4,17,6,.07);flex-wrap:wrap;gap:8px}
+        .r-bk-cta{background:${DARK};color:#fff;border:none;padding:9px 16px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;font-family:'Jost',sans-serif;transition:background .2s;white-space:nowrap}
         .r-bk-cta:hover{background:#1a2e1c}
 
-        /* ── Section 03: Rooms — alternate UI ── */
-        .section-rooms{
-          background:linear-gradient(165deg,#0f1f13 0%,#1b3322 52%,#102015 100%);
-        }
-        .section-rooms .r-card--pro{
-          background:#f6fbf7!important;
-          border-radius:18px;
-          border:2px solid rgba(5,27,14,.35)!important;
-          box-shadow:0 2px 0 rgba(4,17,6,.14),0 20px 48px rgba(0,0,0,.28)!important;
-          overflow:hidden;
-        }
-        .section-rooms .r-card--pro:hover{
-          transform:translateY(-4px);
-          box-shadow:0 6px 0 rgba(4,17,6,.2),0 30px 64px rgba(0,0,0,.34)!important;
-          border-color:rgba(5,27,14,.55)!important;
-        }
-        .section-rooms .r-card--pro .r-img-wrap{
-          height:clamp(190px,44vw,230px);
-          border-radius:0;
-        }
-        .section-rooms .r-card--pro .r-img-wrap::after{
-          content:"";
-          position:absolute;inset:0;
-          background:linear-gradient(to top,rgba(4,17,6,.75) 0%,rgba(4,17,6,.15) 45%,transparent 72%);
-          pointer-events:none;
-        }
-        .section-rooms .r-card--pro .r-tag{
-          top:12px;left:12px;
-          background:${DARK};
-          color:#e8f0e9;
-          border:1px solid rgba(232,240,233,.28);
-          letter-spacing:.12em;
-          font-weight:800;
-          box-shadow:0 6px 16px rgba(0,0,0,.24);
-        }
-        .section-rooms .r-card--pro .r-price-float{
-          position:absolute;bottom:0;left:0;right:0;
-          padding:12px 14px 14px;
-          display:flex;align-items:baseline;flex-wrap:wrap;gap:6px 10px;
-          z-index:2;
-        }
-        .section-rooms .r-card--pro .r-price-float .r-price-label{
-          font-size:11px;font-weight:600;letter-spacing:.06em;
-          text-transform:uppercase;color:rgba(232,240,233,.9);
-        }
-        .section-rooms .r-card--pro .r-price-float .r-price-num{
-          font-family:'Marcellus',serif;
-          font-size:clamp(1.35rem,4.5vw,1.65rem);
-          font-weight:400;color:#fff;
-          text-shadow:0 1px 12px rgba(0,0,0,.25);
-        }
-        .section-rooms .r-card--pro .r-price-float .r-price-unit{
-          font-size:12px;color:rgba(232,240,233,.88);
-        }
-        .section-rooms .r-card--pro .r-wish{
-          z-index:3;
-          border:1px solid rgba(4,17,6,.2);
-          background:#fff;
-        }
-        .section-rooms .r-card--pro .r-body{
-          background:linear-gradient(180deg,#eef7f0 0%,#ffffff 70%);
-          padding:clamp(16px,3vw,20px) clamp(15px,2.5vw,18px) clamp(14px,2vw,18px);
-          border-top:4px solid ${DARK};
-        }
-        .section-rooms .r-card--pro .r-pro-title-row{
-          display:flex;justify-content:space-between;align-items:flex-start;
-          gap:10px;margin-bottom:12px;
-        }
-        .section-rooms .r-card--pro .r-pro-title{
-          font-size:clamp(15px,2.6vw,18px);
-          font-weight:500;color:${DARK};
-          line-height:1.28;margin:0;flex:1;min-width:0;
-        }
-        .section-rooms .r-card--pro .r-rating-stack{
-          display:flex;flex-direction:column;align-items:flex-end;gap:4px;flex-shrink:0;
-        }
-        .section-rooms .r-card--pro .r-rating-pill{
-          display:inline-flex;align-items:center;gap:5px;
-          background:${DARK};
-          color:#e8f0e9;
-          padding:5px 10px;
-          border-radius:8px;
-          font-size:12px;font-weight:700;
-          border:1px solid rgba(255,255,255,.12);
-        }
-        .section-rooms .r-card--pro .r-reviews-note{
-          font-size:11px;font-weight:600;color:rgba(4,17,6,.55);
-        }
-        .section-rooms .r-card--pro .r-meta-row{
-          display:flex;align-items:center;flex-wrap:wrap;gap:8px 12px;
-          margin-bottom:14px;
-          font-size:13px;font-weight:500;
-          color:${DARK};
-        }
-        .section-rooms .r-card--pro .r-meta-row svg{
-          opacity:.85;color:${DARK};
-        }
-        .section-rooms .r-card--pro .r-meta-dot{
-          width:4px;height:4px;border-radius:50%;
-          background:rgba(4,17,6,.35);
-          flex-shrink:0;
-        }
-        .section-rooms .r-card--pro .r-amenity-strip{
-          display:flex;flex-wrap:wrap;gap:8px;
-          margin-bottom:4px;
-        }
-        .section-rooms .r-card--pro .r-amenity{
-          width:38px;height:38px;
-          border-radius:10px;
-          background:rgba(4,17,6,.06);
-          border:1px solid rgba(4,17,6,.12);
-          color:${DARK};
-        }
-        .section-rooms .r-card--pro .r-book-btn{
-          border-top:1px solid rgba(4,17,6,.12);
-          padding-top:16px;margin-top:14px;
-          gap:12px;
-        }
-        .section-rooms .r-card--pro .r-bk-cta{
-          border-radius:10px;
-          padding:11px 20px;
-          font-size:11px;
-          letter-spacing:.11em;
-          box-shadow:0 4px 16px rgba(4,17,6,.2);
-        }
-        .section-rooms .r-card--pro .r-link-explore{
-          display:inline-flex;align-items:center;gap:6px;
-          font-size:11px;font-weight:700;
-          letter-spacing:.1em;text-transform:uppercase;
-          color:${DARK};
-          text-decoration:none;
-          padding:10px 12px;
-          border-radius:10px;
-          border:1.5px solid rgba(4,17,6,.25);
-          background:#ffffff;
-        }
-        .section-rooms .r-card--pro .r-link-explore:hover{
-          background:${DARK};color:#e8f0e9;border-color:${DARK};
-        }
+        .section-rooms{background:linear-gradient(165deg,#0f1f13 0%,#1b3322 52%,#102015 100%)}
+        .section-rooms .r-card--pro{background:#f6fbf7!important;border-radius:18px;border:2px solid rgba(5,27,14,.35)!important;box-shadow:0 2px 0 rgba(4,17,6,.14),0 20px 48px rgba(0,0,0,.28)!important;overflow:hidden}
+        .section-rooms .r-card--pro:hover{transform:translateY(-4px);box-shadow:0 6px 0 rgba(4,17,6,.2),0 30px 64px rgba(0,0,0,.34)!important;border-color:rgba(5,27,14,.55)!important}
+        .section-rooms .r-card--pro .r-img-wrap{height:clamp(190px,44vw,230px);border-radius:0}
+        .section-rooms .r-card--pro .r-img-wrap::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(4,17,6,.75) 0%,rgba(4,17,6,.15) 45%,transparent 72%);pointer-events:none}
+        .section-rooms .r-card--pro .r-tag{top:12px;left:12px;background:${DARK};color:#e8f0e9;border:1px solid rgba(232,240,233,.28);letter-spacing:.12em;font-weight:800;box-shadow:0 6px 16px rgba(0,0,0,.24)}
+        .section-rooms .r-card--pro .r-price-float{position:absolute;bottom:0;left:0;right:0;padding:12px 14px 14px;display:flex;align-items:baseline;flex-wrap:wrap;gap:6px 10px;z-index:2}
+        .section-rooms .r-card--pro .r-price-float .r-price-label{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(232,240,233,.9)}
+        .section-rooms .r-card--pro .r-price-float .r-price-num{font-family:'Marcellus',serif;font-size:clamp(1.35rem,4.5vw,1.65rem);font-weight:400;color:#fff;text-shadow:0 1px 12px rgba(0,0,0,.25)}
+        .section-rooms .r-card--pro .r-price-float .r-price-unit{font-size:12px;color:rgba(232,240,233,.88)}
+        .section-rooms .r-card--pro .r-wish{z-index:3;border:1px solid rgba(4,17,6,.2);background:#fff}
+        .section-rooms .r-card--pro .r-body{background:linear-gradient(180deg,#eef7f0 0%,#ffffff 70%);padding:clamp(16px,3vw,20px) clamp(15px,2.5vw,18px) clamp(14px,2vw,18px);border-top:4px solid ${DARK}}
+        .section-rooms .r-card--pro .r-pro-title-row{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:12px}
+        .section-rooms .r-card--pro .r-pro-title{font-size:clamp(15px,2.6vw,18px);font-weight:500;color:${DARK};line-height:1.28;margin:0;flex:1;min-width:0}
+        .section-rooms .r-card--pro .r-rating-stack{display:flex;flex-direction:column;align-items:flex-end;gap:4px;flex-shrink:0}
+        .section-rooms .r-card--pro .r-rating-pill{display:inline-flex;align-items:center;gap:5px;background:${DARK};color:#e8f0e9;padding:5px 10px;border-radius:8px;font-size:12px;font-weight:700;border:1px solid rgba(255,255,255,.12)}
+        .section-rooms .r-card--pro .r-reviews-note{font-size:11px;font-weight:600;color:rgba(4,17,6,.55)}
+        .section-rooms .r-card--pro .r-meta-row{display:flex;align-items:center;flex-wrap:wrap;gap:8px 12px;margin-bottom:14px;font-size:13px;font-weight:500;color:${DARK}}
+        .section-rooms .r-card--pro .r-meta-row svg{opacity:.85;color:${DARK}}
+        .section-rooms .r-card--pro .r-meta-dot{width:4px;height:4px;border-radius:50%;background:rgba(4,17,6,.35);flex-shrink:0}
+        .section-rooms .r-card--pro .r-amenity-strip{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:4px}
+        .section-rooms .r-card--pro .r-amenity{width:38px;height:38px;border-radius:10px;background:rgba(4,17,6,.06);border:1px solid rgba(4,17,6,.12);color:${DARK}}
+        .section-rooms .r-card--pro .r-book-btn{border-top:1px solid rgba(4,17,6,.12);padding-top:16px;margin-top:14px;gap:12px}
+        .section-rooms .r-card--pro .r-bk-cta{border-radius:10px;padding:11px 20px;font-size:11px;letter-spacing:.11em;box-shadow:0 4px 16px rgba(4,17,6,.2)}
+        .section-rooms .r-card--pro .r-link-explore{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:${DARK};text-decoration:none;padding:10px 12px;border-radius:10px;border:1.5px solid rgba(4,17,6,.25);background:#ffffff}
+        .section-rooms .r-card--pro .r-link-explore:hover{background:${DARK};color:#e8f0e9;border-color:${DARK}}
 
-        /* ═══════════ HOTSPOT ═══════════ */
-        .hotspot{
-          width:32px;height:32px;border-radius:50%;
-          background:rgba(255,255,255,.95);border:2px solid rgba(4,17,6,.4);
-          display:flex;align-items:center;justify-content:center;
-          cursor:pointer;font-size:15px;font-weight:700;color:${DARK};
-          box-shadow:0 2px 12px rgba(0,0,0,.15);
-          transition:all .25s;
-          animation:pulse 2.5s ease-in-out infinite;
-          touch-action:manipulation;
-        }
-        .hotspot:hover,.hotspot.hs-on{
-          background:${DARK};color:#fff;border-color:${DARK};
-          transform:scale(1.15);animation:none;
-          box-shadow:0 4px 18px rgba(4,17,6,.45);
-        }
-        .hs-popup{
-          position:absolute;
-          background:#fff;
-          box-shadow:0 20px 60px rgba(4,17,6,.2),0 4px 16px rgba(4,17,6,.1);
-          padding:clamp(14px,1.5vw,20px) clamp(14px,1.5vw,22px);
-          width:clamp(200px,25vw,260px);
-          z-index:50;
-          bottom:calc(100% + 14px);
-          left:50%;
-          transform:translateX(-50%);
-          animation:fadeUp .22s ease;
-        }
+        /* ── HOTSPOT ── */
+        .hotspot{width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.95);border:2px solid rgba(4,17,6,.4);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:15px;font-weight:700;color:${DARK};box-shadow:0 2px 12px rgba(0,0,0,.15);transition:all .25s;animation:pulse 2.5s ease-in-out infinite;touch-action:manipulation}
+        .hotspot:hover,.hotspot.hs-on{background:${DARK};color:#fff;border-color:${DARK};transform:scale(1.15);animation:none;box-shadow:0 4px 18px rgba(4,17,6,.45)}
+        .hs-popup{position:absolute;background:#fff;box-shadow:0 20px 60px rgba(4,17,6,.2),0 4px 16px rgba(4,17,6,.1);padding:clamp(14px,1.5vw,20px) clamp(14px,1.5vw,22px);width:clamp(200px,25vw,260px);z-index:50;bottom:calc(100% + 14px);left:50%;transform:translateX(-50%);animation:fadeUp .22s ease}
         .hs-popup p{overflow-wrap:anywhere}
 
-        /* ═══════════ ABOUT ═══════════ */
-        .about-grid{
-          display:grid;
-          grid-template-columns:320px 1fr 300px;
-          gap:clamp(24px,4vw,48px);
-          align-items:start;
-        }
+        /* ── ABOUT ── */
+        .about-grid{display:grid;grid-template-columns:320px 1fr 300px;gap:clamp(24px,4vw,48px);align-items:start}
 
-        /* ═══════════ CATEGORIES ═══════════ */
-        .cat-wrap{
-          display:flex;
-          gap:clamp(10px,2vw,20px);
-          flex-wrap:wrap;
-          justify-content:center;
-        }
-        .cat-item{
-          transition:transform .3s;
-          cursor:pointer;
-          text-align:center;
-          flex:1 1 clamp(80px,16%,130px);
-          max-width:140px;
-          min-width:0;
-        }
+        /* ── CATEGORIES ── */
+        .cat-wrap{display:flex;gap:clamp(10px,2vw,20px);flex-wrap:wrap;justify-content:center}
+        .cat-item{transition:transform .3s;cursor:pointer;text-align:center;flex:1 1 clamp(80px,16%,130px);max-width:140px;min-width:0}
         .cat-item:hover{transform:translateY(-5px)}
 
-        /* ═══════════ SERVICE CARDS ═══════════ */
-        .svc-grid{
-          display:grid;
-          grid-template-columns:repeat(3,1fr);
-          gap:clamp(12px,1.5vw,20px);
-        }
-        .svc-card{
-          padding:clamp(22px,2.5vw,32px) clamp(18px,2vw,28px);
-          position:relative;overflow:hidden;
-          border-radius:14px;
-          transition:transform .3s,box-shadow .3s;
-          cursor:default;
-        }
+        /* ── SERVICES ── */
+        .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(12px,1.5vw,20px)}
+        .svc-card{padding:clamp(22px,2.5vw,32px) clamp(18px,2vw,28px);position:relative;overflow:hidden;border-radius:14px;transition:transform .3s,box-shadow .3s;cursor:default}
         .svc-card:hover{transform:translateY(-5px)}
-        .svc-tag{
-          display:inline-block;padding:4px 10px;
-          font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
-          background:rgba(201,212,203,.1);color:rgba(201,212,203,.72);
-          border:1px solid rgba(201,212,203,.15);
-        }
+        .svc-tag{display:inline-block;padding:4px 10px;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:rgba(201,212,203,.1);color:rgba(201,212,203,.72);border:1px solid rgba(201,212,203,.15)}
 
-        /* ═══════════ WHY SECTION ═══════════ */
-        .why-grid{
-          display:grid;
-          grid-template-columns:1fr 1fr 1fr;
-          gap:clamp(14px,2vw,20px);
-        }
-        .ww{
-          background:#fff;padding:clamp(22px,2.5vw,30px) clamp(18px,2vw,24px);
-          position:relative;
-          border-radius:14px;
-          box-shadow:0 2px 18px rgba(4,17,6,.07);
-          transition:box-shadow .3s;
-        }
+        /* ── WHY ── */
+        .why-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:clamp(14px,2vw,20px)}
+        .ww{background:#fff;padding:clamp(22px,2.5vw,30px) clamp(18px,2vw,24px);position:relative;border-radius:14px;box-shadow:0 2px 18px rgba(4,17,6,.07);transition:box-shadow .3s}
         .ww:hover{box-shadow:0 8px 30px rgba(4,17,6,.13)}
-        .wd{
-          background:${DARK};
-          padding:clamp(22px,2.5vw,30px) clamp(18px,2vw,24px);
-          position:relative;
-          border-radius:14px;
-          box-shadow:0 6px 26px rgba(4,17,6,.28);
-        }
-        .w-ico{
-          width:50px;height:50px;border-radius:50%;
-          border:1.5px solid rgba(4,17,6,.15);
-          display:flex;align-items:center;justify-content:center;margin-bottom:16px;
-        }
-        .w-ico-d{
-          width:50px;height:50px;border-radius:50%;
-          border:1.5px solid rgba(201,212,203,.22);
-          display:flex;align-items:center;justify-content:center;margin-bottom:16px;
-        }
+        .wd{background:${DARK};padding:clamp(22px,2.5vw,30px) clamp(18px,2vw,24px);position:relative;border-radius:14px;box-shadow:0 6px 26px rgba(4,17,6,.28)}
+        .w-ico{width:50px;height:50px;border-radius:50%;border:1.5px solid rgba(4,17,6,.15);display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+        .w-ico-d{width:50px;height:50px;border-radius:50%;border:1.5px solid rgba(201,212,203,.22);display:flex;align-items:center;justify-content:center;margin-bottom:16px}
         .ck-row{display:flex;align-items:flex-start;gap:14px;padding:10px 0;cursor:default}
-        .ck-icon{
-          width:22px;height:22px;border-radius:50%;min-width:22px;
-          background:rgba(4,17,6,.06);border:1px solid rgba(4,17,6,.12);
-          display:flex;align-items:center;justify-content:center;
-          flex-shrink:0;color:${DARK};transition:all .3s;
-        }
+        .ck-icon{width:22px;height:22px;border-radius:50%;min-width:22px;background:rgba(4,17,6,.06);border:1px solid rgba(4,17,6,.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:${DARK};transition:all .3s}
         .ck-row:hover .ck-icon{background:${DARK};color:#fff;border-color:${DARK}}
 
-        /* ═══════════ RESTAURANT SECTION ═══════════ */
-        .rest-grid{
-          display:grid;
-          grid-template-columns:1fr 1.15fr 1fr;
-          gap:clamp(16px,2.5vw,28px);
-          align-items:start;
-        }
+        /* ── RESTAURANT ── */
+        .rest-grid{display:grid;grid-template-columns:1fr 1.15fr 1fr;gap:clamp(16px,2.5vw,28px);align-items:start}
 
-        /* ═══════════ TESTIMONIALS ═══════════ */
-        .testi-grid{
-          display:grid;
-          grid-template-columns:repeat(3,1fr);
-          gap:clamp(12px,2vw,20px);
-        }
+        /* ── TESTIMONIALS ── */
+        .testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(12px,2vw,20px)}
         .testi-card{border-radius:14px}
 
-        /* ═══════════ BLOGS ═══════════ */
-        .blogs-grid{
-          display:grid;
-          grid-template-columns:repeat(3,1fr);
-          gap:clamp(14px,2vw,24px);
-        }
+        /* ── BLOGS ── */
+        .blogs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,2vw,24px)}
         .b-card{background:#fff;overflow:hidden;box-shadow:0 2px 12px rgba(4,17,6,.06);border-radius:12px}
         .b-img{transition:transform .6s;width:100%;height:100%;object-fit:cover;display:block}
         .b-card:hover .b-img{transform:scale(1.05)}
 
-        /* ═══════════ BED TABS ═══════════ */
-        .bed-tab{
-          padding:clamp(8px,1vw,11px) clamp(16px,2vw,30px);
-          font-size:clamp(13px,1.3vw,15px);font-weight:600;
-          cursor:pointer;border:none;background:none;
-          font-family:'Jost',sans-serif;transition:all .3s;
-          white-space:nowrap;
-          border-radius:10px;
-        }
+        /* ── BED TABS ── */
+        .bed-tab{padding:clamp(8px,1vw,11px) clamp(16px,2vw,30px);font-size:clamp(13px,1.3vw,15px);font-weight:600;cursor:pointer;border:none;background:none;font-family:'Jost',sans-serif;transition:all .3s;white-space:nowrap;border-radius:10px}
 
-        /* ═══════════ CTA SECTION ═══════════ */
+        /* ── CTA ── */
         .cta-section{padding:clamp(52px,8vw,80px) 0;background:${BG};position:relative;overflow:hidden}
-        .cta-inner{
-          max-width:1380px;margin:0 auto;
-          padding:0 clamp(16px,4vw,48px);
-          display:flex;align-items:center;
-          justify-content:space-between;gap:32px;
-        }
-        .cta-circle-wrap{
-          width:clamp(100px,50vw,144px);
-          height:clamp(100px,50vw,144px);
-          border-radius:50%;overflow:hidden;
-          border:2px solid rgba(4,17,6,.12);
-          box-shadow:0 4px 28px rgba(4,17,6,.18);flex-shrink:0;
-        }
+        .cta-inner{max-width:1380px;margin:0 auto;padding:0 clamp(16px,4vw,48px);display:flex;align-items:center;justify-content:space-between;gap:32px}
+        .cta-circle-wrap{width:clamp(100px,50vw,144px);height:clamp(100px,50vw,144px);border-radius:50%;overflow:hidden;border:2px solid rgba(4,17,6,.12);box-shadow:0 4px 28px rgba(4,17,6,.18);flex-shrink:0}
         .cta-circle-wrap img{width:100%;height:100%;object-fit:cover}
         .cta-label{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:rgba(4,17,6,.4);margin-bottom:16px}
         .cta-heading{font-size:clamp(22px,3.8vw,52px);color:${DARK};font-weight:400;line-height:1.18;margin-bottom:14px}
         .cta-body{font-size:clamp(13px,1.5vw,15px);color:rgba(4,17,6,.55);line-height:1.78;margin-bottom:30px}
-        .cta-btn{
-          display:inline-flex;align-items:center;gap:12px;
-          background:${DARK};color:${BG};
-          border:1px solid ${DARK};padding:14px 32px;
-          font-size:12px;font-weight:600;letter-spacing:.12em;
-          text-transform:uppercase;text-decoration:none;
-          font-family:'Jost',sans-serif;
-          transition:background .25s,border-color .25s;
-        }
+        .cta-btn{display:inline-flex;align-items:center;gap:12px;background:${DARK};color:${BG};border:1px solid ${DARK};padding:14px 32px;font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;font-family:'Jost',sans-serif;transition:background .25s,border-color .25s}
         .cta-btn:hover{background:#1a2e1c;border-color:#1a2e1c}
-        .cta-btn-icon{
-          width:28px;height:28px;border-radius:50%;
-          background:rgba(201,212,203,.18);
-          display:flex;align-items:center;justify-content:center;color:${BG};
-        }
+        .cta-btn-icon{width:28px;height:28px;border-radius:50%;background:rgba(201,212,203,.18);display:flex;align-items:center;justify-content:center;color:${BG}}
 
-        /* ═══════════ FOOTER ═══════════ */
-        .ft-link{
-          font-size:14px;color:rgba(201,212,203,.5);text-decoration:none;
-          display:block;padding:5px 0;transition:color .25s,padding-left .25s;
-        }
+        /* ── FOOTER ── */
+        .ft-link{font-size:14px;color:rgba(201,212,203,.5);text-decoration:none;display:block;padding:5px 0;transition:color .25s,padding-left .25s}
         .ft-link:hover{color:#c9d4cb;padding-left:4px}
-        .ft-social{
-          width:42px;height:42px;border-radius:50%;
-          border:1px solid rgba(201,212,203,.18);
-          display:flex;align-items:center;justify-content:center;
-          color:rgba(201,212,203,.55);cursor:pointer;
-          transition:background .25s,color .25s;text-decoration:none;
-        }
+        .ft-social{width:42px;height:42px;border-radius:50%;border:1px solid rgba(201,212,203,.18);display:flex;align-items:center;justify-content:center;color:rgba(201,212,203,.55);cursor:pointer;transition:background .25s,color .25s;text-decoration:none}
         .ft-social:hover{background:rgba(201,212,203,.12);color:#c9d4cb;border-color:rgba(201,212,203,.45)}
-        .ft-input{
-          flex:1;height:46px;
-          background:rgba(201,212,203,.07);border:1px solid rgba(201,212,203,.15);
-          color:#c9d4cb;font-size:13px;padding:0 16px;
-          font-family:'Jost',sans-serif;outline:none;border-right:none;min-width:0;
-        }
+        .ft-input{flex:1;height:46px;background:rgba(201,212,203,.07);border:1px solid rgba(201,212,203,.15);color:#c9d4cb;font-size:13px;padding:0 16px;font-family:'Jost',sans-serif;outline:none;border-right:none;min-width:0}
         .ft-input::placeholder{color:rgba(201,212,203,.33)}
         .ft-input:focus{border-color:rgba(201,212,203,.42)}
-        .ft-sub-btn{
-          height:46px;padding:0 clamp(12px,1.5vw,18px);
-          background:rgba(201,212,203,.13);border:1px solid rgba(201,212,203,.22);
-          color:rgba(201,212,203,.85);font-size:11px;font-weight:700;
-          letter-spacing:.12em;text-transform:uppercase;cursor:pointer;
-          font-family:'Jost',sans-serif;display:flex;align-items:center;
-          gap:8px;transition:background .25s;white-space:nowrap;flex-shrink:0;
-        }
+        .ft-sub-btn{height:46px;padding:0 clamp(12px,1.5vw,18px);background:rgba(201,212,203,.13);border:1px solid rgba(201,212,203,.22);color:rgba(201,212,203,.85);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;font-family:'Jost',sans-serif;display:flex;align-items:center;gap:8px;transition:background .25s;white-space:nowrap;flex-shrink:0}
         .ft-sub-btn:hover{background:rgba(201,212,203,.22)}
-        .ft-cols{
-          display:grid;
-          grid-template-columns:1.6fr repeat(3,1fr);
-          gap:clamp(24px,4vw,48px);
-        }
-        .stats-4{
-          display:grid;
-          grid-template-columns:repeat(4,1fr);
-          gap:1px;
-          background:rgba(201,212,203,.07);
-          overflow:hidden;
-          margin-top:48px;
-        }
+        .ft-cols{display:grid;grid-template-columns:1.6fr repeat(3,1fr);gap:clamp(24px,4vw,48px)}
+        .stats-4{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(201,212,203,.07);overflow:hidden;margin-top:48px}
 
         /* ══════════════════════════════════
-           RESPONSIVE BREAKPOINTS
+           HERO RESPONSIVE BREAKPOINTS
         ══════════════════════════════════ */
 
-        /* 1200px */
-        @media(max-width:1200px){
-          .about-grid{grid-template-columns:260px 1fr 260px!important}
-          .ft-cols{grid-template-columns:1.2fr repeat(3,1fr)!important}
+        /* ── Tablet landscape 1024–1199 ── */
+        @media(max-width:1199px){
+          .hero-h1{font-size:clamp(38px,7vw,88px)!important}
+          .hero-right{width:clamp(280px,32vw,380px)!important}
         }
 
-        /* Below 1024px */
+        /* ── Tablet portrait ≤1023 → single column stacked ── */
         @media(max-width:1023px){
-          /* Section header — keep on one row, just tighten alignment */
-          .sec-head-row{
-            align-items:center!important;
-            flex-wrap:nowrap!important;
-            gap:16px!important;
-          }
+          /* Layout: stack vertically, no forced 100vh */
+          .hero-outer{min-height:auto!important}
           .hero-layout{
             flex-direction:column!important;
             align-items:stretch!important;
-            justify-content:flex-end!important;
             min-height:auto!important;
-            padding-top:clamp(88px,11vh,118px)!important;
-            padding-bottom:clamp(28px,5vh,56px)!important;
-            gap:clamp(16px,2.8vw,28px)!important;
+            padding-top:clamp(88px,11vh,110px)!important;
+            padding-bottom:clamp(32px,5vw,56px)!important;
+            gap:clamp(20px,3vw,28px)!important;
           }
-          .hero-left{justify-content:flex-start!important;padding-bottom:0!important;width:100%}
-          .hero-left h1{font-size:clamp(32px,7vw,72px)!important;line-height:.95!important}
+          .hero-left{
+            justify-content:flex-start!important;
+            padding-bottom:0!important;
+            width:100%!important;
+          }
+          .hero-h1{font-size:clamp(36px,8vw,80px)!important;line-height:.95!important}
           .hero-right{
             width:100%!important;
             flex-direction:column!important;
             align-items:stretch!important;
             justify-content:flex-start!important;
-            flex-shrink:unset!important;
+            padding-bottom:0!important;
           }
-          .vid-card{
-            width:100%!important;
-            max-width:100%!important;
-            align-self:stretch!important;
-          }
-          .hf-wrap{
-            max-width:100%!important;
-            width:100%!important;
-            padding:16px 14px 15px!important;
-          }
-          .hf-title{font-size:clamp(16px,2.2vw,20px)!important;margin-bottom:12px!important}
-          .hf-grid-2{gap:8px!important;margin-bottom:8px!important}
-          .hf-label{font-size:9px!important;letter-spacing:.13em!important;margin-bottom:5px!important}
-          .hf-date-box,.hf-counter-box{height:40px!important}
-          .hf-date-input{font-size:12px!important}
-          .hf-counter-btn{width:24px!important;height:24px!important;font-size:14px!important}
-          .hf-divider{margin:10px 0!important}
-          .hf-cta{height:44px!important;font-size:10px!important;letter-spacing:.1em!important}
-          .hf-cta-icon{width:24px!important;height:24px!important;font-size:14px!important}
+          /* Form max-width on tablet */
+          .hf-wrap{max-width:560px!important}
+          /* Vid-card full width */
+          .vid-card{max-width:100%!important}
+
+          /* Other sections */
           .about-grid{grid-template-columns:1fr!important}
           .about-img-left{display:none!important}
-          /* Rooms: 2 columns on tablet */
           .rooms-grid{grid-template-columns:1fr 1fr!important}
           .blogs-grid{grid-template-columns:1fr 1fr!important}
           .svc-grid{grid-template-columns:1fr 1fr!important}
@@ -1054,172 +754,111 @@ export default function SafarHomePage() {
           .why-header{grid-column:1/3!important}
           .cta-circle-wrap:last-child{display:none!important}
           .cat-item{flex:1 1 clamp(100px,18%,140px)!important}
-          /* Hide circle images in why section on tablet */
           .why-circle-img{display:none!important}
         }
 
-        /* 768px — tablet portrait — KEY FIXES */
+        /* ── 768px tablet portrait ── */
         @media(max-width:768px){
           .sec-wrap{padding-left:clamp(18px,4.5vw,26px)!important;padding-right:clamp(18px,4.5vw,26px)!important}
 
-          /* Section header: title left, arrows right — same row, compact */
-          .sec-head-row{
-            flex-direction:row!important;
-            align-items:center!important;
-            flex-wrap:nowrap!important;
-            justify-content:space-between!important;
-            gap:12px!important;
+          /* Hero layout — tighter padding */
+          .hero-layout{
+            padding-top:clamp(76px,10vh,100px)!important;
+            padding-bottom:clamp(28px,5vw,48px)!important;
+            gap:20px!important;
           }
-          .sec-head-text{
-            flex:1 1 0!important;
-            min-width:0!important;
+          .hero-h1{font-size:clamp(32px,8.5vw,64px)!important;line-height:.96!important}
+          /* Heading inline pill — scale down */
+          .hero-easy-pill{
+            width:clamp(52px,7vw,76px)!important;
+            height:clamp(30px,4.5vw,44px)!important;
           }
-          /* Clamp the heading font size on 768 */
-          .sec-head-text h2{
-            font-size:clamp(18px,4.5vw,32px)!important;
-            line-height:1.2!important;
-          }
-          .sec-head-text p{
-            font-size:10px!important;
-            margin-bottom:6px!important;
-          }
-          .sec-head-actions{
-            display:flex!important;
-            flex-direction:row!important;
-            flex-shrink:0!important;
-            gap:8px!important;
-            align-items:center!important;
-          }
-          /* Arrow buttons: compact on 768 */
-          .nav-round-btn{
-            width:38px!important;
-            height:38px!important;
-            font-size:15px!important;
-            border-radius:10px!important;
-          }
-          .nav-round-btn--lg{
-            width:40px!important;
-            height:40px!important;
-            font-size:15px!important;
-          }
-
-          .about-spin-badge{
-            width:80px!important;height:80px!important;
-            bottom:12px!important;right:8px!important;
-          }
-          .about-spin-badge > svg:first-of-type{width:80px!important;height:80px!important}
-
-          /* HERO */
-          .hero-layout{padding-top:clamp(72px,11vh,96px)!important;padding-bottom:clamp(32px,6vh,52px)!important;gap:20px!important}
-          .hero-right{flex-direction:column!important;align-items:stretch!important;width:100%!important}
+          /* Booking form — full width, clean on white */
           .hf-wrap{
             max-width:100%!important;
-            width:100%!important;
             padding:18px 16px 16px!important;
-            border:1px solid rgba(4,17,6,.1)!important;
-            box-shadow:0 24px 56px rgba(4,17,6,.2),0 4px 16px rgba(4,17,6,.1)!important;
+            box-shadow:0 16px 48px rgba(4,17,6,.22),0 4px 12px rgba(4,17,6,.1)!important;
           }
-          .hf-title{font-size:18px!important;margin-bottom:12px!important}
-          .hf-label{color:rgba(4,17,6,.58)!important}
-          .hf-date-box,.hf-counter-box{
-            height:44px!important;
-            background:#fff!important;
-            border-color:rgba(4,17,6,.18)!important;
-          }
-          .hf-date-input{font-size:13px!important;color:${DARK}!important}
-          .hf-counter-btn{width:26px!important;height:26px!important}
-          .vid-card{
-            padding:16px 18px!important;
-            background:rgba(4,17,6,.82)!important;
-            border:1px solid rgba(255,255,255,.22)!important;
-          }
-          .vid-card__title{color:#fff!important}
-          .vid-card__desc{color:rgba(255,255,255,.68)!important}
+          .hf-title{font-size:17px!important;margin-bottom:12px!important}
+          .hf-date-box,.hf-counter-box{height:44px!important}
+          .hf-label{color:rgba(4,17,6,.58)!important;font-size:9.5px!important}
+          .hf-date-input{font-size:13px!important}
+          /* Vid card */
+          .vid-card{padding:14px 16px!important}
+          .vid-card__title{font-size:15px!important}
+          .vid-card__desc{font-size:12px!important}
 
-          /* Section 03 Rooms: 2 cards per row on 768 */
-          .section-rooms .rooms-grid{
-            grid-template-columns:1fr 1fr!important;
-            gap:16px!important;
-          }
+          /* Section header */
+          .sec-head-row{align-items:center!important;gap:12px!important}
+          .sec-head-text h2{font-size:clamp(18px,4.5vw,32px)!important;line-height:1.2!important}
+          .sec-head-text p{font-size:10px!important;margin-bottom:6px!important}
+          .nav-round-btn{width:38px!important;height:38px!important;font-size:15px!important;border-radius:10px!important}
+          .nav-round-btn--lg{width:40px!important;height:40px!important;font-size:15px!important}
+          .about-spin-badge{width:80px!important;height:80px!important;bottom:12px!important;right:8px!important}
+          .about-spin-badge > svg:first-of-type{width:80px!important;height:80px!important}
+
+          /* Rooms */
+          .section-rooms .rooms-grid{grid-template-columns:1fr 1fr!important;gap:16px!important}
           .section-rooms{padding-top:48px!important;padding-bottom:56px!important}
           .section-rooms .r-card--pro .r-img-wrap{height:clamp(150px,30vw,200px)!important}
           .section-rooms .r-card--pro .r-book-btn{flex-direction:column!important;align-items:stretch!important}
           .section-rooms .r-card--pro .r-link-explore{justify-content:center!important}
           .section-rooms .r-card--pro .r-bk-cta{width:100%!important;text-align:center!important;justify-content:center!important;display:flex!important}
+          .rooms-load-more{min-height:50px!important}
 
-          /* Load more button */
-          .rooms-load-more{
-            min-height:50px!important;
-          }
-
-          /* Categories */
           .cat-wrap{gap:clamp(8px,2vw,16px)!important}
           .cat-item{flex:0 1 calc(33.33% - 12px)!important;max-width:160px!important}
-
-          /* WHY: 2-col, hide ALL circle images */
           .why-grid{grid-template-columns:1fr 1fr!important}
           .why-header{grid-column:1/3!important}
           .why-circle-img{display:none!important}
-
-          /* Testimonials: 1 column on 768 (like mobile) */
           .testi-grid{grid-template-columns:1fr!important}
           .testi-card:not(.testi-first){display:none!important}
-
-          /* Blog: 1 column on 768 */
           .blogs-grid{grid-template-columns:1fr!important}
-
           .svc-grid{grid-template-columns:1fr 1fr!important}
           .rest-grid{grid-template-columns:1fr!important}
           .cta-circle-wrap{display:none!important}
           .cta-inner{justify-content:center!important;text-align:center!important}
-          .cta-btn{justify-content:center!important}
-          .cta-btn{width:100%!important;max-width:360px!important}
+          .cta-btn{justify-content:center!important;width:100%!important;max-width:360px!important}
           .ft-cols{grid-template-columns:1fr 1fr!important}
           footer .ft-cols > div:first-child{grid-column:1/3!important}
           .hs-popup{width:clamp(180px,50vw,240px)!important}
           .ft-sub-btn{font-size:10px!important;letter-spacing:.08em!important;padding:0 10px!important}
-
-          /* sec-head-link on 768: keep inline, don't stretch full width */
-          .sec-head-link{
-            padding:10px 16px!important;
-            font-size:10px!important;
-          }
+          .sec-head-link{padding:10px 16px!important;font-size:10px!important}
         }
 
-        /* 640px — mobile */
+        /* ── 640px mobile ── */
         @media(max-width:640px){
-          /* Section header: keep on one row */
-          .sec-head-row{
-            flex-direction:row!important;
-            align-items:center!important;
-            flex-wrap:nowrap!important;
-            gap:10px!important;
+          /* Hero */
+          .hero-layout{
+            padding-top:clamp(70px,10vh,90px)!important;
+            padding-bottom:clamp(24px,5vw,40px)!important;
+            gap:16px!important;
           }
-          .sec-head-text h2{
-            font-size:clamp(17px,5vw,26px)!important;
+          .hero-h1{font-size:clamp(30px,9vw,52px)!important;line-height:1!important}
+          .hero-easy-pill{
+            width:clamp(44px,10vw,64px)!important;
+            height:clamp(26px,6vw,38px)!important;
           }
-          .sec-head-actions{
-            flex-shrink:0!important;
-            gap:7px!important;
-          }
-          .nav-round-btn{
-            width:36px!important;
-            height:36px!important;
-            font-size:14px!important;
+          /* Grid: both date + both counter stay 2-col */
+          .hf-grid-2{grid-template-columns:1fr 1fr!important;gap:8px!important}
+          .hf-wrap{padding:14px 12px 13px!important}
+          .hf-date-box,.hf-counter-box{height:40px!important}
+          .hf-cta{height:44px!important;font-size:10px!important}
+          .hf-counter-btn{width:24px!important;height:24px!important;font-size:14px!important}
+          /* Vid card: keep horizontal on 640 */
+          .vid-card{flex-direction:row!important;align-items:center!important;gap:12px!important;padding:12px 14px!important}
+          .vid-card__thumb{
+            width:clamp(68px,18vw,88px)!important;
+            max-height:72px!important;
           }
 
-          .about-spin-badge{
-            width:72px!important;height:72px!important;
-            bottom:8px!important;right:8px!important;
-          }
+          /* Other sections */
+          .sec-head-row{flex-direction:row!important;align-items:center!important;flex-wrap:nowrap!important;gap:10px!important}
+          .sec-head-text h2{font-size:clamp(17px,5vw,26px)!important}
+          .sec-head-actions{flex-shrink:0!important;gap:7px!important}
+          .nav-round-btn{width:36px!important;height:36px!important;font-size:14px!important}
+          .about-spin-badge{width:72px!important;height:72px!important;bottom:8px!important;right:8px!important}
           .about-spin-badge > svg:first-of-type{width:72px!important;height:72px!important}
-          .hero-layout{gap:clamp(16px,3vw,24px)!important}
-          .vid-card{
-            flex-direction:row!important;
-            align-items:center!important;
-            gap:12px!important;
-            padding:12px 14px!important;
-          }
           .cat-item{flex:0 1 calc(33.33% - 8px)!important;max-width:none!important}
           .why-grid{grid-template-columns:1fr!important}
           .why-header{grid-column:1!important}
@@ -1227,82 +866,75 @@ export default function SafarHomePage() {
           .testi-grid{grid-template-columns:1fr!important}
           .testi-card:not(.testi-first){display:none!important}
           .rooms-grid{grid-template-columns:1fr!important}
-          /* Section 03 rooms: 1 col on 640 */
-          .section-rooms .rooms-grid{
-            grid-template-columns:1fr!important;
-            max-width:480px!important;
-            margin-left:auto!important;
-            margin-right:auto!important;
-          }
+          .section-rooms .rooms-grid{grid-template-columns:1fr!important;max-width:480px!important;margin-left:auto!important;margin-right:auto!important}
           .blogs-grid{grid-template-columns:1fr!important}
           .rest-grid{grid-template-columns:1fr!important}
           .stats-4{grid-template-columns:1fr 1fr!important}
           .ft-cols{grid-template-columns:1fr!important}
           footer .ft-cols > div:first-child{grid-column:1!important}
-          .hf-grid-2{grid-template-columns:1fr 1fr!important}
           .r-book-btn{align-items:stretch!important}
           .r-bk-cta{width:100%!important;justify-content:center!important}
           .ft-sub-btn{white-space:normal!important;line-height:1.1!important;height:auto!important;min-height:46px!important}
-          .hf-wrap{padding:13px 10px 11px!important}
-          .hf-date-box,.hf-counter-box{height:38px!important}
-          .hf-cta{height:42px!important}
         }
 
-        /* 480px — small phones */
+        /* ── 480px small phones ── */
         @media(max-width:480px){
-          .hero-layout{padding-top:clamp(64px,14vh,90px)!important}
+          .hero-layout{padding-top:clamp(62px,12vh,82px)!important;gap:14px!important}
+          .hero-h1{font-size:clamp(28px,9.5vw,46px)!important;line-height:1.02!important}
+          /* Pill smaller — just a color accent */
+          .hero-easy-pill{
+            width:clamp(38px,9vw,54px)!important;
+            height:clamp(22px,5.5vw,34px)!important;
+          }
+          /* Form: switch counters to single column so they have space */
           .hf-grid-2{grid-template-columns:1fr 1fr!important}
+          .hf-wrap{padding:12px 10px 11px!important;border-radius:12px!important}
+          .hf-date-box,.hf-counter-box{height:38px!important}
+          .hf-cta{height:42px!important;font-size:9.5px!important}
+          .hf-cta-icon{width:24px!important;height:24px!important}
+          /* Vid-card: horizontal stays but more compact */
+          .vid-card{padding:10px 12px!important;gap:10px!important;border-radius:12px!important}
+          .vid-card__thumb{width:62px!important;max-height:62px!important}
+          .vid-card__title{font-size:13px!important;margin-bottom:3px!important}
+          .vid-card__desc{font-size:11px!important}
+
           .cat-item{flex:0 1 calc(50% - 8px)!important;max-width:none!important}
           .stats-4{grid-template-columns:1fr 1fr!important}
           .svc-grid{grid-template-columns:1fr!important}
           .ft-cols{grid-template-columns:1fr!important}
           .r-img-wrap{height:clamp(160px,40vw,200px)!important}
-          .hero-left h1{line-height:1!important}
-          .hf-cta{white-space:normal!important;padding:8px 10px!important;height:auto!important;min-height:46px!important}
-          .hf-counter-box{padding:0 8px!important}
           .ft-input{font-size:12px!important;padding:0 12px!important}
-          .hs-popup{
-            left:50%!important;
-            right:auto!important;
-            transform:translateX(-50%)!important;
-            width:min(88vw,280px)!important;
-          }
+          .hs-popup{left:50%!important;right:auto!important;transform:translateX(-50%)!important;width:min(88vw,280px)!important}
           .sec-head-text h2{font-size:clamp(16px,5.5vw,22px)!important}
         }
 
-        /* 400px — very small */
+        /* ── 400px very small phones ── */
         @media(max-width:400px){
-          .cat-item{flex:0 1 calc(50% - 6px)!important;max-width:none!important}
+          .hero-h1{font-size:clamp(26px,9.5vw,40px)!important}
+          /* At 400, dates stack to 1 col each so they remain readable */
           .hf-grid-2{grid-template-columns:1fr!important}
-          .vid-card{flex-direction:column!important;align-items:stretch!important;gap:12px!important}
-          .vid-card__thumb{width:100%!important;max-width:none!important;max-height:160px!important;aspect-ratio:16/9!important}
+          /* Vid-card: go vertical */
+          .vid-card{flex-direction:column!important;align-items:stretch!important;gap:10px!important}
+          .vid-card__thumb{width:100%!important;max-width:none!important;max-height:140px!important;aspect-ratio:16/9!important}
+          .cat-item{flex:0 1 calc(50% - 6px)!important;max-width:none!important}
         }
       `}</style>
 
       {/* ══ HERO ══ */}
       <section className="hero-outer">
         <div className="hero-overlay" />
-        <div style={{
-          position:"absolute", left:18, top:"50%",
-          transform:"translateY(-50%) rotate(-90deg)",
-          color:"rgba(255,255,255,.32)", fontSize:10,
-          letterSpacing:".32em", textTransform:"uppercase",
-          whiteSpace:"nowrap", zIndex:3,
-          display:"none",
-        }}
-          className="scroll-hint">SCROLL DOWN</div>
 
         <div className="hero-inner">
           <div className="hero-layout">
 
-            {/* LEFT */}
+            {/* LEFT — Heading + Vid-card */}
             <div className="hero-left">
               <Reveal>
-                <h1 className="marc" style={{ fontSize:"clamp(38px,5vw,112px)", color:"#fff", fontWeight:400, lineHeight:.92 }}>ONE CLICK</h1>
+                <h1 className="marc hero-h1">ONE CLICK</h1>
               </Reveal>
               <Reveal delay={100}>
-                <div style={{ display:"flex", alignItems:"center", gap:"clamp(10px,1.5vw,16px)", margin:"6px 0", flexWrap:"wrap" }}>
-                  <h1 className="marc" style={{ fontSize:"clamp(38px,5vw,112px)", color:"#fff", fontWeight:400, lineHeight:.92 }}>EASY</h1>
+                <div style={{ display:"flex", alignItems:"center", gap:"clamp(10px,1.5vw,16px)", margin:"6px 0", flexWrap:"nowrap" }}>
+                  <h1 className="marc hero-h1">EASY</h1>
                   <div
                     className="hero-easy-pill"
                     style={{
@@ -1317,10 +949,10 @@ export default function SafarHomePage() {
                 </div>
               </Reveal>
               <Reveal delay={180}>
-                <h1 className="marc" style={{ fontSize:"clamp(38px,5vw,112px)", color:"#fff", fontWeight:400, lineHeight:.92 }}>BOOKING</h1>
+                <h1 className="marc hero-h1">BOOKING</h1>
               </Reveal>
 
-              <Reveal delay={300} style={{ marginTop:"clamp(24px,4vw,36px)" }}>
+              <Reveal delay={300} style={{ marginTop:"clamp(20px,3.5vw,36px)" }}>
                 <div className="vid-card">
                   <div className="vid-card__thumb">
                     <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=200&q=80" alt="" />
@@ -1336,7 +968,7 @@ export default function SafarHomePage() {
               </Reveal>
             </div>
 
-            {/* RIGHT — booking form */}
+            {/* RIGHT — Booking form */}
             <div className="hero-right">
               <Reveal delay={240} style={{ width:"100%" }}>
                 <div className="hf-wrap">
@@ -1435,7 +1067,7 @@ export default function SafarHomePage() {
               </Reveal>
               <div style={{ height:1, background:"rgba(4,17,6,.12)", margin:"20px 0" }} />
               <Reveal delay={160}>
-                <div style={{ display:"flex", gap:"clamp(24px,4vw,40px)", flexWrap:"wrap" }}>
+                <div style={{ display:"flex", gap:"clamp(24px,4vw,40px)", flexWrap:"nowrap" }}>
                   <div>
                     <div className="marc" style={{ fontSize:"clamp(32px,5vw,56px)", color:DARK, lineHeight:1 }}><Counter target={146} suffix="+"/></div>
                     <p style={{ fontSize:10, letterSpacing:".2em", textTransform:"uppercase", marginTop:7, opacity:.44 }}>HOTEL AND RESORT</p>
@@ -1505,7 +1137,7 @@ export default function SafarHomePage() {
         </div>
       </section>
 
-      {/* ══ ROOMS (Section 03) ══ */}
+      {/* ══ ROOMS ══ */}
       <section className="section-rooms" style={{ padding:"clamp(56px,8vw,92px) 0" }}>
         <div className="sec-wrap">
           <Reveal>
@@ -1565,7 +1197,7 @@ export default function SafarHomePage() {
               </Reveal>
             ))}
           </div>
-          <div className="rooms-load-wrap" style={{ textAlign:"center", marginTop:42 }}>
+          <div style={{ textAlign:"center", marginTop:42 }}>
             <button type="button" className="rooms-load-more" style={{ display:"inline-flex", alignItems:"center", justifyContent:"center", gap:8, background:DARK, color:BG, border:"none",
               padding:"14px 38px", fontSize:12, fontWeight:600, letterSpacing:".12em", textTransform:"uppercase",
               cursor:"pointer", fontFamily:"'Jost',sans-serif", borderRadius:12, boxShadow:"0 8px 28px rgba(4,17,6,.25)" }}>
@@ -1623,11 +1255,7 @@ export default function SafarHomePage() {
                     {activeHS===hs.id?"×":"+"}
                   </button>
                   {activeHS===hs.id && (
-                    <div className="hs-popup" style={{
-                      bottom:"calc(100% + 14px)",
-                      left:"50%",
-                      transform:"translateX(-50%)",
-                    }}>
+                    <div className="hs-popup">
                       <div style={{ display:"flex", alignItems:"center", gap:10, marginBottom:10 }}>
                         <div style={{ width:36, height:36, borderRadius:"50%", background:`${DARK}18`,
                           display:"flex", alignItems:"center", justifyContent:"center", flexShrink:0, color:DARK }}>{Ico[hs.ik]}</div>
@@ -1730,7 +1358,6 @@ export default function SafarHomePage() {
                 <a href="#" style={{ display:"inline-flex", alignItems:"center", gap:4, fontSize:11, fontWeight:700, letterSpacing:".12em", textTransform:"uppercase", color:"#c9d4cb", textDecoration:"none" }}>READ MORE {Ico.arrow}</a>
               </div>
             </Reveal>
-            {/* Circle image — hidden on tablet/mobile via .why-circle-img */}
             <Reveal delay={150} className="why-circle-img" style={{ display:"flex", alignItems:"center", justifyContent:"center", gridColumn:"span 1" }}>
               <div style={{ width:"100%", maxWidth:240, aspectRatio:"1/1", borderRadius:"50%", overflow:"hidden", margin:"0 auto", boxShadow:"0 4px 26px rgba(4,17,6,.13)" }}>
                 <img src="/2.jpeg" alt="" style={{ width:"100%", height:"100%", objectFit:"cover" }} />
@@ -1745,7 +1372,6 @@ export default function SafarHomePage() {
                 <a href="#" style={{ display:"inline-flex", alignItems:"center", gap:4, fontSize:11, fontWeight:700, letterSpacing:".12em", textTransform:"uppercase", color:DARK, textDecoration:"none" }}>READ MORE {Ico.arrow}</a>
               </div>
             </Reveal>
-            {/* Second circle image — also hidden on tablet/mobile */}
             <Reveal delay={130} className="why-circle-img" style={{ display:"flex", alignItems:"center", justifyContent:"center", gridColumn:"span 1" }}>
               <div style={{ width:"100%", maxWidth:240, aspectRatio:"1/1", borderRadius:"50%", overflow:"hidden", margin:"0 auto", boxShadow:"0 4px 26px rgba(4,17,6,.13)" }}>
                 <img src="/7.jpeg" alt="" style={{ width:"100%", height:"100%", objectFit:"cover" }} />
@@ -1933,7 +1559,7 @@ export default function SafarHomePage() {
         </div>
       </section>
 
-      <Footer />
+  
     </div>
   );
 }

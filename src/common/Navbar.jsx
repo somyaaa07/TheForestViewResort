@@ -43,10 +43,7 @@ const ChevronRight = () => (
 );
 
 // ── Logo Config — apna image URL yahan daalo ──────────────────────────────
-// LOGO_SRC: Yahan apni image ka URL ya import karein
-// e.g. import logoImg from "./assets/logo.png"; phir LOGO_SRC = logoImg
 const LOGO_SRC = "/logo.jpg";
-// Upar wali line mein apna actual logo URL ya path replace karen
 
 // ── Navbar Logo (circular, small) ─────────────────────────────────────────
 const Logo = () => (
@@ -216,7 +213,7 @@ function BookingPopup({ isOpen, onClose }) {
                     {step === 1 ? "Book Your Stay" : "Your Details"}
                   </p>
                   <p style={{ fontSize: "13px", color: "rgba(201,212,203,0.4)", letterSpacing: "0.12em", textTransform: "uppercase", margin: 0 }}>
-                    Grand Sereno · Malibu
+                  The Forest View Resort
                   </p>
                 </div>
                 <button
@@ -433,7 +430,6 @@ export default function HotelNavbar() {
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&display=swap');
 
-        /* ── Logo circle ── */
         .logo-circle {
           display: flex;
           align-items: center;
@@ -445,29 +441,19 @@ export default function HotelNavbar() {
           -webkit-backdrop-filter: blur(4px);
           flex-shrink: 0;
           overflow: hidden;
-
-          /* Mobile default size */
           width: 40px;
           height: 40px;
           transition: width 0.3s, height 0.3s;
         }
 
-        /* ── Logo image inside circle ── */
         .logo-img {
           width: 100%;
           height: 100%;
           object-fit: cover;
           display: block;
           border-radius: 50%;
-          /* 
-            Agar aapka logo transparent background wala PNG hai to
-            object-fit: contain use karein aur background hata dein:
-            object-fit: contain;
-            padding: 6px;
-          */
         }
 
-        /* ── Responsive logo sizes ── */
         @media (min-width: 640px) {
           .logo-circle { width: 46px; height: 46px; }
         }
@@ -478,7 +464,6 @@ export default function HotelNavbar() {
           .logo-circle { width: 52px; height: 52px; }
         }
 
-        /* ── Desktop nav links ── */
         .nav-link-item {
           font-family: 'Cormorant Garamond', Georgia, serif;
           font-size: 16px;
@@ -497,7 +482,6 @@ export default function HotelNavbar() {
           color: #fff;
         }
 
-        /* ── Mobile Sidebar ── */
         .mobile-sidebar-backdrop {
           position: fixed;
           inset: 0;
@@ -552,7 +536,6 @@ export default function HotelNavbar() {
         @media (min-width: 1024px) { .book-btn-text { font-size: 14px; } }
         @media (min-width: 1280px) { .book-btn-text { font-size: 15px; } }
 
-        /* ── Drawer nav links ── */
         .drawer-nav-link {
           display: flex;
           align-items: center;
@@ -571,7 +554,6 @@ export default function HotelNavbar() {
           color: #c9d4cb;
         }
 
-        /* ── Scrollbar ── */
         ::-webkit-scrollbar { width: 4px; }
         ::-webkit-scrollbar-track { background: transparent; }
         ::-webkit-scrollbar-thumb { background: rgba(201,212,203,0.2); border-radius: 4px; }
@@ -607,7 +589,7 @@ export default function HotelNavbar() {
             transition: "background 0.3s, box-shadow 0.3s",
           }}
         >
-          {/* ── Logo — Image version ── */}
+          {/* ── Logo ── */}
           <Link to="/" aria-label="Home" style={{ flexShrink: 0 }}>
             <Logo />
           </Link>
@@ -702,7 +684,6 @@ export default function HotelNavbar() {
         {/* Sidebar Header */}
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "24px 20px 18px" }}>
           <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-            {/* Sidebar Logo — Image */}
             <SidebarLogo size={40} />
             <div>
               <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "20px", fontWeight: "700", color: "#c9d4cb", letterSpacing: "0.04em", margin: 0 }}>Grand Sereno</p>
@@ -771,18 +752,19 @@ export default function HotelNavbar() {
         <div style={{ padding: "18px 20px 32px", display: "flex", flexDirection: "column", gap: "14px" }}>
           <p style={{ fontSize: "10px", color: "rgba(201,212,203,0.3)", letterSpacing: "0.2em", textTransform: "uppercase", margin: 0 }}>Contact</p>
           {[
-            { icon: <PhoneIcon />, value: "+1 800 123 456",         href: "tel:+1800123456" },
-            { icon: <MailIcon />,  value: "hello@grandsereno.com",  href: "mailto:hello@grandsereno.com" },
-            { icon: <MapPinIcon />,value: "24 Serene Blvd, Malibu", href: null },
-          ].map(({ icon, value, href }, i) => {
+            { icon: <PhoneIcon />, value: "+1 800 123 456",         to: "tel:+1800123456",              isExternal: true },
+            { icon: <MailIcon />,  value: "hello@grandsereno.com",  to: "mailto:hello@grandsereno.com", isExternal: true },
+            { icon: <MapPinIcon />,value: "24 Serene Blvd, Malibu", to: null,                           isExternal: false },
+          ].map(({ icon, value, to, isExternal }, i) => {
             const inner = (
               <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
                 <div style={{ display: "flex", alignItems: "center", justifyContent: "center", width: "34px", height: "34px", borderRadius: "50%", background: "rgba(201,212,203,0.08)", border: "1px solid rgba(201,212,203,0.18)", color: "#c9d4cb", flexShrink: 0 }}>{icon}</div>
                 <p style={{ fontSize: "14px", color: "rgba(201,212,203,0.7)", fontFamily: "'Cormorant Garamond', serif", fontWeight: "600", margin: 0 }}>{value}</p>
               </div>
             );
-            return href
-              ? <a key={i} href={href} style={{ textDecoration: "none" }}>{inner}</a>
+            // tel: and mailto: are external protocols — use <a> for these, not <Link>
+            return to
+              ? <a key={i} href={to} style={{ textDecoration: "none" }}>{inner}</a>
               : <div key={i}>{inner}</div>;
           })}
         </div>
@@ -818,7 +800,6 @@ export default function HotelNavbar() {
         {/* Drawer Header */}
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "26px 26px 18px" }}>
           <div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
-            {/* Drawer Logo — Image */}
             <SidebarLogo size={44} />
             <div>
               <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "22px", fontWeight: "700", color: "#c9d4cb", letterSpacing: "0.04em", margin: 0 }}>Grand Sereno</p>
@@ -870,10 +851,10 @@ export default function HotelNavbar() {
         <div style={{ padding: "18px 26px 36px", display: "flex", flexDirection: "column", gap: "16px" }}>
           <p style={{ fontSize: "11px", color: "rgba(201,212,203,0.35)", letterSpacing: "0.2em", textTransform: "uppercase", margin: 0 }}>Contact Us</p>
           {[
-            { icon: <PhoneIcon />, label: "Phone",   value: "+1 800 123 456",         href: "tel:+1800123456" },
-            { icon: <MailIcon />,  label: "Email",   value: "hello@grandsereno.com",  href: "mailto:hello@grandsereno.com" },
-            { icon: <MapPinIcon />,label: "Address", value: "24 Serene Blvd, Malibu", href: null },
-          ].map(({ icon, label, value, href }) => {
+            { icon: <PhoneIcon />, label: "Phone",   value: "+1 800 123 456",         to: "tel:+1800123456",              isExternal: true },
+            { icon: <MailIcon />,  label: "Email",   value: "hello@grandsereno.com",  to: "mailto:hello@grandsereno.com", isExternal: true },
+            { icon: <MapPinIcon />,label: "Address", value: "24 Serene Blvd, Malibu", to: null,                           isExternal: false },
+          ].map(({ icon, label, value, to, isExternal }) => {
             const inner = (
               <div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
                 <div style={{ display: "flex", alignItems: "center", justifyContent: "center", width: "38px", height: "38px", borderRadius: "50%", background: "rgba(201,212,203,0.08)", border: "1px solid rgba(201,212,203,0.2)", color: "#c9d4cb", flexShrink: 0 }}>{icon}</div>
@@ -883,8 +864,9 @@ export default function HotelNavbar() {
                 </div>
               </div>
             );
-            return href
-              ? <a key={label} href={href} style={{ textDecoration: "none" }}>{inner}</a>
+            // tel: and mailto: are external protocols — use <a> for these, not <Link>
+            return to
+              ? <a key={label} href={to} style={{ textDecoration: "none" }}>{inner}</a>
               : <div key={label}>{inner}</div>;
           })}
         </div>

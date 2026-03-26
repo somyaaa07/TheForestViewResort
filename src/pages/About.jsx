@@ -597,7 +597,7 @@ export default function SafarAboutPage() {
             {/* Col 1 — visible down to 768px (hidden at 768px via CSS) */}
             <Reveal className="about-img1">
               <img
-                src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&q=80"
+                src="/sher.jpg"
                 alt="Hotel exterior"
                 style={{width:"100%",height:560,objectFit:"cover",display:"block",borderRadius:4}}
               />
@@ -645,7 +645,7 @@ export default function SafarAboutPage() {
             <Reveal delay={150}>
               <div className="spin-img-wrap">
                 <img
-                  src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=700&q=80"
+                  src="https://i.pinimg.com/1200x/4e/59/71/4e59719a8e187ce05f944451a5c0ba4b.jpg"
                   alt="Luxury hotel room"
                   style={{width:"100%",height:"clamp(300px,45vw,500px)",objectFit:"cover",objectPosition:"top",display:"block",borderRadius:4}}
                 />
@@ -727,7 +727,7 @@ export default function SafarAboutPage() {
             <Reveal delay={160} className="circ1">
               <div style={{width:"100%",maxWidth:260,aspectRatio:"1/1",borderRadius:"50%",overflow:"hidden",margin:"0 auto",boxShadow:"0 4px 32px rgba(4,17,6,.15)"}}>
                 <img
-                  src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=600&q=80"
+                  src="/7.jpeg"
                   alt="" style={{width:"100%",height:"100%",objectFit:"cover"}}
                 />
               </div>
@@ -752,7 +752,7 @@ export default function SafarAboutPage() {
             <Reveal delay={140} className="circ2">
               <div style={{width:"100%",maxWidth:260,aspectRatio:"1/1",borderRadius:"50%",overflow:"hidden",margin:"0 auto",boxShadow:"0 4px 32px rgba(4,17,6,.15)"}}>
                 <img
-                  src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80"
+                  src="/2.jpeg"
                   alt="" style={{width:"100%",height:"100%",objectFit:"cover"}}
                 />
               </div>
@@ -842,7 +842,7 @@ export default function SafarAboutPage() {
                   ))}
                 </div>
                 <img
-                  src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80"
+                  src="/16.jpeg"
                   alt="Restaurant dining"
                   style={{width:"100%",height:240,objectFit:"cover",display:"block",borderRadius:4}}
                 />
@@ -851,7 +851,7 @@ export default function SafarAboutPage() {
             <Reveal delay={240} className="rest-col3">
               <div>
                 <img
-                  src="https://images.unsplash.com/photo-1551218808-94e220e084d2?w=800&q=80"
+                  src="/7.jpeg"
                   alt="Hotel bar"
                   style={{width:"100%",height:220,objectFit:"cover",display:"block",marginBottom:24,borderRadius:4}}
                 />

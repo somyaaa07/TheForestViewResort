@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo ,useEffect } from "react";
 import { rooms } from "./data";
 import RoomDetail from "./RoomDetail";
 
@@ -31,7 +31,7 @@ export default function App() {
   const [activePage, setActivePage] = useState("listing");
   const [selectedRoomId, setSelectedRoomId] = useState(null);
   const [wishlist, setWishlist] = useState([]);
-  const [priceRange, setPriceRange] = useState(300); // max price in data is $280, slider max is $300
+  const [priceRange, setPriceRange] = useState(300);
   const [checkIn, setCheckIn] = useState("");
   const [checkOut, setCheckOut] = useState("");
   const [adults, setAdults] = useState("1");
@@ -40,6 +40,11 @@ export default function App() {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchTriggered, setSearchTriggered] = useState(false);
   const [activeSearch, setActiveSearch] = useState({ checkIn: "", checkOut: "", adults: "1", children: "0" });
+
+  // ✅ Page open hote hi scroll top par
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "instant" });
+  }, []);
 
   const toggleWishlist = (id) => setWishlist(prev => prev.includes(id) ? prev.filter(x => x !== id) : [...prev, id]);
   const toggleRating = (r) => {
@@ -73,15 +78,12 @@ export default function App() {
   // Filter rooms
   const filteredRooms = useMemo(() => {
     return rooms.filter(room => {
-      // Price filter
       if (room.price > priceRange) return false;
-      // Rating filter — rating is { overall, total }
       if (ratings.length > 0) {
         const overall = room.rating?.overall || 0;
-        const rounded = Math.round(overall); // e.g. 4.6 → 5, 4.4 → 4
+        const rounded = Math.round(overall);
         if (!ratings.includes(rounded)) return false;
       }
-      // Guests filter — maxGuests field, applied only after Search clicked
       if (searchTriggered) {
         const totalGuests = parseInt(activeSearch.adults) + parseInt(activeSearch.children);
         if (room.maxGuests && totalGuests > room.maxGuests) return false;
@@ -109,7 +111,6 @@ export default function App() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  // Build pagination pages array
   const getPaginationPages = () => {
     if (totalPages <= 7) return Array.from({ length: totalPages }, (_, i) => i + 1);
     const pages = [];
@@ -129,7 +130,7 @@ export default function App() {
 
   const startResult = filteredRooms.length === 0 ? 0 : (currentPage - 1) * ROOMS_PER_PAGE + 1;
   const endResult = Math.min(currentPage * ROOMS_PER_PAGE, filteredRooms.length);
- 
+
   return (
     <div style={{ backgroundColor: BG, color: DARK, fontFamily: "'Jost', sans-serif" }} className="min-h-screen">
       <style>{`
@@ -327,7 +328,6 @@ export default function App() {
                         />
                       </div>
 
-                      {/* Rating display */}
                       {room.rating?.overall && (
                         <div className="px-4 pt-3 flex items-center gap-0.5">
                           {[...Array(5)].map((_, i) => <StarIcon key={i} filled={i < Math.round(room.rating.overall)} />)}
@@ -348,10 +348,8 @@ export default function App() {
                   ))}
                 </div>
 
-                {/* PAGINATION — only shows if more than 1 page */}
                 {totalPages > 1 && (
                   <div className="flex items-center gap-2 mt-10 flex-wrap pagination-wrap">
-                    {/* Prev */}
                     <button
                       className="page-btn"
                       style={{ color: DARK, width: "auto", padding: "0 10px", gap: 4 }}
@@ -361,7 +359,6 @@ export default function App() {
                       <ChevronLeft /> <span className="hidden sm:inline text-xs">Prev</span>
                     </button>
 
-                    {/* Page numbers */}
                     {getPaginationPages().map((p, i) =>
                       p === "..." ? (
                         <span key={`ellipsis-${i}`} style={{ color: "rgba(4,17,6,0.4)", fontSize: 14, padding: "0 4px" }}>…</span>
@@ -377,7 +374,6 @@ export default function App() {
                       )
                     )}
 
-                    {/* Next */}
                     <button
                       className="page-btn"
                       style={{ color: DARK, width: "auto", padding: "0 10px", gap: 4 }}
@@ -389,7 +385,6 @@ export default function App() {
                   </div>
                 )}
 
-                {/* Page info */}
                 {totalPages > 1 && (
                   <p className="text-xs mt-3" style={{ color: "rgba(4,17,6,0.4)" }}>
                     Page {currentPage} of {totalPages}
@@ -401,7 +396,6 @@ export default function App() {
         </div>
       </div>
 
- 
     </div>
   );
 }
