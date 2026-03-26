@@ -2,8 +2,8 @@ import { useState, useEffect, useRef } from "react";
 
 const IMGS = {
   hero:      "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=1600&q=80&fit=crop",
-  suite:     "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=900&q=80&fit=crop",
-  spa:       "https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=900&q=80&fit=crop",
+  suite:     "/3.png",
+  spa:       "/2.png",
   dining:    "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=900&q=80&fit=crop",
   events:    "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=900&q=80&fit=crop",
   trails:    "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=900&q=80&fit=crop",
@@ -12,13 +12,56 @@ const IMGS = {
 };
 
 const SERVICES = [
-  { num:"01", label:"Stay",      title:"Sanctuary Suites",  img:IMGS.suite,     desc:"Private retreats suspended between forest and sky. Each suite is a living canvas — raw stone, warm timber, and light that changes with the seasons.", tags:["King beds","Forest view","Butler","Fireplace"],      price:"From ₹12,000 / night" },
-  { num:"02", label:"Restore",   title:"Forest Spa",        img:IMGS.spa,       desc:"Ancient rituals, contemporary touch. Steam caves, cold plunge pools, and hands that know exactly where silence lives in a tired body.",              tags:["Ayurveda","Hydrotherapy","Sound Bath","Yoga"],       price:"From ₹3,500 / session" },
-  { num:"03", label:"Taste",     title:"Root & Branch",     img:IMGS.dining,    desc:"Our kitchen is a garden, our garden is a kitchen. Seasonal menus written at dawn, read at dusk, remembered forever.",                                 tags:["Farm-to-table","Wine cave","Chef's table","Breakfast"], price:"Reservations open" },
-  { num:"04", label:"Gather",    title:"The Pavilion",      img:IMGS.events,    desc:"Heritage stone walls, open skies above. For those moments that deserve a stage — from whispered vows to roaring celebrations.",                       tags:["Weddings","Retreats","Boardroom","Galas"],           price:"Custom pricing" },
-  { num:"05", label:"Wander",    title:"Wild Trails",       img:IMGS.trails,    desc:"Leave the map behind. Our naturalists know every tree by name and every path by feel. Walk until the world becomes simple again.",                    tags:["Guided treks","Bird walks","Night THE FOREST VIEWi","Kayak"],   price:"From ₹1,500 / person" },
-];
+  { 
+    num:"01", 
+    label:"Stay",      
+    title:"Food & Dining / Cafe",  
+    img:IMGS.suite,     
+    desc:"A vibrant dining space serving freshly prepared meals, artisan coffee, and seasonal delights. From relaxed breakfasts to cozy evening bites, every dish is crafted to comfort and inspire.", 
+    tags:["Cafe seating","Multi-cuisine","Fresh bakery","Beverages"],      
+    price:"Avg ₹500–₹1,500 / person" 
+  },
 
+  { 
+    num:"02", 
+    label:"Restore",   
+    title:"Guest Services",        
+    img:IMGS.spa,       
+    desc:"Thoughtful services designed to make your stay seamless and comfortable. From 24/7 assistance to personalized arrangements, we ensure every guest feels cared for.",              
+    tags:["24/7 support","Room service","Housekeeping","Travel desk"],       
+    price:"Included with stay" 
+  },
+
+  { 
+    num:"03", 
+    label:"Taste",     
+    title:"Swimming Pool",     
+    img:IMGS.dining,    
+    desc:"A serene poolside escape perfect for relaxation and leisure. Enjoy refreshing dips, lounge by the water, or unwind with scenic surroundings.",                                 
+    tags:["Outdoor pool","Kids area","Poolside seating","Clean & safe"], 
+    price:"Included / Guest access" 
+  },
+
+  { 
+    num:"04", 
+    label:"Gather",    
+    title:"Banquet Hall",      
+    img:IMGS.events,    
+    desc:"A spacious and elegant venue ideal for celebrations, meetings, and special occasions. Designed to host everything from intimate gatherings to grand events.",                       
+    tags:["Weddings","Corporate events","AC hall","Catering"],           
+    price:"Custom pricing" 
+  },
+
+  { 
+    num:"05", 
+    label:"Wander",    
+    title:"Facilities & Convenience / Parking",       
+    img:IMGS.trails,    
+    desc:"Convenient on-site facilities including secure parking and essential amenities to ensure a hassle-free experience for all guests.",                    
+    tags:["Free parking","24/7 security","Easy access","Spacious area"],   
+    price:"Free for guests" 
+  },
+];
 const STATS = [
   { v:"25+", l:"Years of Excellence" },
   { v:"120",  l:"Forest Suites" },

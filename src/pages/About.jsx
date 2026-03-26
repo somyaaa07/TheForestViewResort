@@ -56,16 +56,9 @@ const IconClock     = () => (<svg viewBox="0 0 24 24" fill="none" stroke="curren
 const IconRocket    = () => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" style={{width:"100%",height:"100%"}}><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>);
 const IconUtensils  = () => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" style={{width:"100%",height:"100%"}}><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg>);
 const IconCoffee    = () => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" style={{width:"100%",height:"100%"}}><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg>);
-const IconGlobe     = () => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" style={{width:16,height:16}}><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>);
-const IconPhone     = () => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" style={{width:16,height:16}}><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>);
-const IconMail      = () => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" style={{width:16,height:16}}><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>);
-const IconPin       = () => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" style={{width:16,height:16}}><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>);
 const IconCheck     = () => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{width:16,height:16}}><polyline points="20 6 9 17 4 12"/></svg>);
 const IconArrow     = () => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{width:14,height:14}}><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>);
 const IconStar      = () => (<svg viewBox="0 0 24 24" fill="currentColor" style={{width:14,height:14}}><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>);
-const IconFire      = () => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" style={{width:28,height:28}}><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>);
-const IconTent      = () => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" style={{width:28,height:28}}><path d="M3.5 21 14 3"/><path d="M20.5 21 10 3"/><path d="M15.5 21 12 15l-3.5 6"/><path d="M2 21h20"/></svg>);
-const IconPlane     = () => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" style={{width:28,height:28}}><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>);
 
 const IconFacebook  = () => (<svg viewBox="0 0 24 24" fill="currentColor" style={{width:15,height:15}}><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>);
 const IconX         = () => (<svg viewBox="0 0 24 24" fill="currentColor" style={{width:15,height:15}}><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.737l7.73-8.835L1.254 2.25H8.08l4.258 5.63L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>);
@@ -87,12 +80,6 @@ const STEPS = [
   { step:"STEP 04", Icon: IconRocket,   title:"Book & Get Ready to Go",    desc:"Savoring new flavors creates memories that stay with you long after the trip." },
 ];
 
-const MARQUEE = [
-  { Icon: IconFire, text:"Go Beyond the Map" },
-  { Icon: IconTent, text:"Adventure Knows No Limits" },
-  { Icon: IconPlane,text:"Travel Smarter, Live Better" },
-];
-
 export default function SafarAboutPage() {
   const [slide, setSlide] = useState(0);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -106,7 +93,6 @@ export default function SafarAboutPage() {
     window.scrollTo(0, 0);
   }, []);
 
-  // Lock body scroll when mobile menu is open
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
@@ -143,7 +129,11 @@ export default function SafarAboutPage() {
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&family=Marcellus&display=swap');
 
-        body { overflow-x: hidden; }
+     
+        html { -webkit-text-size-adjust: 100%; }
+        body { overflow-x: hidden; margin: 0; }
+        img { max-width: 100%; display: block; }
+
         .marc { font-family: 'Marcellus', serif; }
 
         @keyframes spin { from{transform:rotate(0)} to{transform:rotate(360deg)} }
@@ -203,31 +193,94 @@ export default function SafarAboutPage() {
         .inner { max-width:1400px; margin:0 auto; padding:0 48px; }
 
         /* ══════════════════════════════
+           NAVBAR
+           — force GPU compositing layer so animated elements
+             in page content never interfere with backdrop-filter
+        ══════════════════════════════ */
+        .navbar {
+          position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+          display: flex; align-items: center; justify-content: space-between;
+          padding: 0 48px; height: 72px;
+          background: rgba(201,212,203,0.92);
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+          border-bottom: 1px solid rgba(4,17,6,.08);
+          /* FIX: own compositing layer — prevents page animations bleeding in */
+          transform: translateZ(0);
+          will-change: transform;
+        }
+        .navbar-logo {
+          font-family: 'Marcellus', serif;
+          font-size: 20px; color: ${DARK}; text-decoration: none;
+          letter-spacing: .04em; flex-shrink: 0;
+        }
+        .desktop-nav { display: flex; align-items: center; gap: 36px; }
+
+        /* ══════════════════════════════
            HERO
         ══════════════════════════════ */
         .hero {
-          position:relative; min-height:70vh;
-          background-image:url('/5.jpeg');
+          position:relative; min-height:80vh;
+          background-image:url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1600&q=80');
           background-size:cover; background-position:center;
-          display:flex; align-items:flex-end; padding-top:90px;
+          display:flex; align-items:flex-end; padding-top:72px;
         }
         .hero-overlay { position:absolute;inset:0;background:rgba(4,17,6,.70); }
-        .hero-content { position:relative;z-index:2;max-width:1400px;margin:0 auto;padding:0 48px 90px;width:100%; }
-        .hero-h1 { font-size:clamp(36px,7vw,90px); color:${BG}; font-weight:400; line-height:1.08; margin-bottom:22px; }
+        .hero-content {
+          position:relative; z-index:2;
+          max-width:1400px; margin:0 auto;
+          padding:0 48px 90px; width:100%;
+        }
+        .hero-h1 {
+          font-size:clamp(32px,7vw,90px);
+          color:${BG}; font-weight:400; line-height:1.08; margin-bottom:22px;
+        }
 
         /* ══════════════════════════════
            ABOUT SECTION
+           — isolation: isolate creates a stacking context
+             so the spin badge is always contained within
+             this section and NEVER floats above the navbar
         ══════════════════════════════ */
+        .about-section {
+          position: relative;
+          z-index: 0;
+          isolation: isolate;
+        }
         .about-grid {
           display:grid;
-          grid-template-columns: 380px 1fr 340px;
+          grid-template-columns: 360px 1fr 320px;
           gap:56px;
           align-items:start;
         }
+        /* always visible — only hidden on small screens via media queries below */
         .about-img1 { display:block; }
 
+        /* ── Spin badge wrapper: clips overflow so the badge
+              never escapes the image column on any screen size ── */
+        .spin-img-wrap {
+          position: relative;
+          /* Padding at bottom accommodates the badge overflow visually
+             without letting it escape the stacking context */
+          padding-bottom: 34px;
+        }
+
         /* ══════════════════════════════
-           WHY GRID
+           SPIN BADGE
+           — z-index 2 keeps it above the image but below navbar (999)
+             isolation on .about-section ensures it never escapes
+        ══════════════════════════════ */
+        .spin-badge {
+          position:absolute; bottom: 4px; right:-18px;
+          width:clamp(80px,12vw,110px); height:clamp(80px,12vw,110px);
+          border-radius:50%; background:${DARK};
+          display:flex; align-items:center; justify-content:center;
+          z-index: 2;
+        }
+        .spin-badge svg { position:absolute; width:100%; height:100%; }
+
+        /* ══════════════════════════════
+           WHY GRID  (3-column base)
         ══════════════════════════════ */
         .why-grid {
           display:grid;
@@ -259,8 +312,6 @@ export default function SafarAboutPage() {
            TESTIMONIALS
         ══════════════════════════════ */
         .testi-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
-        .testi-col2 {}
-        .testi-col3 {}
 
         /* ══════════════════════════════
            COUNTER ROW
@@ -269,7 +320,7 @@ export default function SafarAboutPage() {
         .stat-num { font-size:clamp(44px,5vw,60px); color:${DARK}; line-height:1; }
 
         /* ══════════════════════════════
-           MOBILE MENU BUTTON (hidden by default)
+           MOBILE MENU BUTTON
         ══════════════════════════════ */
         .mobile-menu-btn {
           display:none;
@@ -277,7 +328,7 @@ export default function SafarAboutPage() {
           width:44px; height:44px; cursor:pointer;
           border-radius:4px; align-items:center; justify-content:center;
           flex-direction:column; gap:5px; padding:10px;
-          position:relative; z-index:1001;
+          position:relative; z-index:1001; flex-shrink:0;
         }
         .mobile-menu-btn span {
           display:block; width:22px; height:2px;
@@ -295,14 +346,14 @@ export default function SafarAboutPage() {
           position:fixed; inset:0; z-index:1000;
           background:${BG};
           flex-direction:column;
-          padding:100px 32px 40px;
+          padding:88px 32px 40px;
           overflow-y:auto;
         }
         .mobile-nav.open { display:flex; animation:fadeIn .25s ease; }
         @keyframes fadeIn { from{opacity:0;transform:translateY(-10px)} to{opacity:1;transform:translateY(0)} }
         .mobile-nav-link {
           font-size:28px; font-weight:500; color:${DARK};
-          text-decoration:none; padding:20px 0;
+          text-decoration:none; padding:18px 0;
           border-bottom:1px solid rgba(4,17,6,.1);
           font-family:'Marcellus',serif;
           display:block;
@@ -310,28 +361,81 @@ export default function SafarAboutPage() {
         .mobile-nav-link:last-child { border-bottom:none; }
 
         /* ══════════════════════════════
-           RESPONSIVE — 1200px
+           RESPONSIVE — 1280px
+           Only adjust padding/spacing, keep full layout intact
         ══════════════════════════════ */
-        @media (max-width:1200px) {
-          .about-grid { grid-template-columns:1fr 1fr; gap:36px; }
-          .about-img1 { display:none !important; }
-          .inner { padding:0 36px; }
+        @media (max-width:1280px) {
+          .inner { padding:0 40px; }
+          .navbar { padding:0 40px; }
+          .hero-content { padding:0 40px 80px; }
+          /* Slightly tighter columns — still 3-col */
+          .about-grid { grid-template-columns: 300px 1fr 280px; gap:40px; }
         }
 
         /* ══════════════════════════════
            RESPONSIVE — 1024px
+           ★ KEEP FULL 1440px LAYOUT ★
+           Only reduce paddings, fonts, column widths.
+           NO grid-column-count changes here.
         ══════════════════════════════ */
         @media (max-width:1024px) {
-          /* Why grid — 2 cols */
-          .why-grid { grid-template-columns:1fr 1fr; }
+          .inner { padding:0 32px; }
+          .navbar { padding:0 32px; }
+          .hero-content { padding:0 32px 72px; }
+          .sec { padding:88px 0; }
+          .desktop-nav { gap:20px; }
+          .nav-a { font-size:14px; }
+
+          /* About — narrower 3-col, still all 3 columns visible */
+          .about-grid { grid-template-columns: 220px 1fr 220px; gap:28px; }
+          /* Ensure the first image column is still shown */
+          .about-img1 { display:block !important; }
+
+          /* Why grid keeps 3 columns */
+          .why-grid { grid-template-columns: 1fr 1fr 1fr; }
+          /* Why grid positions unchanged (already set above) */
+
+          /* Steps keep 4 columns */
+          .steps-grid { grid-template-columns:repeat(4,1fr); }
+
+          /* Restaurant keep 3 columns */
+          .rest-grid { grid-template-columns:1fr 1.2fr 1fr; gap:28px; }
+
+          /* Testimonials keep 3 columns */
+          .testi-grid { grid-template-columns:repeat(3,1fr); }
+        }
+
+        /* ══════════════════════════════
+           RESPONSIVE — 768px  (tablet portrait)
+           Start simplifying layout here
+        ══════════════════════════════ */
+        @media (max-width:768px) {
+          .sec { padding:64px 0; }
+          .inner { padding:0 24px; }
+          .navbar { padding:0 24px; height:64px; }
+          .hero-content { padding:0 24px 56px; }
+          .hero { min-height:60vh; padding-top:64px; }
+
+          /* Nav — switch to hamburger */
+          .desktop-nav { display:none !important; }
+          .mobile-menu-btn { display:flex !important; }
+
+          /* About — 2-column, hide first image col */
+          .about-grid { grid-template-columns:1fr 1fr; gap:28px; }
+          .about-img1 { display:none !important; }
+
+          /* ★ HIDE circle images on tablet & mobile ★ */
+          .circ1 { display:none !important; }
+          .circ2 { display:none !important; }
+
+          /* Why grid — 2 cols (circles hidden so reflow naturally) */
+          .why-grid { grid-template-columns:1fr 1fr; gap:20px; }
           .why-heading { grid-column:1/3; grid-row:1/2; }
           .card01      { grid-column:2/3; grid-row:2/3; }
           .why-avatars { grid-column:1/2; grid-row:2/3; }
           .card02      { grid-column:1/2; grid-row:3/4; }
-          .circ1       { grid-column:2/3; grid-row:3/4; }
-          .card03      { grid-column:1/2; grid-row:4/5; }
-          .circ2       { grid-column:2/3; grid-row:4/5; }
-          .card04      { grid-column:1/2; grid-row:5/6; }
+          .card03      { grid-column:2/3; grid-row:3/4; }
+          .card04      { grid-column:1/2; grid-row:4/5; }
 
           /* Steps — 2 cols */
           .steps-grid { grid-template-columns:repeat(2,1fr); }
@@ -341,41 +445,60 @@ export default function SafarAboutPage() {
           .step-item:nth-last-child(2) { border-bottom:none; }
 
           /* Restaurant — 2 cols */
-          .rest-grid { grid-template-columns:1fr 1fr; }
+          .rest-grid { grid-template-columns:1fr 1fr; gap:24px; }
           .rest-col3 { grid-column:1/3; }
 
           /* Testimonials — 2 cols */
-          .testi-grid { grid-template-columns:1fr 1fr; }
+          .testi-grid { grid-template-columns:1fr 1fr; gap:20px; }
           .testi-col3 { display:none !important; }
+
+          /* Counter */
+          .counter-row { gap:32px; }
+
+          /* Spin badge — tighter */
+          .spin-badge { bottom:8px; right:-10px; }
         }
 
         /* ══════════════════════════════
-           RESPONSIVE — 768px
+           RESPONSIVE — 480px  (phone)
         ══════════════════════════════ */
-        @media (max-width:768px) {
-          .sec { padding:72px 0; }
-          .inner { padding:0 20px; }
-          .hero-content { padding:0 20px 60px; }
-          .hero { min-height:60vh; padding-top:70px; }
+        @media (max-width:480px) {
+          .inner { padding:0 16px; }
+          .navbar { padding:0 16px; height:60px; }
+          .hero-content { padding:0 16px 44px; }
+          .hero { min-height:72vh; padding-top:60px; }
+          .sec { padding:56px 0; }
 
-          /* Nav */
-          .desktop-nav { display:none !important; }
-          .mobile-menu-btn { display:flex !important; }
+          .hero-h1 { font-size: clamp(28px, 8vw, 44px); }
 
-          /* About */
-          .about-grid { grid-template-columns:1fr; gap:28px; }
+          /* About — single column */
+          .about-grid { grid-template-columns:1fr; gap:24px; }
           .about-img1 { display:none !important; }
 
+          /* ★ circ1/circ2 already hidden from 768px rule ★ */
+
           /* Why — 1 col */
-          .why-grid { grid-template-columns:1fr; gap:20px; }
+          .why-grid { grid-template-columns:1fr; gap:16px; }
           .why-heading,
           .card01, .card02, .card03, .card04,
-          .why-avatars, .circ1, .circ2 {
+          .why-avatars {
             grid-column:1 !important;
             grid-row:auto !important;
           }
 
-          /* Steps — 1 col */
+          /* Counter stack */
+          .counter-row { gap:24px; flex-direction:column; }
+
+          /* Check rows */
+          .ck-row { padding:12px 14px; gap:12px; }
+
+          /* Spin badge */
+          .spin-badge { width:72px; height:72px; bottom:8px; right:-8px; }
+
+          /* Steps padding */
+          .step-item { padding: 24px 16px !important; }
+
+          /* Steps — 1 col on very small screens */
           .steps-grid { grid-template-columns:1fr; }
           .step-item {
             border-right:none !important;
@@ -384,37 +507,58 @@ export default function SafarAboutPage() {
           .step-item:last-child { border-bottom:none !important; }
 
           /* Restaurant — 1 col */
-          .rest-grid { grid-template-columns:1fr; gap:24px; }
+          .rest-grid { grid-template-columns:1fr; gap:20px; }
           .rest-col3 { grid-column:1 !important; }
 
           /* Testimonials — 1 col */
           .testi-grid { grid-template-columns:1fr; }
           .testi-col2, .testi-col3 { display:none !important; }
 
-          /* Counter */
-          .counter-row { gap:32px; }
+          /* Testimonial nav buttons */
+          .testi-nav-btn { width:44px !important; height:44px !important; font-size:17px !important; }
         }
 
         /* ══════════════════════════════
-           RESPONSIVE — 480px
-        ══════════════════════════════ */
-        @media (max-width:480px) {
-          .inner { padding:0 16px; }
-          .hero-content { padding:0 16px 48px; }
-          .hero { min-height:55vh; }
-          .sec { padding:60px 0; }
-          .counter-row { gap:24px; flex-direction:column; }
-          .ck-row { padding:14px 16px; }
-        }
-
-        /* ══════════════════════════════
-           PRINT / VERY SMALL (320px)
+           RESPONSIVE — 360px  (very small phones)
         ══════════════════════════════ */
         @media (max-width:360px) {
           .inner { padding:0 12px; }
-          .hero-content { padding:0 12px 40px; }
+          .navbar { padding:0 12px; }
+          .hero-content { padding:0 12px 36px; }
+          .sec { padding:48px 0; }
+          .mobile-nav { padding:72px 20px 32px; }
+          .mobile-nav-link { font-size:22px; padding:14px 0; }
+          .navbar-logo { font-size:16px; }
+          .counter-row { gap:20px; }
+        }
+
+        /* ══════════════════════════════
+           TOUCH-DEVICE OPTIMISATIONS
+        ══════════════════════════════ */
+        @media (hover:none) {
+          .ck-row:hover { background:rgba(4,17,6,.05); color:${DARK}; }
+          .ck-row:hover .ck-icon svg { stroke:${DARK}; }
+          .btn-p:hover { background:${DARK}; color:${BG}; }
+        }
+
+        /* ══════════════════════════════
+           LANDSCAPE PHONES
+        ══════════════════════════════ */
+        @media (max-width:768px) and (orientation:landscape) {
+          .hero { min-height:80vh; }
+          .about-grid { grid-template-columns:1fr 1fr; }
+        }
+
+        /* ══════════════════════════════
+           LARGE DISPLAYS (2K / 4K)
+        ══════════════════════════════ */
+        @media (min-width:1800px) {
+          .inner { max-width:1600px; }
+          .navbar { max-width:100%; }
         }
       `}</style>
+
+    
 
       {/* ══════════ HERO ══════════ */}
       <section className="hero">
@@ -433,29 +577,30 @@ export default function SafarAboutPage() {
             </h1>
           </Reveal>
           <Reveal delay={240}>
-            <p style={{color:"rgba(255,255,255,.72)",fontSize:"clamp(14px,2vw,19px)",maxWidth:560,lineHeight:1.8}}>
+            <p style={{color:"rgba(255,255,255,.72)",fontSize:"clamp(14px,2vw,19px)",maxWidth:560,lineHeight:1.8,margin:0}}>
               We connect travelers with exceptional hotels and experiences, ensuring comfort, quality, and memorable moments every step of the journey.
             </p>
           </Reveal>
         </div>
       </section>
 
-      {/* Mobile nav overlay */}
-      <div className={`mobile-nav ${menuOpen ? "open" : ""}`}>
-        {["Home","About","Accommodation","Destinations","Contact"].map(l => (
-          <a key={l} href="#" className="mobile-nav-link" onClick={() => setMenuOpen(false)}>{l}</a>
-        ))}
-      </div>
-
       {/* ══════════ ABOUT ══════════ */}
-      <section className="sec" style={{background:BG}}>
+      {/*
+        .about-section has isolation:isolate + z-index:0
+        This creates a CONTAINED stacking context — the spinning badge
+        lives inside it and can never paint above z-index:999 navbar.
+      */}
+      <section className="sec about-section" style={{background:BG}}>
         <div className="inner">
           <div className="about-grid">
 
-            {/* Col 1 — hidden below 1200px */}
+            {/* Col 1 — visible down to 768px (hidden at 768px via CSS) */}
             <Reveal className="about-img1">
-              <img src="/sher.jpg"
-                alt="" style={{width:"100%",height:560,objectFit:"cover",display:"block",borderRadius:4}}/>
+              <img
+                src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&q=80"
+                alt="Hotel exterior"
+                style={{width:"100%",height:560,objectFit:"cover",display:"block",borderRadius:4}}
+              />
             </Reveal>
 
             {/* Col 2 — main content */}
@@ -484,34 +629,27 @@ export default function SafarAboutPage() {
                 <div className="counter-row">
                   <div>
                     <div className="marc stat-num"><Counter target={146} suffix="+"/></div>
-                    <p style={{fontSize:12,letterSpacing:".2em",textTransform:"uppercase",marginTop:9,opacity:.48}}>HOTEL AND RESORT</p>
+                    <p style={{fontSize:12,letterSpacing:".2em",textTransform:"uppercase",marginTop:9,opacity:.48,margin:"9px 0 0"}}>HOTEL AND RESORT</p>
                   </div>
                   <div>
                     <div className="marc stat-num"><Counter target={28} suffix="k+"/></div>
-                    <p style={{fontSize:12,letterSpacing:".2em",textTransform:"uppercase",marginTop:9,opacity:.48}}>SATISFIED VISITORS</p>
+                    <p style={{fontSize:12,letterSpacing:".2em",textTransform:"uppercase",marginTop:9,opacity:.48,margin:"9px 0 0"}}>SATISFIED VISITORS</p>
                   </div>
                 </div>
               </Reveal>
             </div>
 
-            {/* Col 3 — image with badge */}
+            {/* Col 3 — image with spin badge
+                .spin-img-wrap has padding-bottom:34px so the badge
+                (bottom:4px) is fully inside the column's paint area */}
             <Reveal delay={150}>
-              <div style={{position:"relative"}}>
-                <img src="https://i.pinimg.com/736x/cf/e5/8b/cfe58b98e9d414807f69baeadc70d858.jpg"
-                  alt="" style={{width:"100%",height:"clamp(340px,45vw,500px)",objectFit:"cover",objectPosition:"top",display:"block",borderRadius:4}}/>
-                <div className="spin" style={{
-                  position:"absolute",bottom:-30,right:-18,
-                  width:110,height:110,borderRadius:"50%",
-                  background:DARK,display:"flex",alignItems:"center",justifyContent:"center",
-                }}>
-                  <svg viewBox="0 0 130 130" style={{position:"absolute",width:110,height:110}}>
-                    <path id="sp2" d="M65,65 m-48,0 a48,48 0 1,1 96,0 a48,48 0 1,1 -96,0" fill="none"/>
-                    <text style={{fontSize:10,fill:BG,letterSpacing:3}}>
-                      <textPath href="#sp2">THE FOREST VIEW STORY • ABOUT US • 2012 •</textPath>
-                    </text>
-                  </svg>
-                  <span style={{color:BG,fontSize:22}}>✦</span>
-                </div>
+              <div className="spin-img-wrap">
+                <img
+                  src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=700&q=80"
+                  alt="Luxury hotel room"
+                  style={{width:"100%",height:"clamp(300px,45vw,500px)",objectFit:"cover",objectPosition:"top",display:"block",borderRadius:4}}
+                />
+              
               </div>
             </Reveal>
           </div>
@@ -527,7 +665,7 @@ export default function SafarAboutPage() {
               <span style={{fontSize:12,letterSpacing:".28em",textTransform:"uppercase",color:DARK,opacity:.42,display:"block",marginBottom:18}}>
                 WHY THE FOREST VIEW SPECIAL?
               </span>
-              <h2 className="marc" style={{fontSize:"clamp(26px,3.5vw,58px)",fontWeight:400,lineHeight:1.2,color:DARK}}>
+              <h2 className="marc" style={{fontSize:"clamp(24px,3.5vw,58px)",fontWeight:400,lineHeight:1.2,color:DARK,margin:0}}>
                 Experience Comfort<br/>
                 Convenience Your Perfect<br/>
                 Accommodation Awaits
@@ -535,11 +673,11 @@ export default function SafarAboutPage() {
             </Reveal>
 
             <Reveal delay={80} className="card01">
-              <div style={cardWhite}>
+              <div className="why-card-inner" style={cardWhite}>
                 <span className="marc" style={{position:"absolute",top:18,right:22,fontSize:46,fontWeight:400,color:"rgba(4,17,6,.07)",lineHeight:1}}>01</span>
                 <div style={iconCircle()}><IconMap/></div>
-                <h3 className="marc" style={{fontSize:23,fontWeight:400,color:DARK,marginBottom:12}}>Flexible Search</h3>
-                <p style={{fontSize:15,lineHeight:1.78,color:DARK,opacity:.58,marginBottom:20}}>
+                <h3 className="marc" style={{fontSize:"clamp(19px,2vw,23px)",fontWeight:400,color:DARK,marginBottom:12}}>Flexible Search</h3>
+                <p style={{fontSize:"clamp(13px,1.3vw,15px)",lineHeight:1.78,color:DARK,opacity:.58,marginBottom:20}}>
                   Travel is the ultimate way to explore the world, embrace new cultures, and create unforgettable memories.
                 </p>
                 <a href="#" className="read-more" style={{color:DARK}}>READ MORE <IconArrow/></a>
@@ -547,7 +685,7 @@ export default function SafarAboutPage() {
             </Reveal>
 
             <Reveal delay={60} className="why-avatars">
-              <div style={{display:"flex",alignItems:"center",marginBottom:20}}>
+              <div style={{display:"flex",alignItems:"center",marginBottom:20,flexWrap:"wrap",gap:4}}>
                 {[
                   "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=70&h=70&fit=crop&crop=face",
                   "https://images.unsplash.com/photo-1494790108755-2616b612b47c?w=70&h=70&fit=crop&crop=face",
@@ -559,10 +697,11 @@ export default function SafarAboutPage() {
                     border:`3px solid ${SHADE}`,
                     marginLeft:i>0?-14:0,
                     zIndex:4-i,position:"relative",
+                    flexShrink:0,
                   }}/>
                 ))}
               </div>
-              <p style={{fontSize:16,color:DARK,opacity:.62,lineHeight:1.75}}>
+              <p style={{fontSize:"clamp(14px,1.4vw,16px)",color:DARK,opacity:.62,lineHeight:1.75,margin:0}}>
                 Unleash Your Inner Explorer.<br/>
                 Discover Your Next Destination.<br/>
                 Your Next Adventure
@@ -570,47 +709,61 @@ export default function SafarAboutPage() {
             </Reveal>
 
             <Reveal delay={120} className="card02">
-              <div style={cardDark}>
+              <div className="why-card-inner" style={cardDark}>
                 <span className="marc" style={{position:"absolute",top:18,right:22,fontSize:46,fontWeight:400,color:"rgba(201,212,203,.1)",lineHeight:1}}>02</span>
                 <div style={iconCircle(true)}><IconBuilding/></div>
-                <h3 className="marc" style={{fontSize:23,fontWeight:400,color:BG,marginBottom:12}}>Trusted Listings</h3>
-                <p style={{fontSize:15,lineHeight:1.78,color:BG,opacity:.62,marginBottom:20}}>
+                <h3 className="marc" style={{fontSize:"clamp(19px,2vw,23px)",fontWeight:400,color:BG,marginBottom:12}}>Trusted Listings</h3>
+                <p style={{fontSize:"clamp(13px,1.3vw,15px)",lineHeight:1.78,color:BG,opacity:.62,marginBottom:20}}>
                   Hotels and resorts across countless destinations wherever you travel, we're already there it's a story.
                 </p>
                 <a href="#" className="read-more" style={{color:BG}}>READ MORE <IconArrow/></a>
               </div>
             </Reveal>
 
+            {/*
+              circ1 — hidden at ≤768px via CSS (.circ1 { display:none !important })
+              Visible only on 1024px+ (looks exactly like 1440px)
+            */}
             <Reveal delay={160} className="circ1">
               <div style={{width:"100%",maxWidth:260,aspectRatio:"1/1",borderRadius:"50%",overflow:"hidden",margin:"0 auto",boxShadow:"0 4px 32px rgba(4,17,6,.15)"}}>
-                <img src="/3.jpeg" alt="" style={{width:"100%",height:"100%",objectFit:"cover"}}/>
+                <img
+                  src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=600&q=80"
+                  alt="" style={{width:"100%",height:"100%",objectFit:"cover"}}
+                />
               </div>
             </Reveal>
 
             <Reveal delay={100} className="card03">
-              <div style={cardWhite}>
+              <div className="why-card-inner" style={cardWhite}>
                 <span className="marc" style={{position:"absolute",top:18,right:22,fontSize:46,fontWeight:400,color:"rgba(4,17,6,.07)",lineHeight:1}}>03</span>
                 <div style={iconCircle()}><IconMountain/></div>
-                <h3 className="marc" style={{fontSize:23,fontWeight:400,color:DARK,marginBottom:12}}>Beautiful View</h3>
-                <p style={{fontSize:15,lineHeight:1.78,color:DARK,opacity:.58,marginBottom:20}}>
+                <h3 className="marc" style={{fontSize:"clamp(19px,2vw,23px)",fontWeight:400,color:DARK,marginBottom:12}}>Beautiful View</h3>
+                <p style={{fontSize:"clamp(13px,1.3vw,15px)",lineHeight:1.78,color:DARK,opacity:.58,marginBottom:20}}>
                   Wake up to breathtaking scenery every morning — our hotels are located in some of the world's most stunning locations.
                 </p>
                 <a href="#" className="read-more" style={{color:DARK}}>READ MORE <IconArrow/></a>
               </div>
             </Reveal>
 
+            {/*
+              circ2 — hidden at ≤768px via CSS (.circ2 { display:none !important })
+              Visible only on 1024px+ (looks exactly like 1440px)
+            */}
             <Reveal delay={140} className="circ2">
               <div style={{width:"100%",maxWidth:260,aspectRatio:"1/1",borderRadius:"50%",overflow:"hidden",margin:"0 auto",boxShadow:"0 4px 32px rgba(4,17,6,.15)"}}>
-                <img src="/4.jpeg" alt="" style={{width:"100%",height:"100%",objectFit:"cover"}}/>
+                <img
+                  src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80"
+                  alt="" style={{width:"100%",height:"100%",objectFit:"cover"}}
+                />
               </div>
             </Reveal>
 
             <Reveal delay={180} className="card04">
-              <div style={cardWhite}>
+              <div className="why-card-inner" style={cardWhite}>
                 <span className="marc" style={{position:"absolute",top:18,right:22,fontSize:46,fontWeight:400,color:"rgba(4,17,6,.07)",lineHeight:1}}>04</span>
                 <div style={iconCircle()}><IconPaw/></div>
-                <h3 className="marc" style={{fontSize:23,fontWeight:400,color:DARK,marginBottom:12}}>Pet Friendly Hotels</h3>
-                <p style={{fontSize:15,lineHeight:1.78,color:DARK,opacity:.58,marginBottom:20}}>
+                <h3 className="marc" style={{fontSize:"clamp(19px,2vw,23px)",fontWeight:400,color:DARK,marginBottom:12}}>Pet Friendly Hotels</h3>
+                <p style={{fontSize:"clamp(13px,1.3vw,15px)",lineHeight:1.78,color:DARK,opacity:.58,marginBottom:20}}>
                   Our pet-friendly hotels are designed to welcome every member of your family including your pets.
                 </p>
                 <a href="#" className="read-more" style={{color:DARK}}>READ MORE <IconArrow/></a>
@@ -625,9 +778,9 @@ export default function SafarAboutPage() {
       <section className="sec" style={{background:BG}}>
         <div className="inner">
           <Reveal>
-            <div style={{marginBottom:64}}>
+            <div style={{marginBottom:"clamp(36px,5vw,64px)"}}>
               <span style={{fontSize:12,letterSpacing:".28em",textTransform:"uppercase",opacity:.4,display:"block",marginBottom:12}}>HOW DOES IT WORK</span>
-              <h2 className="marc" style={{fontSize:"clamp(26px,4.5vw,62px)",fontWeight:400}}>Our Booking Process</h2>
+              <h2 className="marc" style={{fontSize:"clamp(24px,4.5vw,62px)",fontWeight:400,margin:0}}>Our Booking Process</h2>
             </div>
           </Reveal>
           <div className="steps-grid">
@@ -639,7 +792,7 @@ export default function SafarAboutPage() {
                     marginBottom:24,textTransform:"uppercase"}}>{s.step}</span>
                   <div style={{width:44,height:44,color:DARK,marginBottom:16}}><s.Icon/></div>
                   <h3 className="marc" style={{fontSize:"clamp(17px,1.8vw,24px)",fontWeight:400,marginBottom:12}}>{s.title}</h3>
-                  <p style={{fontSize:"clamp(13px,1.2vw,16px)",lineHeight:1.78,opacity:.56}}>{s.desc}</p>
+                  <p style={{fontSize:"clamp(13px,1.2vw,16px)",lineHeight:1.78,opacity:.56,margin:0}}>{s.desc}</p>
                 </div>
               </Reveal>
             ))}
@@ -651,19 +804,19 @@ export default function SafarAboutPage() {
       <section className="sec" style={{background:DARK}}>
         <div className="inner">
           <Reveal>
-            <div style={{marginBottom:64}}>
+            <div style={{marginBottom:"clamp(36px,5vw,64px)"}}>
               <span style={{fontSize:12,letterSpacing:".28em",textTransform:"uppercase",color:"rgba(201,212,203,.38)",display:"block",marginBottom:12}}>RESTAURANT AND BARS</span>
-              <h2 className="marc" style={{fontSize:"clamp(22px,3.5vw,58px)",color:BG,fontWeight:400,lineHeight:1.2}}>
+              <h2 className="marc" style={{fontSize:"clamp(20px,3.5vw,58px)",color:BG,fontWeight:400,lineHeight:1.2,margin:0}}>
                 Create Memories Across The Globe
               </h2>
-              <h2 className="marc" style={{fontSize:"clamp(22px,3.5vw,58px)",color:"rgba(201,212,203,.2)",fontWeight:400,lineHeight:1.2}}>
+              <h2 className="marc" style={{fontSize:"clamp(20px,3.5vw,58px)",color:"rgba(201,212,203,.2)",fontWeight:400,lineHeight:1.2,margin:0}}>
                 with Journeys Designed Around You
               </h2>
             </div>
           </Reveal>
           <div className="rest-grid">
             <Reveal delay={80}>
-              <div style={{background:"rgba(201,212,203,.05)",border:"1px solid rgba(201,212,203,.08)",padding:"40px 32px",borderRadius:8}}>
+              <div style={{background:"rgba(201,212,203,.05)",border:"1px solid rgba(201,212,203,.08)",padding:"clamp(24px,4vw,40px) clamp(20px,3vw,32px)",borderRadius:8}}>
                 <div style={{width:44,height:44,color:BG,marginBottom:16,opacity:.7}}><IconUtensils/></div>
                 <h3 className="marc" style={{fontSize:"clamp(18px,2vw,26px)",color:BG,fontWeight:400,marginBottom:14}}>Passion On Plate</h3>
                 <p style={{fontSize:"clamp(14px,1.4vw,16px)",color:"rgba(201,212,203,.52)",lineHeight:1.8,marginBottom:28}}>
@@ -688,12 +841,20 @@ export default function SafarAboutPage() {
                     </div>
                   ))}
                 </div>
-                <img src="/6.jpeg" alt="" style={{width:"100%",height:240,objectFit:"cover",display:"block",borderRadius:4}}/>
+                <img
+                  src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80"
+                  alt="Restaurant dining"
+                  style={{width:"100%",height:240,objectFit:"cover",display:"block",borderRadius:4}}
+                />
               </div>
             </Reveal>
             <Reveal delay={240} className="rest-col3">
               <div>
-                <img src="/7.jpeg" alt="" style={{width:"100%",height:220,objectFit:"cover",display:"block",marginBottom:24,borderRadius:4}}/>
+                <img
+                  src="https://images.unsplash.com/photo-1551218808-94e220e084d2?w=800&q=80"
+                  alt="Hotel bar"
+                  style={{width:"100%",height:220,objectFit:"cover",display:"block",marginBottom:24,borderRadius:4}}
+                />
                 <h4 className="marc" style={{fontSize:"clamp(18px,2vw,24px)",color:BG,fontWeight:400,marginBottom:14}}>Passion On Plate</h4>
                 <p style={{fontSize:"clamp(14px,1.4vw,16px)",color:"rgba(201,212,203,.52)",lineHeight:1.8,marginBottom:22}}>
                   Experience travel as it's meant to be — immersive, inspiring, unforgettable. From dream to destination, we bring the world to your doorstep.
@@ -712,23 +873,22 @@ export default function SafarAboutPage() {
       {/* ══════════ TESTIMONIALS ══════════ */}
       <section className="sec" style={{background:BG}}>
         <div className="inner">
-          <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-end",marginBottom:60,flexWrap:"wrap",gap:20}}>
+          <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-end",marginBottom:"clamp(36px,5vw,60px)",flexWrap:"wrap",gap:20}}>
             <Reveal>
               <div>
                 <span style={{fontSize:12,letterSpacing:".28em",textTransform:"uppercase",opacity:.4,display:"block",marginBottom:12}}>CUSTOMERS FEEDBACK</span>
-                <h2 className="marc" style={{fontSize:"clamp(24px,3.5vw,58px)",fontWeight:400}}>What Our Clients Say</h2>
+                <h2 className="marc" style={{fontSize:"clamp(22px,3.5vw,58px)",fontWeight:400,margin:0}}>What Our Clients Say</h2>
               </div>
             </Reveal>
             <div style={{display:"flex",gap:12}}>
-              <button onClick={()=>setSlide(p=>(p-1+TESTIMONIALS.length)%TESTIMONIALS.length)}
+              <button className="testi-nav-btn" onClick={()=>setSlide(p=>(p-1+TESTIMONIALS.length)%TESTIMONIALS.length)}
                 style={{width:52,height:52,border:"1.5px solid rgba(4,17,6,.18)",background:"none",cursor:"pointer",fontSize:20,borderRadius:2,display:"flex",alignItems:"center",justifyContent:"center"}}>←</button>
-              <button onClick={()=>setSlide(p=>(p+1)%TESTIMONIALS.length)}
+              <button className="testi-nav-btn" onClick={()=>setSlide(p=>(p+1)%TESTIMONIALS.length)}
                 style={{width:52,height:52,border:`1.5px solid ${DARK}`,background:DARK,color:BG,cursor:"pointer",fontSize:20,borderRadius:2,display:"flex",alignItems:"center",justifyContent:"center"}}>→</button>
             </div>
           </div>
 
           <div className="testi-grid">
-            {/* Card 1 — always visible */}
             {[0,1,2].map((offset) => {
               const t = TESTIMONIALS[(slide+offset)%TESTIMONIALS.length];
               const mid = offset === 1;
@@ -737,10 +897,9 @@ export default function SafarAboutPage() {
                 <div key={offset} className={extraClass} style={{
                   background: mid ? DARK : "rgba(4,17,6,.04)",
                   border:"1px solid rgba(4,17,6,.08)",
-                  padding:"38px 34px",
+                  padding:"clamp(24px,4vw,38px) clamp(20px,3vw,34px)",
                   transition:"all .5s",
                   borderRadius:8,
-                  display: offset === 2 ? undefined : undefined,
                 }}>
                   <div style={{display:"flex",gap:4,marginBottom:18}}>
                     {[...Array(5)].map((_,i)=>(
@@ -751,7 +910,7 @@ export default function SafarAboutPage() {
                     "Our recent trip was flawless, thanks to THE FOREST VIEW. Their expert planning and personalized service made it truly unforgettable!"
                   </p>
                   <div style={{display:"flex",alignItems:"center",gap:14}}>
-                    <img src={t.img} alt={t.name} style={{width:56,height:56,borderRadius:"50%",objectFit:"cover"}}/>
+                    <img src={t.img} alt={t.name} style={{width:56,height:56,borderRadius:"50%",objectFit:"cover",flexShrink:0}}/>
                     <div>
                       <h4 style={{fontSize:17,fontWeight:600,color:mid?BG:DARK,marginBottom:3}}>{t.name}</h4>
                       <span style={{fontSize:14,color:mid?"rgba(201,212,203,.44)":"rgba(4,17,6,.4)"}}>{t.role}</span>
