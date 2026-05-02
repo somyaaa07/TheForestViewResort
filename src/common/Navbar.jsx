@@ -93,6 +93,8 @@ const navItems = [
   { label: "Service",        to: "/services"       },
   { label: "Safari Booking", to: "/safari-booking" },
   { label: "About",          to: "/about"          },
+    { label: "Gallery",        to: "/gallery"        },
+
   { label: "Contact",        to: "/contact"        },
 ];
 

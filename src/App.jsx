@@ -8,6 +8,7 @@ import HotelNavbar from './common/Navbar'
 import ServicesPage from './pages/Services'
 import Footer from './common/Footer'
 import SafariBooking from './pages/SafariBooking'
+import PremiumGallery from './pages/Gallery'
 export default function App() {
   return (
 <Router>
@@ -31,6 +32,10 @@ export default function App() {
     }/>
     <Route path="/safari-booking" element={
       <SafariBooking/>
+    }/>
+
+    <Route path="/gallery" element={
+<PremiumGallery/>
     }/>
   </Routes>
   <Footer/>
