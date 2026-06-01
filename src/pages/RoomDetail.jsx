@@ -473,92 +473,11 @@ export default function RoomDetail({ roomId, onBack, onExplore }) {
               </div>
             </section>
 
-            {/* HOTEL LOCATION */}
-            <section style={{ marginBottom:36 }}>
-              <h2 className="sh">Hotel Location</h2>
-              <div style={{ position:"relative", height:"clamp(260px,50vw,400px)", border:"1px solid rgba(4,17,6,.12)", overflow:"hidden", borderRadius:2 }}>
-                <iframe
-                  title="Hotel Location Map"
-                  src={`https://www.openstreetmap.org/export/embed.html?bbox=${room.lng-0.02}%2C${room.lat-0.012}%2C${room.lng+0.02}%2C${room.lat+0.012}&layer=mapnik&marker=${room.lat}%2C${room.lng}`}
-                  style={{ width:"100%", height:"100%", border:"none", display:"block" }}
-                  loading="lazy"
-                />
-              </div>
-            </section>
+      
 
             {/* AVAILABILITY */}
-            <section style={{ marginBottom:36 }}>
-              <h2 className="sh">Availability</h2>
-              <AvailabilityCalendar />
-            </section>
+ 
 
-            {/* RATING + REVIEWS */}
-            <section style={{ marginBottom:36 }}>
-              <div style={{ display:"flex", gap:"clamp(16px,4vw,32px)", marginBottom:24, padding:"clamp(14px,3vw,24px)", background:"rgba(255,255,255,.58)", border:"1px solid rgba(4,17,6,.09)", flexWrap:"wrap" }}>
-                <div style={{ display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center", minWidth:80 }}>
-                  <span style={{ fontFamily:"Marcellus,serif", fontSize:"clamp(38px,6vw,52px)", color:D, lineHeight:1 }}>{room.rating.overall}</span>
-                  <span style={{ fontSize:12, color:"rgba(4,17,6,.5)", marginTop:6, textAlign:"center" }}>{room.rating.total} Reviews</span>
-                </div>
-                <div style={{ flex:1, minWidth:"200px" }}>
-                  <div className="rating-breakdown">
-                    {room.ratingBreakdown.map((r,i)=>(
-                      <div key={i} style={{ display:"flex", justifyContent:"space-between", alignItems:"center", padding:"6px 0", borderBottom:"1px solid rgba(4,17,6,.07)" }}>
-                        <span style={{ fontSize:11, fontWeight:600, letterSpacing:".08em", color:"rgba(4,17,6,.5)", textTransform:"uppercase" }}>{r.label}</span>
-                        <span style={{ fontSize:13, fontWeight:600, color:D }}>{r.value}/5</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              <div style={{ display:"flex", flexWrap:"wrap", alignItems:"center", justifyContent:"space-between", gap:12, marginBottom:20 }}>
-                <div style={{ display:"flex", flexWrap:"wrap", alignItems:"center", gap:12 }}>
-                  <h2 style={{ fontFamily:"Marcellus,serif", fontSize:"clamp(16px,2.5vw,20px)", fontWeight:400, color:D, margin:0 }}>{room.rating.total} Reviews</h2>
-                  <span style={{ fontSize:17, letterSpacing:2, color:D }}>{"★".repeat(Math.round(room.rating.overall))}{"☆".repeat(5-Math.round(room.rating.overall))}</span>
-                </div>
-                <button className="bo" onClick={()=>setReviewOpen(v=>!v)}>{reviewOpen?"Cancel":"Write a Review"}</button>
-              </div>
-
-              {room.reviews.map((rev,i)=>(
-                <div key={i} style={{ padding:"clamp(14px,3vw,20px)", background:"rgba(255,255,255,.58)", border:"1px solid rgba(4,17,6,.09)", marginBottom:14 }}>
-                  <div style={{ display:"flex", gap:14, marginBottom:12, flexWrap:"wrap" }}>
-                    <div style={{ width:46, height:46, borderRadius:"50%", background:D, color:BG, display:"flex", alignItems:"center", justifyContent:"center", fontSize:16, fontWeight:700, flexShrink:0 }}>
-                      {rev.name.charAt(0).toUpperCase()}
-                    </div>
-                    <div>
-                      <p style={{ fontSize:15, fontWeight:600, color:D, margin:"0 0 2px" }}>{rev.name}</p>
-                      <p style={{ fontSize:12, color:"rgba(4,17,6,.4)", margin:"0 0 4px" }}>{rev.date}</p>
-                      <span style={{ fontSize:15, letterSpacing:2, color:D }}>{"★".repeat(Math.round(rev.rating))}{"☆".repeat(5-Math.round(rev.rating))}</span>
-                    </div>
-                  </div>
-                  <p style={{ fontSize:"clamp(13px,1.8vw,15px)", lineHeight:1.75, color:"rgba(4,17,6,.68)", margin:0 }}>{rev.text}</p>
-                </div>
-              ))}
-
-              {reviewOpen && (
-                <div style={{ padding:"clamp(16px,3vw,24px)", background:"rgba(255,255,255,.58)", border:"1px solid rgba(4,17,6,.09)", marginTop:8 }}>
-                  <h3 style={{ fontFamily:"Marcellus,serif", fontSize:"clamp(16px,2.5vw,18px)", fontWeight:400, color:D, marginBottom:16 }}>Review "{room.name}"</h3>
-                  <div className="review-rating-grid">
-                    {room.ratingBreakdown.map(r=>(
-                      <div key={r.label}>
-                        <label style={{ fontSize:11, fontWeight:600, textTransform:"uppercase", letterSpacing:".08em", color:"rgba(4,17,6,.45)", display:"block", marginBottom:5 }}>{r.label}</label>
-                        <select className="si" style={{ padding:"9px 14px" }}>
-                          <option value="">Rate</option>
-                          {[5,4,3,2,1].map(n=><option key={n} value={n}>{n}</option>)}
-                        </select>
-                      </div>
-                    ))}
-                  </div>
-                  <div className="review-form-grid">
-                    <input type="text" placeholder="Name *" className="si"/>
-                    <input type="email" placeholder="Email *" className="si"/>
-                    <input type="url" placeholder="Website" className="si"/>
-                  </div>
-                  <textarea placeholder="Your review..." rows={5} className="si" style={{ resize:"vertical", marginBottom:14 }}/>
-                  <button className="bd" style={{ maxWidth:200 }}>Post Review</button>
-                </div>
-              )}
-            </section>
           </div>
           {/* END LEFT */}
 
@@ -590,7 +509,7 @@ export default function RoomDetail({ roomId, onBack, onExplore }) {
             <div style={{ background:"rgba(255,255,255,.58)", border:"1px solid rgba(4,17,6,.09)", padding:"18px 22px" }}>
               <p style={{ fontSize:12, fontWeight:600, textTransform:"uppercase", letterSpacing:".1em", color:"rgba(4,17,6,.45)", marginBottom:6 }}>Prices Start At</p>
               <div style={{ display:"flex", alignItems:"baseline", gap:4 }}>
-                <span style={{ fontFamily:"Marcellus,serif", fontSize:"clamp(32px,5vw,42px)", color:D, lineHeight:1 }}>${room.price}</span>
+                <span style={{ fontFamily:"Marcellus,serif", fontSize:"clamp(32px,5vw,42px)", color:D, lineHeight:1 }}>₹{room.price}</span>
                 <span style={{ fontSize:14, color:"rgba(4,17,6,.45)" }}>Per Night</span>
               </div>
             </div>
@@ -640,10 +559,7 @@ export default function RoomDetail({ roomId, onBack, onExplore }) {
               ))}
             </div>
 
-            <div style={{ background:"rgba(255,255,255,.58)", border:"1px solid rgba(4,17,6,.09)", padding:"18px 22px" }}>
-              <h2 style={{ fontFamily:"Marcellus,serif", fontSize:16, fontWeight:400, color:D, marginBottom:14, letterSpacing:".03em" }}>RELATED TAGS</h2>
-              <div>{room.tags.map(t=><span key={t} className="tp">{t}</span>)}</div>
-            </div>
+         
           </div>
           {/* END SIDEBAR */}
         </div>

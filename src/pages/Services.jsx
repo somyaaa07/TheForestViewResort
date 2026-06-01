@@ -14,47 +14,47 @@ const IMGS = {
 const SERVICES = [
   {
     num:"01",
-    label:"Stay",
-    title:"Food & Dining / Cafe",
+    label:"Taste",
+    title:"Ranthambore Restaurant & Rooftop Café",
     img:IMGS.suite,
-    desc:"A vibrant dining space serving freshly prepared meals, artisan coffee, and seasonal delights. From relaxed breakfasts to cozy evening bites, every dish is crafted to comfort and inspire.",
-    tags:["Cafe seating","Multi-cuisine","Fresh bakery","Beverages"],
+    desc:"Enjoy unforgettable dining at our Rooftop Café, offering delicious multi-cuisine meals, refreshing beverages, and breathtaking scenic views. Relax in a peaceful rooftop ambiance surrounded by nature while experiencing the perfect blend of taste, comfort, and hospitality.",
+    tags:["Rooftop Scenic Café","Multi-Cuisine Dining","Freshly Brewed Coffee","Nature View Seating"],
     price:"Avg ₹500–₹1,500 / person"
   },
   {
     num:"02",
-    label:"Restore",
-    title:"Guest Services",
+    label:"Care",
+    title:"Exclusive Guest Care Services",
     img:IMGS.spa,
-    desc:"Thoughtful services designed to make your stay seamless and comfortable. From 24/7 assistance to personalized arrangements, we ensure every guest feels cared for.",
-    tags:["24/7 support","Room service","Housekeeping","Travel desk"],
+    desc:"Experience warm hospitality and thoughtfully designed guest services at The Forest View Resort. From 24/7 assistance to personalized support, we ensure every stay is comfortable, relaxing, and truly memorable for our guests visiting Ranthambore.",
+    tags:["24/7 Guest Support","Luxury Room Service","Daily Housekeeping","Travel & Safari Assistance"],
     price:"Included with stay"
   },
   {
     num:"03",
-    label:"Taste",
-    title:"Swimming Pool",
+    label:"Relax",
+    title:"Scenic Poolside Experience",
     img:IMGS.dining,
-    desc:"A serene poolside escape perfect for relaxation and leisure. Enjoy refreshing dips, lounge by the water, or unwind with scenic surroundings.",
-    tags:["Outdoor pool","Kids area","Poolside seating","Clean & safe"],
+    desc:"Enjoy a refreshing escape at our scenic swimming pool, where comfort, relaxation, and natural beauty come together for the perfect vacation experience in Ranthambore. Lounge poolside and soak in the surroundings.",
+    tags:["Outdoor Pool","Kids Area","Poolside Seating","Clean & Safe"],
     price:"Included / Guest access"
   },
   {
     num:"04",
     label:"Gather",
-    title:"Banquet Hall",
+    title:"Royal Celebration Venue",
     img:IMGS.events,
-    desc:"A spacious and elegant venue ideal for celebrations, meetings, and special occasions. Designed to host everything from intimate gatherings to grand events.",
-    tags:["Weddings","Corporate events","AC hall","Catering"],
+    desc:"An elegant and spacious venue crafted for corporate gatherings, celebrations, and special occasions. From intimate functions to grand events, every detail is designed to create a memorable experience at The Forest View Resort.",
+    tags:["Corporate Events","AC Hall","Catering","Weddings & Functions"],
     price:"Custom pricing"
   },
   {
     num:"05",
-    label:"Wander",
-    title:" Convenience / Parking",
+    label:"Arrive",
+    title:"Secure Parking & Convenience",
     img:IMGS.trails,
-    desc:"Convenient on-site facilities including secure parking and essential amenities to ensure a hassle-free experience for all guests.",
-    tags:["Free parking","24/7 security","Easy access","Spacious area"],
+    desc:"Enjoy secure on-site parking and thoughtfully designed guest facilities for a smooth and stress-free stay from arrival to departure. Our convenience facilities are available round the clock for all guests.",
+    tags:["Free Parking","24/7 Security","Easy Access","Spacious Area"],
     price:"Free for guests"
   },
 ];
@@ -65,6 +65,12 @@ const STATS = [
   { v:"4.9★", l:"Guest Rating" },
   { v:"18",   l:"Industry Awards" },
 ];
+
+// SEO meta (can be injected via Helmet or similar)
+const META = {
+  title: "Ranthambore Resort Services | Safari, Parking & Rooftop Café",
+  description: "Enjoy premium hospitality at The Forest View Resort with jungle safari booking, spa services, rooftop café dining, couple packages, and personalized guest experiences in Ranthambore.",
+};
 
 function useInView(ref) {
   const [inView, setInView] = useState(false);
@@ -107,6 +113,15 @@ export default function ServicesPage() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    // Update document meta
+    document.title = META.title;
+    let metaDesc = document.querySelector('meta[name="description"]');
+    if (!metaDesc) {
+      metaDesc = document.createElement("meta");
+      metaDesc.name = "description";
+      document.head.appendChild(metaDesc);
+    }
+    metaDesc.content = META.description;
   }, []);
 
   useEffect(() => {
@@ -630,98 +645,61 @@ export default function ServicesPage() {
            RESPONSIVE BREAKPOINTS
         ════════════════════════════ */
 
-        /* ── 1280px: tighten nav ── */
         @media (max-width: 1280px) {
           .nav-links { gap: 20px; }
         }
 
-        /* ── 1024px ── */
         @media (max-width: 1024px) {
           .nav-links { display: none; }
           .nav-cta   { display: none; }
           .nav-burger { display: flex; }
-
-          /* Hero: single column */
-          .hero-content {
-            grid-template-columns: 1fr;
-          }
+          .hero-content { grid-template-columns: 1fr; }
           .hero-stats { display: none; }
           .hero-stats-inline { display: grid; }
-
-          /* Selector: hide desktop list, show mobile accordion */
           .selector { display: none; }
           .mobile-selector { display: block; }
-
-          /* Mosaic: 2-column */
           .mosaic-grid {
             grid-template-columns: 1fr 1fr;
             grid-template-rows: auto;
           }
           .mcard { height: 260px; }
           .mcard.big { grid-column: span 2; height: 300px; }
-
-          /* Footer: 2-col */
           .footer { grid-template-columns: 1fr 1fr; }
         }
 
-        /* ── 768px ── */
         @media (max-width: 768px) {
           :root { --nav-h: 56px; }
-
-          /* Hero text tightening */
           .hero-p { max-width: 100%; }
           .hero-btns { flex-direction: column; align-items: stretch; }
           .hero-btns .btn-light,
           .hero-btns .btn-ghost { text-align: center; }
-
-          /* Mosaic: single column */
           .mosaic-grid {
             grid-template-columns: 1fr;
             grid-template-rows: auto;
           }
           .mcard { height: 230px; border-radius: 14px; }
           .mcard.big { grid-column: span 1; height: 260px; }
-
-          /* CTA buttons stack */
           .cta-btns { flex-direction: column; align-items: center; }
           .cta-btns .btn-light,
           .cta-btns .btn-ghost { width: 100%; max-width: 280px; text-align: center; }
-
-          /* Footer: single column */
           .footer { grid-template-columns: 1fr; }
           .ft-bottom { flex-direction: column; text-align: center; }
-
-          /* Strip */
           .strip-h2 { margin-bottom: 22px; }
-
-          /* hscroll: show 1 card at a time on small phones */
           .hcard { width: min(280px, 82vw); }
         }
 
-        /* ── 480px ── */
         @media (max-width: 480px) {
           .mosaic-hdr { margin-bottom: 32px; }
           .hs-hint { display: none; }
           .hcard { width: min(270px, 88vw); }
-
-          /* Compact hero on tiny phones */
           .hero { min-height: 100svh; }
           .hero-h1 { font-size: clamp(32px, 9vw, 52px); }
-
-          /* Inline stats: 2-col grid is fine */
           .hstat-inline-v { font-size: clamp(20px, 6vw, 28px); }
-
-          /* Mob panel image shorter on tiny screens */
           .mob-panel-img { height: 200px !important; }
-
-          /* p-cta full width */
           .p-cta { width: 100%; justify-content: center; }
-
-          /* Strip CTA full width */
           .strip-content .btn-light { width: 100%; max-width: 260px; }
         }
 
-        /* ── 360px ── very small phones ── */
         @media (max-width: 360px) {
           :root { --pad-x: 14px; }
           .hero-h1 { font-size: 30px; }
@@ -731,14 +709,12 @@ export default function ServicesPage() {
           .hcard { width: min(260px, 90vw); }
         }
 
-        /* ── Landscape phones ── */
         @media (max-width: 768px) and (orientation: landscape) {
           .hero { min-height: 100vw; height: 100svh; }
           .hero-stats-inline { grid-template-columns: repeat(4, 1fr); }
           .mcard { height: 200px; }
         }
 
-        /* ── Touch: remove hover transforms that feel wrong ── */
         @media (hover: none) {
           .mcard:hover { transform: none; }
           .hcard:hover { transform: none; }
@@ -754,16 +730,16 @@ export default function ServicesPage() {
         <section className="hero" ref={heroRef}>
           <img
             src={IMGS.hero}
-            alt="luxury resort"
+            alt="The Forest View Resort Ranthambore"
             className={`hero-img${imgLoaded.hero ? " loaded" : ""}`}
             onLoad={() => markLoaded("hero")}
           />
           <div className="hero-overlay"/>
           <div className={`hero-content${heroIn ? " in" : ""}`}>
             <div>
-              <div className="hero-eyebrow">The Forest Retreat · Services</div>
+              <div className="hero-eyebrow">The Forest View Resort · Ranthambore</div>
               <h1 className="hero-h1">Every detail,<br/><em>considered.</em></h1>
-              <p className="hero-p">Six pillars of experience, each designed to dissolve the boundary between guest and place — until you feel you have always belonged here.</p>
+              <p className="hero-p">Five pillars of experience — rooftop dining, exclusive guest care, a scenic pool, celebration venues, and seamless convenience — all designed for the perfect Ranthambore retreat.</p>
               <div className="hero-btns">
                 <button className="btn-light">Explore Services</button>
                 <button className="btn-ghost">Plan Your Stay</button>
@@ -794,7 +770,7 @@ export default function ServicesPage() {
         <div className="marquee">
           <div className="mtrack">
             {[...Array(2)].map((_,i) =>
-              ["Luxury Stay","Forest Spa","Fine Dining","Wild Trails","Private Events","24/7 Concierge","Heritage Retreat"].map(t => (
+              ["Rooftop Café","Safari Assistance","Scenic Pool","Banquet Hall","Free Parking","24/7 Guest Support","Forest View Resort","Ranthambore"].map(t => (
                 <div className="mitem" key={`${i}${t}`}>{t}<span className="mdot"/></div>
               ))
             )}
@@ -852,7 +828,7 @@ export default function ServicesPage() {
         <section className={`mosaic-section${gridIn ? " in" : ""}`} ref={gridRef}>
           <div className="mosaic-hdr">
             <div className="mosaic-eyebrow">All Experiences</div>
-            <h2 className="mosaic-h2">Five Ways to Feel<br/>Entirely Alive</h2>
+            <h2 className="mosaic-h2">Five Ways to Feel<br/>Entirely at Home</h2>
             <div className="mosaic-line"/>
           </div>
           <div className="mosaic-grid">
@@ -873,10 +849,10 @@ export default function ServicesPage() {
 
         {/* ── STRIP ── */}
         <div className="strip" ref={stripRef}>
-          <img src={IMGS.spa} alt="spa" className="strip-img"/>
+          <img src={IMGS.spa} alt="Forest View Resort Ranthambore" className="strip-img"/>
           <div className="strip-overlay"/>
           <div className={`strip-content${stripIn ? " in" : ""}`}>
-            <div className="strip-eyebrow">The Retreat Experience</div>
+            <div className="strip-eyebrow">The Ranthambore Experience</div>
             <h2 className="strip-h2">Arrive as a guest.<br/><em>Leave as yourself.</em></h2>
             <button className="btn-light">Book a Stay</button>
           </div>
@@ -918,23 +894,7 @@ export default function ServicesPage() {
           </div>
         </section>
 
-        {/* ── CTA ── */}
-        <section className={`cta-section${ctaIn ? " in" : ""}`} ref={ctaRef}>
-          <img src={IMGS.cta} alt="resort" className="cta-bg"/>
-          <div className="cta-overlay"/>
-          <div className="cta-body">
-            <div className="cta-eyebrow">Begin Your Journey</div>
-            <h2 className="cta-h2">Ready to arrive<br/>and exhale?</h2>
-            <p className="cta-p">Our reservations team is awake whenever you are. Write to us, call us, or simply show up — we will be ready.</p>
-            <div className="cta-btns">
-              <button className="btn-light">Reserve a Suite</button>
-              <button className="btn-ghost">Contact Us</button>
-            </div>
-          </div>
-        </section>
-
-      
-      
+     
 
       </div>
     </>
@@ -981,4 +941,4 @@ function ArrowRight() {
       <path d="M5 12h14M12 5l7 7-7 7"/>
     </svg>
   );
-}
+} 

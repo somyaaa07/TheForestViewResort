@@ -43,7 +43,7 @@ const ChevronRight = () => (
 );
 
 // ── Logo Config — apna image URL yahan daalo ──────────────────────────────
-const LOGO_SRC = "/logo.jpg";
+const LOGO_SRC = "/logo1.png";
 
 // ── Navbar Logo (circular, small) ─────────────────────────────────────────
 const Logo = () => (

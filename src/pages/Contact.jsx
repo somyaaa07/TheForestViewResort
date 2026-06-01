@@ -15,8 +15,8 @@ const IMGS = {
   team:     "https://i.pinimg.com/736x/bf/c4/71/bfc471dee555b49a5d29266c431fa00b.jpg",
 };
 
-const OFFICE_LAT = 31.6340;
-const OFFICE_LNG = 74.8723;
+const OFFICE_LAT = 26.0173;
+const OFFICE_LNG = 76.3773;
 const MAP_EMBED = `https://www.openstreetmap.org/export/embed.html?bbox=${OFFICE_LNG-0.015}%2C${OFFICE_LAT-0.01}%2C${OFFICE_LNG+0.015}%2C${OFFICE_LAT+0.01}&layer=mapnik&marker=${OFFICE_LAT}%2C${OFFICE_LNG}`;
 
 /* ─── GLOBAL STYLES ─── */
@@ -455,7 +455,7 @@ function ContactForm() {
           <div><label className="fl">Email Address *</label><input className="fi" type="email" placeholder="aryan@email.com" value={form.email} onChange={set("email")} required /></div>
         </div>
         <div className="grid-2">
-          <div><label className="fl">Phone Number</label><input className="fi" placeholder="+91 98765 43210" value={form.phone} onChange={set("phone")} /></div>
+          <div><label className="fl">Phone Number</label><input className="fi" placeholder="+91 7014764053" value={form.phone} onChange={set("phone")} /></div>
           <div><label className="fl">Dream Destination</label><input className="fi" placeholder="Manali, Bali, Paris…" value={form.destination} onChange={set("destination")} /></div>
         </div>
         <div>
@@ -486,9 +486,9 @@ function ContactForm() {
 
 /* ─── CONTACT INFO ─── */
 const INFO = [
-  { icon:"📍", label:"Visit Our Office",  lines:["12, Ranjit Avenue, Amritsar","Punjab 143001, India"],      cta:"Get Directions →" },
-  { icon:"📞", label:"Call Us Anytime",   lines:["+91 98765 43210","Mon–Sat, 9 AM – 7 PM IST"],              cta:"Call Now →"       },
-  { icon:"✉",  label:"Email Us",           lines:["hello@theforestview.travel","support@theforestview.travel"], cta:"Send Email →"     },
+  { icon:"📍", label:"Visit Our Office",  lines:["Ranthambhore Rd, near Wild Dragon","Saptar, Sawai Madhopur","Bhuderda, Rajasthan 322001"],      cta:"Get Directions →" },
+  { icon:"📞", label:"Call Us Anytime",   lines:["+91 7014764053","Mon–Sat, 9 AM – 7 PM IST"],              cta:"Call Now →"       },
+  { icon:"✉",  label:"Email Us",           lines:["theforestviewresortswm@gmail.com"], cta:"Send Email →"     },
 ];
 
 function ContactInfo() {
@@ -597,7 +597,7 @@ function MapSection() {
           <div style={{ display:"flex", alignItems:"center", gap:7 }}>
             <span style={{ width:7, height:7, borderRadius:"50%", background:"#4caf80", flexShrink:0 }} />
             <span style={{ fontSize:"11px", color:"rgba(4,17,6,.48)", fontWeight:300, letterSpacing:".02em", whiteSpace:"nowrap" }}>
-              31.6340° N, 74.8723° E · Amritsar, Punjab
+              26.0173° N, 76.3773° E · Sawai Madhopur, Rajasthan
             </span>
           </div>
         </div>
@@ -621,7 +621,7 @@ function MapSection() {
             boxShadow:"0 2px 12px rgba(4,17,6,.12)",
           }}>
             <p style={{ fontFamily:"'Marcellus',serif", fontSize:"13px", fontWeight:400, color:G.ink, margin:"0 0 2px", lineHeight:1.2 }}>THE FOREST VIEW Travel Co.</p>
-            <p style={{ fontSize:"10px", fontWeight:300, color:"rgba(4,17,6,.5)", margin:0, letterSpacing:".03em" }}>12, Ranjit Avenue · Amritsar</p>
+            <p style={{ fontSize:"10px", fontWeight:300, color:"rgba(4,17,6,.5)", margin:0, letterSpacing:".03em" }}>Ranthambhore Rd · Sawai Madhopur</p>
           </div>
 
           {/* Open full map */}
@@ -648,7 +648,7 @@ function MapSection() {
         <div className="map-strip">
           {[
             { icon:"🕘", label:"Office Hours", val:"Mon – Sat, 9 AM – 7 PM IST" },
-            { icon:"📞", label:"Phone",        val:"+91 98765 43210" },
+            { icon:"📞", label:"Phone",        val:"+91 7014764053" },
             { icon:"✉",  label:"Email",        val:"hello@theforestview.travel" },
           ].map((item, i) => (
             <div key={i} className="map-strip-item">
@@ -753,7 +753,7 @@ function Footer() {
         <div style={{ height:1, background:G.border, marginBottom:20 }} />
         <div className="footer-bottom" style={{ display:"flex", alignItems:"center", justifyContent:"space-between", flexWrap:"wrap", gap:10 }}>
           <p style={{ fontSize:"12px", fontWeight:300, color:"rgba(4,17,6,.3)" }}>© 2025 THE FOREST VIEW Travel Co. All rights reserved.</p>
-          <p style={{ fontSize:"12px", fontWeight:300, color:"rgba(4,17,6,.3)" }}>Crafted with care in Punjab, India</p>
+          <p style={{ fontSize:"12px", fontWeight:300, color:"rgba(4,17,6,.3)" }}>Crafted with care in Rajasthan, India</p>
         </div>
       </div>
     </footer>
