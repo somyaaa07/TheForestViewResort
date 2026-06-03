@@ -1094,7 +1094,7 @@ export default function ForestViewHomePage() {
         </div>
       </section>
 
-      <Footer />
+  
     </div>
   );
 }
