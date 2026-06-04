@@ -34,8 +34,8 @@ const packages = [
   {
     id: 2,
     name: "Bandhavgarh National Park",
-    location: "Umaria District",
-    region: "Madhya Pradesh",
+    location: "Sawai Madhopur",
+    region: "Rajasthan",
     duration: "Full Day Safari",
     canterPrice: 1350,
     gypsyPrice: 1650,
@@ -55,8 +55,8 @@ const packages = [
   {
     id: 3,
     name: "Panna National Park",
-    location: "Panna District",
-    region: "Madhya Pradesh",
+    location: "Sawai Madhopur",
+    region: "Rajasthan",
     duration: "Full Day Safari",
     canterPrice: 1350,
     gypsyPrice: 1650,
@@ -342,7 +342,7 @@ export default function App() {
                     onError={e=>{e.currentTarget.style.background="#1a3d2b";e.currentTarget.style.display="none";}}/>
                   <div style={{ position:"absolute", inset:0, background:"linear-gradient(to top, rgba(26,61,43,.6) 0%, transparent 50%)", pointerEvents:"none" }}/>
                   <div style={{ position:"absolute", top:12, left:12 }}>
-                    <span style={{ background:p.tagBg, color:p.tagColor, fontSize:11, fontWeight:700, padding:"4px 10px", borderRadius:20, letterSpacing:".05em" }}>{p.tag}</span>
+                    {/* <span style={{ background:p.tagBg, color:p.tagColor, fontSize:11, fontWeight:700, padding:"4px 10px", borderRadius:20, letterSpacing:".05em" }}>{p.tag}</span> */}
                   </div>
                 </div>
                 <div style={{ padding:"18px 20px 20px" }}>

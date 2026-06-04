@@ -219,20 +219,7 @@ export default function Footer() {
       `}</style>
 
       {/* ── Newsletter strip ── */}
-      <div className="ft-newsletter">
-        <div className="ft-newsletter-text">
-          <p style={{ fontSize: 11, letterSpacing: ".22em", textTransform: "uppercase", color: "rgba(201,212,203,.35)", marginBottom: 8, fontFamily: "system-ui, sans-serif" }}>
-            STAY IN THE LOOP
-          </p>
-          <h3 style={{ fontSize: "clamp(18px, 2.6vw, 32px)", fontWeight: 700, color: "rgba(201,212,203,.88)", lineHeight: 1.22, margin: 0 }}>
-            Get Exclusive Deals &amp; Safari Stories
-          </h3>
-        </div>
-        <div className="ft-newsletter-form">
-          <input className="ft-input" type="email" placeholder="Your email address" />
-          <button className="ft-sub-btn">SUBSCRIBE <ArrowSVG /></button>
-        </div>
-      </div>
+
 
       {/* ── Main columns ── */}
       <div className="ft-main">

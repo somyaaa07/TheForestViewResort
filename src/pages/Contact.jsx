@@ -12,7 +12,7 @@ const IMGS = {
   forest:   "https://i.pinimg.com/1200x/6f/66/49/6f66495d5029ce2f5e6458fec4886d38.jpg",
   city:     "https://i.pinimg.com/736x/21/7d/75/217d75f7c859dd935af667519d0c4edf.jpg",
   india:    "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=800&q=80",
-  team:     "https://i.pinimg.com/736x/bf/c4/71/bfc471dee555b49a5d29266c431fa00b.jpg",
+  team:     "/2.jpeg",
 };
 
 const OFFICE_LAT = 26.0173;
@@ -432,12 +432,7 @@ function ContactForm() {
           <p style={{ fontSize:"13px", fontWeight:300, color:"rgba(4,17,6,.5)" }}>Typically replies within a few hours</p>
         </div>
         <div style={{ display:"flex", gap:4, alignItems:"center", flexShrink:0 }}>
-          {[IMGS.mountains, IMGS.beach, IMGS.forest].map((img, i) => (
-            <div key={i} style={{ width:40, height:40, borderRadius:"50%", overflow:"hidden", border:"2px solid rgba(255,255,255,.8)", marginLeft: i > 0 ? -10 : 0, flexShrink:0 }}>
-              <img src={img} alt="" style={{ width:"100%", height:"100%", objectFit:"cover" }} />
-            </div>
-          ))}
-          <span style={{ fontSize:"10px", color:"rgba(4,17,6,.45)", marginLeft:8, whiteSpace:"nowrap" }}>200+ destinations</span>
+    
         </div>
       </div>
 

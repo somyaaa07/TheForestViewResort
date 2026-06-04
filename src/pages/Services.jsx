@@ -1,14 +1,14 @@
 import { useState, useEffect, useRef } from "react";
-
+import { Link } from "react-router-dom";
 const IMGS = {
   hero:      "/16.jpeg",
   suite:     "/3.jpeg",
   spa:       "/2.jpeg",
-  dining:    "https://i.pinimg.com/1200x/57/54/97/575497f09b93de54a02b8f852afab326.jpg",
-  events:    "https://i.pinimg.com/1200x/d0/4b/65/d04b65f869c8887b6581f2431236841f.jpg",
-  trails:    "https://i.pinimg.com/736x/8a/ef/87/8aef87eb0b047af90f16cb6a3e9541d1.jpg",
-  concierge: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=900&q=80&fit=crop",
-  cta:       "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=1400&q=80&fit=crop",
+  dining:    "/10.jpeg",
+  events:    "/12.jpeg",
+  trails:    "14.jpeg",
+  concierge: "/11.jpeg",
+  cta:       "/7.jpeg",
 };
 
 const SERVICES = [
@@ -33,7 +33,7 @@ const SERVICES = [
   {
     num:"03",
     label:"Relax",
-    title:"Scenic Poolside Experience",
+    title:"Refreshing Poolside Experience",
     img:IMGS.dining,
     desc:"Enjoy a refreshing escape at our scenic swimming pool, where comfort, relaxation, and natural beauty come together for the perfect vacation experience in Ranthambore. Lounge poolside and soak in the surroundings.",
     tags:["Outdoor Pool","Kids Area","Poolside Seating","Clean & Safe"],
@@ -42,7 +42,7 @@ const SERVICES = [
   {
     num:"04",
     label:"Gather",
-    title:"Royal Celebration Venue",
+    title:"Elegant Royal Celebration Venue",
     img:IMGS.events,
     desc:"An elegant and spacious venue crafted for corporate gatherings, celebrations, and special occasions. From intimate functions to grand events, every detail is designed to create a memorable experience at The Forest View Resort.",
     tags:["Corporate Events","AC Hall","Catering","Weddings & Functions"],
@@ -51,7 +51,7 @@ const SERVICES = [
   {
     num:"05",
     label:"Arrive",
-    title:"Secure Parking & Convenience",
+    title:"Secure Convenience Facilities",
     img:IMGS.trails,
     desc:"Enjoy secure on-site parking and thoughtfully designed guest facilities for a smooth and stress-free stay from arrival to departure. Our convenience facilities are available round the clock for all guests.",
     tags:["Free Parking","24/7 Security","Easy Access","Spacious Area"],
@@ -741,8 +741,10 @@ export default function ServicesPage() {
               <h1 className="hero-h1">Every detail,<br/><em>considered.</em></h1>
               <p className="hero-p">Five pillars of experience — rooftop dining, exclusive guest care, a scenic pool, celebration venues, and seamless convenience — all designed for the perfect Ranthambore retreat.</p>
               <div className="hero-btns">
-                <button className="btn-light">Explore Services</button>
-                <button className="btn-ghost">Plan Your Stay</button>
+                <Link to="/gallery">
+                <button className="btn-light">Explore Gallery</button></Link>
+                <Link to="/contact">
+                <button className="btn-ghost">Plan Your Stay</button></Link>
               </div>
               {/* Inline stats for ≤1024px */}
               <div className="hero-stats-inline">
@@ -805,7 +807,6 @@ export default function ServicesPage() {
               <p className="p-desc">{svc.desc}</p>
               <div className="p-tags">{svc.tags.map(t => <span className="p-tag" key={t}>{t}</span>)}</div>
               <div className="p-price">{svc.price}</div>
-              <button className="p-cta">Learn More <ArrowRight/></button>
             </div>
           </div>
         </section>
@@ -854,7 +855,8 @@ export default function ServicesPage() {
           <div className={`strip-content${stripIn ? " in" : ""}`}>
             <div className="strip-eyebrow">The Ranthambore Experience</div>
             <h2 className="strip-h2">Arrive as a guest.<br/><em>Leave as yourself.</em></h2>
-            <button className="btn-light">Book a Stay</button>
+            <Link to="/contact">
+            <button className="btn-light">Book a Stay</button></Link>
           </div>
         </div>
 
