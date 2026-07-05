@@ -134,8 +134,22 @@ export default function App() {
   const total = pricePerPerson * guests;
   const discount = guests >= 6;
   const final = discount ? Math.round(total * 0.9) : total;
-  const submit = () => { if (form.name && form.email) setDone(true); };
-
+const submit = async () => {
+  if (!form.name || !form.email) return;
+  try {
+    const res = await fetch("https://theforestviewresort.com/send-mail.php", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        form_type: "Safari Booking",
+        park: pkg?.name, vehicle: vehicleType, guests, month: `${month} 2026`,
+        total_amount: `₹${final}`, ...form,
+      }),
+    });
+    const data = await res.json();
+    if (data.success) setDone(true);
+  } catch (e) { console.error(e); }
+};
   useEffect(() => { window.scrollTo(0, 0); }, []);
 
   useEffect(() => {
@@ -447,6 +461,7 @@ export default function App() {
                                     {on&&<Check size={12} color="#fff"/>}
                                   </div>
                                 </div>
+                  <div style={{ fontWeight:700, fontSize:16, color:"#1a3d2b", marginBottom:8 }}>{p.name}</div>
 
                                 <p style={{ color:"#4a7a5c", fontSize:13.5, lineHeight:1.7, marginBottom:14 }}>{p.desc}</p>
 
@@ -702,7 +717,7 @@ export default function App() {
                   </div>
                   <div>
                     <div style={{ color:"#fff", fontWeight:700, fontSize:14 }}>Talk to an Expert</div>
-                    <div style={{ color:"#6b9478", fontSize:13, marginTop:2 }}>+91 98000 12345</div>
+                    <div style={{ color:"#6b9478", fontSize:13, marginTop:2 }}>+91 7014764053</div>
                   </div>
                 </div>
               </div>

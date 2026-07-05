@@ -14,6 +14,7 @@ export const rooms = [
       "/13.jpeg",
       "/12.jpeg",
       "/11.jpeg",
+      "/19.jpeg"
     ],
     fullDesc: "Spacious 20m² room with 2 single beds, balcony, garden view, pool view and mountain view. Free toiletries, clothes rack and dining area included. Enjoy flexible booking with free cancellation before 17 May 2026, no prepayment needed — pay at the property, and no credit card needed. Only 4 rooms left — book now to secure your stay.",
     includes: [
@@ -53,7 +54,7 @@ export const rooms = [
     services: [
       { title: "Outdoor Swimming Pool", img: "https://safar.devsvibe.co/wp-content/uploads/2025/10/accommodation-services-5.png" },
       { title: "Air Conditioning", img: "https://safar.devsvibe.co/wp-content/uploads/2025/10/accommodation-services-4.png" },
-      { title: "Meeting Rooms", img: "https://safar.devsvibe.co/wp-content/uploads/2025/10/accommodation-services-6.png" },
+      { title: "cafes", img: "/2.jpeg" },
       { title: "24hr Security", img: "https://safar.devsvibe.co/wp-content/uploads/2025/10/accommodation-services-3.png" },
       { title: "Free WiFi", img: "https://safar.devsvibe.co/wp-content/uploads/2025/10/accommodation-services-2.png" },
       { title: "Laundry Services", img: "https://safar.devsvibe.co/wp-content/uploads/2025/10/accommodation-services-1.png" },
@@ -102,6 +103,7 @@ export const rooms = [
       "/12.jpeg",
       "/9.jpeg",
       "/10.jpeg",
+      "/19.jpeg"
     ],
     fullDesc: "Comfortable Standard King Room with 1 single bed, city view, free WiFi, and flexible booking options. Enjoy free cancellation before 17 May 2026, no prepayment needed — pay at the property, and no credit card needed. Breakfast included option available at ₹2,800 per night. A great value stay with full access to all property facilities.",
     includes: [
@@ -178,6 +180,7 @@ export const rooms = [
       "/11.jpeg",
       "/9.jpeg",
       "/15.jpeg",
+      "/19.jpeg"
     ],
     fullDesc: "Enjoy all the comforts of the Deluxe Double Room with the added benefit of breakfast & lunch included (Half Board). Free cancellation before 17 May 2026, no prepayment needed — pay at the property, and no credit card required. The room features 2 single beds, a balcony with garden, pool and mountain views, and 20m² of stylish space. Only 4 rooms left.",
     includes: [

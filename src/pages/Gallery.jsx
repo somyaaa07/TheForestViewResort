@@ -23,6 +23,8 @@ const images = [
   { id: 10, src: "/14.jpeg", label: "Morning Trail",       desc: "Guided dawn walks through old-growth forest — solitary or accompanied.", tall: true },
   { id: 11, src: "/15.jpeg", label: "The Reflecting Pool", desc: "An infinity pool that dissolves seamlessly into the treeline horizon.", tall: true },
   { id: 12, src: "/16.jpeg", label: "Creek Cottage",       desc: "A secluded stone cottage perched above a whispering mountain creek.", tall: false },
+    { id: 13, src: "/19.jpeg", label: "Creek Cottage",       desc: "A secluded stone cottage perched above a whispering mountain creek.", tall: false },
+
 ];
 
 const amenitiesMap = [
@@ -39,6 +41,7 @@ const amenitiesMap = [
   ["Infinity Pool", "Panoramic View", "Sundeck"],
   ["Creek View", "Stone Bath", "Private Access"],
 ];
+
 
 const css = `
   @import url('https://fonts.googleapis.com/css2?family=Marcellus&family=Jost:wght@300;400;500&display=swap');
@@ -335,6 +338,8 @@ export default function ForestviewGallery() {
   }, []);
 
   const selIdx = selected ? images.findIndex(i => i.id === selected.id) : -1;
+    useEffect(() => { window.scrollTo(0, 0); }, []);
+
 
   return (
     <>
@@ -357,7 +362,7 @@ export default function ForestviewGallery() {
           </div>
 
           <div className="banner-content">
-            <div className="banner-eyebrow">Est. 1962 · Forest & Lake District</div>
+            {/* <div className="banner-eyebrow">Est. 1962 · Forest & Lake District</div> */}
             <h1 className="banner-title">The Forestview<br />Resort</h1>
             <p className="banner-sub">Where the forest meets refinement</p>
             <button className="banner-cta">Explore the Property &rarr;</button>

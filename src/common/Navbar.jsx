@@ -94,7 +94,7 @@ const navItems = [
   { label: "Safari Booking", to: "/safari-booking" },
   { label: "About",          to: "/about"          },
     { label: "Gallery",        to: "/gallery"        },
-
+{label:"Blog",to:"/blog"},
   { label: "Contact",        to: "/contact"        },
 ];
 
@@ -153,8 +153,17 @@ function BookingPopup({ isOpen, onClose }) {
     fontFamily: "system-ui, sans-serif",
   };
 
-  const handleSubmit = () => { setSubmitted(true); };
-
+const handleSubmit = async () => {
+  try {
+    const res = await fetch("https://theforestviewresort.com/send-mail.php", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ form_type: "Booking Popup", bookingType, ...form }),
+    });
+    const data = await res.json();
+    if (data.success) setSubmitted(true);
+  } catch (e) { console.error(e); }
+};
   return (
     <>
       <div

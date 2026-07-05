@@ -211,7 +211,7 @@ export default function ForestViewAboutPage() {
 
         .hero {
           position:relative; min-height:80vh;
-          background-image:url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1600&q=80');
+          background-image:url('/18.jpeg');
           background-size:cover; background-position:center;
           display:flex; align-items:flex-end; padding-top:72px;
         }
@@ -579,7 +579,7 @@ export default function ForestViewAboutPage() {
             <Reveal>
               <div style={{position:"relative"}}>
                 <img
-                  src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&h=700&fit=crop&crop=face"
+                  src="/founder.jpeg"
                   alt="Manu Srivastava Founder of The Forest View Resort"
                   style={{width:"100%",height:"clamp(400px,55vw,620px)",objectFit:"cover",objectPosition:"top",display:"block",borderRadius:8,boxShadow:"0 8px 48px rgba(4,17,6,.18)"}}
                 />
@@ -691,22 +691,9 @@ export default function ForestViewAboutPage() {
 
             <Reveal delay={60} className="why-avatars">
               <div style={{display:"flex",alignItems:"center",marginBottom:20,flexWrap:"wrap",gap:4}}>
-                {[
-                  "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=70&h=70&fit=crop&crop=face",
-                  "https://images.unsplash.com/photo-1494790108755-2616b612b47c?w=70&h=70&fit=crop&crop=face",
-                  "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=70&h=70&fit=crop&crop=face",
-                  "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=70&h=70&fit=crop&crop=face",
-                ].map((src,i)=>(
-                  <img key={i} src={src} alt="" style={{
-                    width:54,height:54,borderRadius:"50%",objectFit:"cover",
-                    border:`3px solid ${SHADE}`,
-                    marginLeft:i>0?-14:0,
-                    zIndex:4-i,position:"relative",
-                    flexShrink:0,
-                  }}/>
-                ))}
+              
               </div>
-              <p style={{fontSize:"clamp(14px,1.4vw,16px)",color:DARK,opacity:.62,lineHeight:1.75,margin:0}}>
+              <p style={{fontSize:"clamp(14px,3.4vw,30px)",color:DARK,opacity:.62,lineHeight:1.75,margin:0}}>
                 Wildlife Adventures.<br/>
                 Nature Inspired Luxury.<br/>
                 Memories That Last Forever.
@@ -798,7 +785,7 @@ export default function ForestViewAboutPage() {
       </section>
 
       {/* ══════════ DINING ══════════ */}
-      <section className="sec" style={{background:DARK}}>
+      {/* <section className="sec" style={{background:DARK}}>
         <div className="inner">
           <Reveal>
             <div style={{marginBottom:"clamp(36px,5vw,64px)"}}>
@@ -872,7 +859,7 @@ export default function ForestViewAboutPage() {
             </Reveal>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* ══════════ TESTIMONIALS ══════════ */}
       {/* <section className="sec" style={{background:BG}}>

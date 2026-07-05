@@ -30,14 +30,7 @@ const SOCIALS = [
       </svg>
     ),
   },
-  {
-    label: "Twitter / X",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="currentColor" width="17" height="17">
-        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-      </svg>
-    ),
-  },
+ 
   {
     label: "Facebook",
     icon: (
@@ -47,17 +40,7 @@ const SOCIALS = [
       </svg>
     ),
   },
-  {
-    label: "LinkedIn",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"
-        strokeLinecap="round" strokeLinejoin="round" width="18" height="18">
-        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-        <rect x="2" y="9" width="4" height="12"/>
-        <circle cx="4" cy="4" r="2"/>
-      </svg>
-    ),
-  },
+
 ];
 
 export default function Footer() {
@@ -251,13 +234,6 @@ export default function Footer() {
               ))}
             </div>
 
-            <div style={{ display: "inline-flex", alignItems: "center", gap: 10, background: "rgba(201,212,203,.06)", border: "1px solid rgba(201,212,203,.18)", borderRadius: 9999, padding: "10px 18px" }}>
-              <span style={{ fontSize: 20 }}>🏆</span>
-              <div>
-                <p style={{ fontSize: 11, color: "rgba(201,212,203,.85)", fontWeight: 700, letterSpacing: ".06em", margin: 0, fontFamily: "system-ui, sans-serif" }}>BEST SAFARI RESORT 2024</p>
-                <p style={{ fontSize: 11, color: "rgba(201,212,203,.38)", marginTop: 2, marginBottom: 0, fontFamily: "system-ui, sans-serif" }}>Wildlife Tourism Awards</p>
-              </div>
-            </div>
           </div>
 
           {/* Quick Links */}

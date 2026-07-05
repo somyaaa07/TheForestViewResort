@@ -403,6 +403,7 @@ export default function ForestViewHomePage() {
   const [checkOut, setCheckOut] = useState("");
   const [activeHS, setActiveHS] = useState(null);
   const [wishlist, setWishlist] = useState(new Set());
+  const [bookingStatus, setBookingStatus] = useState("idle");
 
   useEffect(() => { const t = setInterval(() => setSlide(p => (p+1) % TESTI.length), 4500); return () => clearInterval(t); }, []);
   useEffect(() => {
@@ -412,6 +413,18 @@ export default function ForestViewHomePage() {
 
   const toggleWish = (i) => setWishlist(prev => { const n = new Set(prev); n.has(i) ? n.delete(i) : n.add(i); return n; });
   const hotspots = bedTab === 0 ? BED_HOTSPOTS.twin : BED_HOTSPOTS.king;
+  const checkAvailability = async () => {           // ← ye naya function add karo
+  setBookingStatus("sending");
+  try {
+    const res = await fetch("https://theforestviewresort.com/send-mail.php", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ form_type: "Home Page Availability Check", checkIn, checkOut, adults, children }),
+    });
+    const data = await res.json();
+    setBookingStatus(data.success ? "sent" : "idle");
+  } catch (e) { setBookingStatus("idle"); }
+};
 
   useEffect(() => { window.scrollTo(0, 0); }, []);
 
@@ -712,10 +725,10 @@ export default function ForestViewHomePage() {
                     </div>
                   </div>
                   <div className="hf-divider" />
-                  <button className="hf-cta">
-                    <span className="hf-cta-icon">›</span>
-                    CHECK AVAILABILITY
-                  </button>
+               <button className="hf-cta" onClick={checkAvailability} disabled={bookingStatus==="sending"}>
+  <span className="hf-cta-icon">›</span>
+  {bookingStatus==="sending" ? "SENDING..." : bookingStatus==="sent" ? "REQUEST SENT ✓" : "CHECK AVAILABILITY"}
+</button>
                 </div>
               </Reveal>
             </div>
@@ -845,8 +858,8 @@ export default function ForestViewHomePage() {
           </Reveal>
           <Reveal delay={120}>
             <div style={{ position:"relative", maxWidth:1380, margin:"0 auto" }}>
-              <img src={bedTab===0?"/roomphoto1.jpeg":"/roomphoto.jpeg"}
-                alt="Room bed" style={{ width:"100%", display:"block", maxHeight:"clamp(240px,40vw,480px)", objectFit:"cover" }} />
+              <img src={bedTab===0?"/roomphoto1.jpeg":"/19.jpeg"}
+                alt="Room bed" style={{ width:"100%", display:"block", maxHeight:"clamp(330px,48vw,520px)", objectFit:"cover" }} />
               <div style={{ position:"absolute", inset:0, background:"rgba(4,17,6,.1)", pointerEvents:"none" }} />
               {hotspots.map(hs => (
                 <div key={hs.id} style={{ position:"absolute", top:hs.top, left:hs.left, right:hs.right, bottom:hs.bottom, transform:hs.tX?`translateX(${hs.tX})`:undefined, zIndex:activeHS===hs.id?20:10, width:32, height:32 }}>
@@ -1013,7 +1026,19 @@ export default function ForestViewHomePage() {
                   </div>
                   <p style={{ fontSize:"clamp(13px,1.3vw,15px)", lineHeight:1.82, marginBottom:22, color:mid?"#c9d4cb":DARK, opacity:mid?.84:.63, fontStyle:"italic" }}>"{t.text}"</p>
                   <div style={{ display:"flex", alignItems:"center", gap:12 }}>
-                    <img src={t.img} alt={t.name} style={{ width:50, height:50, borderRadius:"50%", objectFit:"cover", flexShrink:0 }} />
+                    <div style={{
+  width: 50, height: 50, borderRadius: "50%", flexShrink: 0,
+  background: mid ? "rgba(201,212,203,.18)" : "rgba(4,17,6,.08)",
+  border: `1.5px solid ${mid ? "rgba(201,212,203,.3)" : "rgba(4,17,6,.15)"}`,
+  display: "flex", alignItems: "center", justifyContent: "center",
+  fontFamily: "'Marcellus', serif",
+  fontSize: 16, fontWeight: 400,
+  color: mid ? "#c9d4cb" : "#041106",
+  letterSpacing: ".04em",
+  userSelect: "none",
+}}>
+  {t.name.split(" ").map(w => w[0].toUpperCase()).slice(0, 2).join("")}
+</div>
                     <div style={{ minWidth:0 }}>
                       <h4 style={{ fontSize:15, fontWeight:600, color:mid?"#c9d4cb":DARK, marginBottom:3 }}>{t.name}</h4>
                       <span style={{ fontSize:12, color:mid?"rgba(201,212,203,.42)":"rgba(4,17,6,.38)" }}>{t.role}</span>

@@ -407,12 +407,21 @@ function ContactForm() {
   const [status, setStatus] = useState("idle");
   const set = k => e => setForm(p => ({ ...p, [k]: e.target.value }));
 
-  const submit = async e => {
-    e.preventDefault(); setStatus("loading");
-    await new Promise(r => setTimeout(r, 1600));
-    setStatus("success");
-    setTimeout(() => { setStatus("idle"); setForm({ name:"",email:"",phone:"",destination:"",budget:"",message:"" }); }, 4000);
-  };
+const submit = async e => {
+  e.preventDefault(); setStatus("loading");
+  try {
+    const res = await fetch("https://theforestviewresort.com/send-mail.php", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ form_type: "Contact Page", topic, ...form }),
+    });
+    const data = await res.json();
+    if (data.success) {
+      setStatus("success");
+      setTimeout(() => { setStatus("idle"); setForm({ name:"",email:"",phone:"",destination:"",budget:"",message:"" }); }, 4000);
+    } else { setStatus("idle"); }
+  } catch (err) { setStatus("idle"); }
+};
 
   if (status === "success") return (
     <div ref={ref} className="contact-form" style={{ padding:"64px 40px", background:"rgba(255,255,255,.6)", border:`1px solid ${G.border}`, borderRadius:20, display:"flex", flexDirection:"column", alignItems:"center", gap:16, textAlign:"center", animation:"fadeUp .5s ease" }}>

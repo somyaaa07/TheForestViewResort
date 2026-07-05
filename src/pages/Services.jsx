@@ -1,10 +1,10 @@
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 const IMGS = {
-  hero:      "/16.jpeg",
+  hero:      "/19.jpeg",
   suite:     "/3.jpeg",
   spa:       "/2.jpeg",
-  dining:    "/10.jpeg",
+  dining:    "/17.jpeg",
   events:    "/12.jpeg",
   trails:    "14.jpeg",
   concierge: "/11.jpeg",

@@ -188,12 +188,14 @@ function RoomCard({ r, i, wishlist, toggleWish }) {
 
           {/* CTA row */}
           <div className="rc-cta-row">
-            <a href="#" className="rc-explore">EXPLORE {Ico.arrow}</a>
-            <button type="button" className="rc-reserve">
+            {/* <a href="#" className="rc-explore">EXPLORE {Ico.arrow}</a> */}
+            <Link to="/accommodation">         <button type="button" className="rc-reserve">
               Reserve Now —&nbsp;
               <span className="marc" style={{ fontSize: 16 }}>₹{plan.price.toLocaleString()}</span>
             </button>
+            </Link>  
           </div>
+
 
         </div>
       </article>

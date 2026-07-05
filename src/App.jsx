@@ -9,6 +9,8 @@ import ServicesPage from './pages/Services'
 import Footer from './common/Footer'
 import SafariBooking from './pages/SafariBooking'
 import PremiumGallery from './pages/Gallery'
+import Blog from './pages/Blog'
+import BlogDetails from './pages/Blogdetail'
 export default function App() {
   return (
 <Router>
@@ -36,6 +38,14 @@ export default function App() {
 
     <Route path="/gallery" element={
 <PremiumGallery/>
+    }/>
+        <Route path="/blog" element={
+      <Blog/>
+    }/>
+    
+    
+    <Route path="/blog/:id" element={
+      <BlogDetails/>
     }/>
   </Routes>
   <Footer/>
