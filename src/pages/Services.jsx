@@ -5,8 +5,8 @@ const IMGS = {
   suite:     "/3.jpeg",
   spa:       "/2.jpeg",
   dining:    "/17.jpeg",
-  events:    "/12.jpeg",
-  trails:    "14.jpeg",
+  events:    "/18.jpeg",
+  trails:    "19.jpeg",
   concierge: "/11.jpeg",
   cta:       "/7.jpeg",
 };

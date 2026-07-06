@@ -74,8 +74,14 @@ const BlogDetail = () => {
       </div>
     );
 
+
   return (
+    
     <div className="min-h-screen bg-white">
+         <Helmet>
+        <title>{blog.title} | Safar Blog</title>
+        <meta name="description" content={blog.excerpt} />
+      </Helmet>
       {/* Floating Header */}
       <header className="sticky top-0 z-50 backdrop-blur-xl bg-white/98 border-b-2 border-gray-100 shadow-md">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
