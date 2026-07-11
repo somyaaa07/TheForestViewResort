@@ -154,7 +154,8 @@ export default function RoomDetail({ roomId, onBack, onExplore }) {
   const [sent, setSent]       = useState(false);
 
   // ── Reservation Form ("Check Availability") state ──
-  const [resForm, setResForm] = useState({ checkIn: "", checkOut: "" });
+  // NOTE: 'phone' added so we can follow up with the guest about their reservation.
+  const [resForm, setResForm] = useState({ checkIn: "", checkOut: "", phone: "" });
   const [resStatus, setResStatus] = useState("idle"); // idle | sending | sent
 
   // Responsive: show 1 on mobile, 2 on tablet, 3 on desktop
@@ -199,7 +200,7 @@ export default function RoomDetail({ roomId, onBack, onExplore }) {
   const checkAvailability = async () => {
     setResStatus("sending");
     try {
-      const res = await fetch("https://theforestviewresort.com/send-mail.php", {
+      const res = await fetch("https://theforestviewresort.com/check-availability.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ form_type: "Room Availability Check", room: room.name, ...resForm }),
@@ -553,10 +554,19 @@ export default function RoomDetail({ roomId, onBack, onExplore }) {
               />
               <label style={{ fontSize:13, fontWeight:500, color:D, display:"block", marginBottom:5 }}>Check-out Date <span style={{ color:D }}>*</span></label>
               <input
-                type="date" className="si" style={{ marginBottom:16 }}
+                type="date" className="si" style={{ marginBottom:14 }}
                 value={resForm.checkOut}
                 onChange={e=>setResForm({ ...resForm, checkOut:e.target.value })}
               />
+              {/* ↓↓↓ NEW: Phone Number field so the resort can follow up with the guest ↓↓↓ */}
+              <label style={{ fontSize:13, fontWeight:500, color:D, display:"block", marginBottom:5 }}>Phone Number <span style={{ color:D }}>*</span></label>
+              <input
+                type="tel" className="si" style={{ marginBottom:16 }}
+                placeholder="Your phone number"
+                value={resForm.phone}
+                onChange={e=>setResForm({ ...resForm, phone:e.target.value })}
+              />
+              {/* ↑↑↑ NEW field ↑↑↑ */}
               <button className="bd" onClick={checkAvailability} disabled={resStatus==="sending"}>
                 {resStatus==="sending" ? "Checking..." : resStatus==="sent" ? "Request Sent ✓" : "Check Availability"}
               </button>

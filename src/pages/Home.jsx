@@ -413,18 +413,29 @@ export default function ForestViewHomePage() {
 
   const toggleWish = (i) => setWishlist(prev => { const n = new Set(prev); n.has(i) ? n.delete(i) : n.add(i); return n; });
   const hotspots = bedTab === 0 ? BED_HOTSPOTS.twin : BED_HOTSPOTS.king;
-  const checkAvailability = async () => {           // ← ye naya function add karo
-  setBookingStatus("sending");
-  try {
-    const res = await fetch("https://theforestviewresort.com/send-mail.php", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ form_type: "Home Page Availability Check", checkIn, checkOut, adults, children }),
-    });
-    const data = await res.json();
-    setBookingStatus(data.success ? "sent" : "idle");
-  } catch (e) { setBookingStatus("idle"); }
-};
+  const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
+  const checkAvailability = async () => {
+    if (!checkIn || !checkOut || !dateRegex.test(checkIn) || !dateRegex.test(checkOut)) {
+      setBookingStatus("error");
+      return;
+    }
+    if (new Date(checkOut) <= new Date(checkIn)) {
+      setBookingStatus("error");
+      return;
+    }
+    setBookingStatus("sending");
+    try {
+      const res = await fetch("https://theforestviewresort.com/check-availability.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ form_type: "Home Page Availability Check", checkIn, checkOut, adults, children }),
+      });
+      const data = await res.json();
+      setBookingStatus(data.success ? "sent" : "error");
+    } catch (e) {
+      setBookingStatus("error");
+    }
+  };
 
   useEffect(() => { window.scrollTo(0, 0); }, []);
 
@@ -500,6 +511,7 @@ export default function ForestViewHomePage() {
         .hf-cta:hover{background:#1a2e1c;transform:translateY(-2px);box-shadow:0 8px 24px rgba(4,17,6,.4)}
         .hf-cta:active{transform:translateY(0)}
         .hf-cta-icon{width:28px;height:28px;flex-shrink:0;background:rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:300}
+        .hf-error{font-size:11px;color:#c73d2a;font-weight:600;margin-top:8px;text-align:center}
 
         /* ROOMS */
         .rooms-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(14px,2vw,24px);max-width:900px;margin:0 auto}
@@ -657,6 +669,16 @@ export default function ForestViewHomePage() {
         @media(max-width:480px){
           .hero-h1{font-size:clamp(26px,9.5vw,40px)!important}
           .hf-grid-2{grid-template-columns:1fr!important}
+
+          .hf-wrap{padding:14px 12px 12px!important;border-radius:12px!important}
+          .hf-title{font-size:15px!important;margin-bottom:10px!important}
+          .hf-label{font-size:9px!important;margin-bottom:4px!important}
+          .hf-date-box,.hf-counter-box{height:36px!important}
+          .hf-date-input{font-size:12px!important;padding:0 6px!important}
+          .hf-counter-btn{width:22px!important;height:22px!important;font-size:13px!important}
+          .hf-divider{margin:8px 0!important}
+          .hf-cta{height:40px!important;font-size:9px!important;gap:6px!important}
+          .hf-cta-icon{width:22px!important;height:22px!important;font-size:13px!important}
         }
       `}</style>
 
@@ -690,8 +712,7 @@ export default function ForestViewHomePage() {
                     <div>
                       <label className="hf-label">CHECK-IN</label>
                       <div className="hf-date-box">
-                        <input className="hf-date-input" type="text" placeholder="Check-in" value={checkIn}
-                          onFocus={e => { e.target.type = "date"; }} onBlur={e => { if (!e.target.value) e.target.type = "text"; }}
+                        <input className="hf-date-input" type="date" placeholder="Check-in" value={checkIn}
                           onChange={e => setCheckIn(e.target.value)} />
                         <span className="hf-date-icon">{Ico.calDate}</span>
                       </div>
@@ -699,8 +720,8 @@ export default function ForestViewHomePage() {
                     <div>
                       <label className="hf-label">CHECK-OUT</label>
                       <div className="hf-date-box">
-                        <input className="hf-date-input" type="text" placeholder="Check-out" value={checkOut}
-                          onFocus={e => { e.target.type = "date"; }} onBlur={e => { if (!e.target.value) e.target.type = "text"; }}
+                        <input className="hf-date-input" type="date" placeholder="Check-out" value={checkOut}
+                          min={checkIn || undefined}
                           onChange={e => setCheckOut(e.target.value)} />
                         <span className="hf-date-icon">{Ico.calDate}</span>
                       </div>
@@ -725,10 +746,13 @@ export default function ForestViewHomePage() {
                     </div>
                   </div>
                   <div className="hf-divider" />
-               <button className="hf-cta" onClick={checkAvailability} disabled={bookingStatus==="sending"}>
-  <span className="hf-cta-icon">›</span>
-  {bookingStatus==="sending" ? "SENDING..." : bookingStatus==="sent" ? "REQUEST SENT ✓" : "CHECK AVAILABILITY"}
-</button>
+                  <button className="hf-cta" onClick={checkAvailability} disabled={bookingStatus==="sending"}>
+                    <span className="hf-cta-icon">›</span>
+                    {bookingStatus==="sending" ? "SENDING..." : bookingStatus==="sent" ? "REQUEST SENT ✓" : "CHECK AVAILABILITY"}
+                  </button>
+                  {bookingStatus==="error" && (
+                    <p className="hf-error">Please select valid check-in &amp; check-out dates.</p>
+                  )}
                 </div>
               </Reveal>
             </div>
@@ -1055,45 +1079,6 @@ export default function ForestViewHomePage() {
           </div>
         </div>
       </section>
-
-      {/* ══ BLOG ══ */}
-      {/* <section style={{ padding:"clamp(56px,8vw,88px) 0", background:SHADE }}>
-        <div className="sec-wrap">
-          <div className="sec-head-row" style={{ marginBottom:"clamp(28px,4vw,48px)" }}>
-            <div className="sec-head-text">
-              <Reveal>
-                <p style={{ fontSize:11, letterSpacing:".22em", textTransform:"uppercase", opacity:.38, marginBottom:9 }}>08 _ BLOG &amp; TRAVEL GUIDES</p>
-                <h2 className="marc" style={{ fontSize:"clamp(18px,4vw,50px)", fontWeight:400 }}>Ranthambore Travel Stories</h2>
-              </Reveal>
-            </div>
-            <a href="#" className="sec-head-link" style={{ color:DARK, border:`1.5px solid ${DARK}`, padding:"11px 22px", fontSize:10, fontWeight:700, letterSpacing:".1em", textTransform:"uppercase", textDecoration:"none" }}>
-              READ MORE {Ico.arrow}
-            </a>
-          </div>
-          <div className="blogs-grid">
-            {BLOGS.map((b,i) => (
-              <Reveal key={b.title} delay={i*75}>
-                <div className="b-card">
-                  <div style={{ overflow:"hidden", height:"clamp(160px,18vw,215px)" }}>
-                    <img src={b.img} alt={b.title} className="b-img" />
-                  </div>
-                  <div style={{ padding:"clamp(16px,2vw,20px) clamp(14px,1.8vw,18px)" }}>
-                    <div style={{ display:"flex", gap:16, marginBottom:10, flexWrap:"wrap" }}>
-                      <span style={{ fontSize:12, opacity:.45, display:"flex", alignItems:"center", gap:5 }}>
-                        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" width="13" height="13"><rect x="2" y="4" width="16" height="14" rx="2"/><path d="M6 2v4M14 2v4M2 9h16"/></svg>
-                        {b.date}
-                      </span>
-                    </div>
-                    <h4 className="marc" style={{ fontSize:"clamp(16px,1.6vw,20px)", fontWeight:400, marginBottom:9, lineHeight:1.28 }}>{b.title}</h4>
-                    <p style={{ fontSize:"clamp(12px,1.2vw,13px)", lineHeight:1.72, opacity:.52, marginBottom:16 }}>{b.text}</p>
-                    <a href="#" style={{ display:"inline-flex", alignItems:"center", gap:5, fontSize:11, fontWeight:700, letterSpacing:".12em", textTransform:"uppercase", color:DARK, textDecoration:"none" }}>READ MORE {Ico.arrow}</a>
-                  </div>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section> */}
 
       {/* ══ CTA ══ */}
       <section className="cta-section">
